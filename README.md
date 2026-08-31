@@ -44,3 +44,33 @@ npm install
 
 - This package uses ES modules (`"type": "module"` in `package.json`), matching the modern config style TOP teaches (`export default`, `import.meta.dirname`).
 - Restart the dev server after editing `webpack.config.js`.
+
+## Data sync
+
+Game data lives in a private Google Sheet and is baked into
+`src/data/games.json` at build time. The site never talks to Google, so the
+deployed page is fully static and the JSON is version-controlled.
+
+### One-time setup
+
+1. In the Google Cloud console, enable the **Google Sheets API**.
+2. Create a **service account** (IAM & Admin → Service Accounts). No roles are
+   needed — access is granted by the sheet, not by IAM.
+3. Add a **JSON key** to it and download the file.
+4. Open the sheet → **Share** → add the service account's
+   `…@….iam.gserviceaccount.com` address as a **Viewer**. This is the step that
+   actually grants access; skipping it produces a 403 even though auth succeeds.
+5. Point `.env` at the key (both files are git-ignored):
+
+   ```
+   GOOGLE_APPLICATION_CREDENTIALS=C:/path/to/service-account.json
+   ```
+
+   Or paste the JSON inline as `GOOGLE_SERVICE_ACCOUNT_KEY={...}`.
+
+### Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run sync` | Reads the sheet, writes `src/data/games.json`, checks the parsed totals against the sheet's own totals row. |
+| `npm run probe -- 18 30` | Dumps raw, unmasked cell data for the given 1-based rows. Used to work out how formatting encodes things. |
