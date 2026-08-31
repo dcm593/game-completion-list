@@ -1,0 +1,27 @@
+{
+  "name": "odin-webpack-template",
+  "version": "1.0.0",
+  "description": "Webpack template repository following The Odin Project spec",
+  "type": "module",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+  },
+  "keywords": [
+    "webpack",
+    "template",
+    "the-odin-project"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^7.1.4",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.7",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3",
+    "webpack-dev-server": "^5.2.5"
+  }
+}
