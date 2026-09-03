@@ -94,13 +94,43 @@ export function hasIcon(cell) {
   );
 }
 
-// Column D has three distinct states, and collapsing them would lose meaning:
-// an icon (trophy earned / 100%), the text "N/A" (the game has no trophy or
-// achievement system at all), or empty (it has one, not completed).
+// Column D carries four distinct states, and collapsing any of them would
+// lose meaning:
+//
+//   an icon      -> platinum earned / 100% swept
+//   "22/30"      -> partial progress, entered by hand
+//   "N/A"        -> the game has no trophy or achievement system at all
+//   empty        -> has one, but the count hasn't been filled in yet
+//
+// "not-applicable" and "pending" both lack a number but mean opposite things,
+// so the UI must be able to tell them apart.
+const FRACTION = /^(\d+)\s*\/\s*(\d+)$/;
+
 function readCompletion(row) {
-  if (hasIcon(row[COL.TROPHY])) return "achieved";
-  if (value(row, COL.TROPHY).toUpperCase() === "N/A") return "not-applicable";
-  return "none";
+  if (hasIcon(row[COL.TROPHY])) {
+    return { state: "achieved", earned: null, total: null, ratio: 1 };
+  }
+
+  const raw = value(row, COL.TROPHY);
+  if (raw.toUpperCase() === "N/A") {
+    return { state: "not-applicable", earned: null, total: null, ratio: null };
+  }
+
+  const fraction = raw.match(FRACTION);
+  if (fraction) {
+    const earned = Number(fraction[1]);
+    const total = Number(fraction[2]);
+    // Guard against a typo'd 30/22 rather than rendering a bar past 100%.
+    const ratio = total > 0 ? Math.min(1, earned / total) : null;
+    return {
+      state: earned >= total && total > 0 ? "achieved" : "partial",
+      earned,
+      total,
+      ratio,
+    };
+  }
+
+  return { state: "pending", earned: null, total: null, ratio: null };
 }
 
 // ---------------------------------------------------------------- notes

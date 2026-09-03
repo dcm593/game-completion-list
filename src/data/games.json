@@ -11,7 +11,12 @@
           "currency": "CAD",
           "hours": 14.5,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -24,7 +29,12 @@
           "currency": "CAD",
           "hours": 66,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Hours inaccurate - started in 2022 then dropped when Elden Ring released, picked up again in 2024"
@@ -37,7 +47,12 @@
           "currency": "CAD",
           "hours": 22,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 36,
+            "total": 51,
+            "ratio": 0.7058823529411765
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -50,7 +65,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -63,7 +83,12 @@
           "currency": "CAD",
           "hours": 9,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 11,
+            "total": 22,
+            "ratio": 0.5
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -76,7 +101,12 @@
           "currency": "CAD",
           "hours": 4,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 14,
+            "total": 35,
+            "ratio": 0.4
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -89,7 +119,12 @@
           "currency": "CAD",
           "hours": 13,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -102,7 +137,12 @@
           "currency": "CAD",
           "hours": 15,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -115,7 +155,12 @@
           "currency": "CAD",
           "hours": 30,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -128,7 +173,12 @@
           "currency": "CAD",
           "hours": 44.5,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -141,7 +191,12 @@
           "currency": "CAD",
           "hours": 30,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -154,7 +209,12 @@
           "currency": "CAD",
           "hours": 107,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": true,
           "replay": true,
           "note": null
@@ -167,7 +227,12 @@
           "currency": "CAD",
           "hours": 14,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -180,7 +245,12 @@
           "currency": "CAD",
           "hours": 37.8,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 31,
+            "total": 44,
+            "ratio": 0.7045454545454546
+          },
           "coop": false,
           "replay": false,
           "note": "Hours inaccurate - did Leon campgain, dropped for a year or two, picked up again in 2024"
@@ -193,7 +263,12 @@
           "currency": "CAD",
           "hours": 30,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": "Hours inaccurate - three games as part of 3D all stars sharing hours (64, Sunshine, and Galaxy)"
@@ -206,7 +281,12 @@
           "currency": "CAD",
           "hours": 20,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -219,7 +299,12 @@
           "currency": "CAD",
           "hours": 46,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -232,7 +317,12 @@
           "currency": "CAD",
           "hours": 1.25,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -245,7 +335,12 @@
           "currency": "CAD",
           "hours": 5.7,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 20,
+            "total": 32,
+            "ratio": 0.625
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -258,7 +353,12 @@
           "currency": "CAD",
           "hours": 9,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -271,7 +371,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -284,7 +389,12 @@
           "currency": "CAD",
           "hours": 10.5,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 29,
+            "total": 42,
+            "ratio": 0.6904761904761905
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -297,7 +407,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -310,7 +425,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": true,
           "note": "Shares hours with Galaxy"
@@ -323,7 +443,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
@@ -336,7 +461,12 @@
           "currency": "CAD",
           "hours": 54,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -349,7 +479,12 @@
           "currency": "CAD",
           "hours": 8.8,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 19,
+            "total": 91,
+            "ratio": 0.2087912087912088
+          },
           "coop": true,
           "replay": true,
           "note": null
@@ -362,7 +497,12 @@
           "currency": "CAD",
           "hours": 13,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -375,7 +515,12 @@
           "currency": "CAD",
           "hours": 95,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -403,7 +548,12 @@
           "currency": "CAD",
           "hours": 86,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -416,7 +566,12 @@
           "currency": "CAD",
           "hours": 86,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -429,7 +584,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was triple dead god"
@@ -442,7 +602,12 @@
           "currency": "CAD",
           "hours": 5,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -455,7 +620,12 @@
           "currency": "CAD",
           "hours": 100,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was completing Cosmic Ocean, hours inaccurate - approximate of what I played this year (~500 hrs all time)"
@@ -468,7 +638,12 @@
           "currency": "CAD",
           "hours": 28,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 29,
+            "total": 50,
+            "ratio": 0.58
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -481,7 +656,12 @@
           "currency": "CAD",
           "hours": 47,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was all trophies (PS4 edition has no platinum trophy)"
@@ -494,7 +674,12 @@
           "currency": "CAD",
           "hours": 48,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": true,
           "note": "Picked up an old 107% save that had 33 hours, finished the rest"
@@ -507,7 +692,12 @@
           "currency": "CAD",
           "hours": 31,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -520,7 +710,12 @@
           "currency": "CAD",
           "hours": 50,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -533,7 +728,12 @@
           "currency": "CAD",
           "hours": 0.5,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -546,7 +746,12 @@
           "currency": "CAD",
           "hours": 16.6,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 20,
+            "total": 69,
+            "ratio": 0.2898550724637681
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -559,7 +764,12 @@
           "currency": "CAD",
           "hours": 54,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": true,
           "replay": true,
           "note": "Picked up old year 4 save Nicole and I played, took it to perfection"
@@ -572,7 +782,12 @@
           "currency": "CAD",
           "hours": 12,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -585,7 +800,12 @@
           "currency": "CAD",
           "hours": 2.2,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 4,
+            "total": 11,
+            "ratio": 0.36363636363636365
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -598,7 +818,12 @@
           "currency": "CAD",
           "hours": 21.8,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -611,7 +836,12 @@
           "currency": "CAD",
           "hours": 10,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -624,7 +854,12 @@
           "currency": "CAD",
           "hours": 3,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -637,7 +872,12 @@
           "currency": "CAD",
           "hours": 17,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -650,7 +890,12 @@
           "currency": "CAD",
           "hours": 4.8,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 9,
+            "total": 30,
+            "ratio": 0.3
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -663,7 +908,12 @@
           "currency": "CAD",
           "hours": 5.1,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 8,
+            "total": 30,
+            "ratio": 0.26666666666666666
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -676,7 +926,12 @@
           "currency": "CAD",
           "hours": 5.9,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 31,
+            "total": 57,
+            "ratio": 0.543859649122807
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -689,7 +944,12 @@
           "currency": "CAD",
           "hours": 66.2,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "100% Save file, all mementos"
@@ -702,7 +962,12 @@
           "currency": "CAD",
           "hours": 3.1,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -715,7 +980,12 @@
           "currency": "CAD",
           "hours": 9.5,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 18,
+            "total": 37,
+            "ratio": 0.4864864864864865
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -728,7 +998,12 @@
           "currency": "CAD",
           "hours": 5,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 16,
+            "total": 32,
+            "ratio": 0.5
+          },
           "coop": false,
           "replay": false,
           "note": "Played offline on Steam Deck, hours did not sync right (says 1 minute) - so playtime is guestimate based on player avg"
@@ -741,7 +1016,12 @@
           "currency": "CAD",
           "hours": 59.5,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": "Played Pre - Alpha 0.8.2c until the achievement \"pre-alpha completed\" popped"
@@ -754,7 +1034,12 @@
           "currency": "CAD",
           "hours": 13,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 42,
+            "total": 51,
+            "ratio": 0.8235294117647058
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -767,7 +1052,12 @@
           "currency": "CAD",
           "hours": 5,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 14,
+            "total": 26,
+            "ratio": 0.5384615384615384
+          },
           "coop": true,
           "replay": true,
           "note": null
@@ -780,7 +1070,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
@@ -793,7 +1088,12 @@
           "currency": "CAD",
           "hours": 14,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 9,
+            "total": 21,
+            "ratio": 0.42857142857142855
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -806,7 +1106,12 @@
           "currency": "CAD",
           "hours": null,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 24,
+            "total": 97,
+            "ratio": 0.24742268041237114
+          },
           "coop": true,
           "replay": false,
           "note": "Playtime stats don't show up for ODST for some reason"
@@ -834,7 +1139,12 @@
           "currency": "CAD",
           "hours": 29.2,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": "Endings A, B, C, C2, D, E"
@@ -847,7 +1157,12 @@
           "currency": "CAD",
           "hours": 1,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 5,
+            "total": 7,
+            "ratio": 0.7142857142857143
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -860,7 +1175,12 @@
           "currency": "CAD",
           "hours": 17,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -873,7 +1193,12 @@
           "currency": "CAD",
           "hours": 0.75,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -886,7 +1211,12 @@
           "currency": "CAD",
           "hours": 34.4,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 48,
+            "total": 75,
+            "ratio": 0.64
+          },
           "coop": false,
           "replay": true,
           "note": "Hours approximate, picked up old save and did all DLCs + Yes Man ending"
@@ -899,7 +1229,12 @@
           "currency": "CAD",
           "hours": 227,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was A20 wins on all characters"
@@ -912,7 +1247,12 @@
           "currency": "CAD",
           "hours": 15,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -925,7 +1265,12 @@
           "currency": "CAD",
           "hours": 111.9,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": "Criteria for me was A10 wins on all characters + an A10 win in multiplayer, will come back after early access"
@@ -938,7 +1283,12 @@
           "currency": "CAD",
           "hours": 2,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -951,7 +1301,12 @@
           "currency": "CAD",
           "hours": 63,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": "Started couch co-op with Nicole, but she dropped early on because split screen UI was dogshit"
@@ -964,7 +1319,12 @@
           "currency": "CAD",
           "hours": 4.1,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 9,
+            "total": 22,
+            "ratio": 0.4090909090909091
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -977,7 +1337,12 @@
           "currency": "CAD",
           "hours": 23.3,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": "Endings A & B - Couldn't find August on the night of day 2 in order to do ending C"
@@ -990,7 +1355,12 @@
           "currency": "CAD",
           "hours": 10,
           "hoursApproximate": false,
-          "completion": "not-applicable",
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -1003,7 +1373,12 @@
           "currency": "CAD",
           "hours": 90.6,
           "hoursApproximate": false,
-          "completion": "achieved",
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
           "coop": false,
           "replay": false,
           "note": null
@@ -1016,7 +1391,12 @@
           "currency": "CAD",
           "hours": 6.5,
           "hoursApproximate": false,
-          "completion": "none",
+          "completion": {
+            "state": "partial",
+            "earned": 8,
+            "total": 30,
+            "ratio": 0.26666666666666666
+          },
           "coop": true,
           "replay": false,
           "note": null
@@ -1035,7 +1415,12 @@
       "currency": "CAD",
       "hours": 14.5,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1048,7 +1433,12 @@
       "currency": "CAD",
       "hours": 66,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Hours inaccurate - started in 2022 then dropped when Elden Ring released, picked up again in 2024"
@@ -1061,7 +1451,12 @@
       "currency": "CAD",
       "hours": 22,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 36,
+        "total": 51,
+        "ratio": 0.7058823529411765
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1074,7 +1469,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1087,7 +1487,12 @@
       "currency": "CAD",
       "hours": 9,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 11,
+        "total": 22,
+        "ratio": 0.5
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1100,7 +1505,12 @@
       "currency": "CAD",
       "hours": 4,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 14,
+        "total": 35,
+        "ratio": 0.4
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1113,7 +1523,12 @@
       "currency": "CAD",
       "hours": 13,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1126,7 +1541,12 @@
       "currency": "CAD",
       "hours": 15,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1139,7 +1559,12 @@
       "currency": "CAD",
       "hours": 30,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1152,7 +1577,12 @@
       "currency": "CAD",
       "hours": 44.5,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1165,7 +1595,12 @@
       "currency": "CAD",
       "hours": 30,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1178,7 +1613,12 @@
       "currency": "CAD",
       "hours": 107,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": true,
       "replay": true,
       "note": null
@@ -1191,7 +1631,12 @@
       "currency": "CAD",
       "hours": 14,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1204,7 +1649,12 @@
       "currency": "CAD",
       "hours": 37.8,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 31,
+        "total": 44,
+        "ratio": 0.7045454545454546
+      },
       "coop": false,
       "replay": false,
       "note": "Hours inaccurate - did Leon campgain, dropped for a year or two, picked up again in 2024"
@@ -1217,7 +1667,12 @@
       "currency": "CAD",
       "hours": 30,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": "Hours inaccurate - three games as part of 3D all stars sharing hours (64, Sunshine, and Galaxy)"
@@ -1230,7 +1685,12 @@
       "currency": "CAD",
       "hours": 20,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1243,7 +1703,12 @@
       "currency": "CAD",
       "hours": 46,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1256,7 +1721,12 @@
       "currency": "CAD",
       "hours": 1.25,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1269,7 +1739,12 @@
       "currency": "CAD",
       "hours": 5.7,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 20,
+        "total": 32,
+        "ratio": 0.625
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1282,7 +1757,12 @@
       "currency": "CAD",
       "hours": 9,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1295,7 +1775,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1308,7 +1793,12 @@
       "currency": "CAD",
       "hours": 10.5,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 29,
+        "total": 42,
+        "ratio": 0.6904761904761905
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1321,7 +1811,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1334,7 +1829,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": true,
       "note": "Shares hours with Galaxy"
@@ -1347,7 +1847,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
@@ -1360,7 +1865,12 @@
       "currency": "CAD",
       "hours": 54,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1373,7 +1883,12 @@
       "currency": "CAD",
       "hours": 8.8,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 19,
+        "total": 91,
+        "ratio": 0.2087912087912088
+      },
       "coop": true,
       "replay": true,
       "note": null
@@ -1386,7 +1901,12 @@
       "currency": "CAD",
       "hours": 13,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1399,7 +1919,12 @@
       "currency": "CAD",
       "hours": 95,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1412,7 +1937,12 @@
       "currency": "CAD",
       "hours": 86,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1425,7 +1955,12 @@
       "currency": "CAD",
       "hours": 86,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1438,7 +1973,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was triple dead god"
@@ -1451,7 +1991,12 @@
       "currency": "CAD",
       "hours": 5,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1464,7 +2009,12 @@
       "currency": "CAD",
       "hours": 100,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was completing Cosmic Ocean, hours inaccurate - approximate of what I played this year (~500 hrs all time)"
@@ -1477,7 +2027,12 @@
       "currency": "CAD",
       "hours": 28,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 29,
+        "total": 50,
+        "ratio": 0.58
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1490,7 +2045,12 @@
       "currency": "CAD",
       "hours": 47,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was all trophies (PS4 edition has no platinum trophy)"
@@ -1503,7 +2063,12 @@
       "currency": "CAD",
       "hours": 48,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": true,
       "note": "Picked up an old 107% save that had 33 hours, finished the rest"
@@ -1516,7 +2081,12 @@
       "currency": "CAD",
       "hours": 31,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1529,7 +2099,12 @@
       "currency": "CAD",
       "hours": 50,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1542,7 +2117,12 @@
       "currency": "CAD",
       "hours": 0.5,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1555,7 +2135,12 @@
       "currency": "CAD",
       "hours": 16.6,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 20,
+        "total": 69,
+        "ratio": 0.2898550724637681
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1568,7 +2153,12 @@
       "currency": "CAD",
       "hours": 54,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": true,
       "replay": true,
       "note": "Picked up old year 4 save Nicole and I played, took it to perfection"
@@ -1581,7 +2171,12 @@
       "currency": "CAD",
       "hours": 12,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1594,7 +2189,12 @@
       "currency": "CAD",
       "hours": 2.2,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 4,
+        "total": 11,
+        "ratio": 0.36363636363636365
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1607,7 +2207,12 @@
       "currency": "CAD",
       "hours": 21.8,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1620,7 +2225,12 @@
       "currency": "CAD",
       "hours": 10,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1633,7 +2243,12 @@
       "currency": "CAD",
       "hours": 3,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1646,7 +2261,12 @@
       "currency": "CAD",
       "hours": 17,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1659,7 +2279,12 @@
       "currency": "CAD",
       "hours": 4.8,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 9,
+        "total": 30,
+        "ratio": 0.3
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1672,7 +2297,12 @@
       "currency": "CAD",
       "hours": 5.1,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 8,
+        "total": 30,
+        "ratio": 0.26666666666666666
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1685,7 +2315,12 @@
       "currency": "CAD",
       "hours": 5.9,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 31,
+        "total": 57,
+        "ratio": 0.543859649122807
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1698,7 +2333,12 @@
       "currency": "CAD",
       "hours": 66.2,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "100% Save file, all mementos"
@@ -1711,7 +2351,12 @@
       "currency": "CAD",
       "hours": 3.1,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1724,7 +2369,12 @@
       "currency": "CAD",
       "hours": 9.5,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 18,
+        "total": 37,
+        "ratio": 0.4864864864864865
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1737,7 +2387,12 @@
       "currency": "CAD",
       "hours": 5,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 16,
+        "total": 32,
+        "ratio": 0.5
+      },
       "coop": false,
       "replay": false,
       "note": "Played offline on Steam Deck, hours did not sync right (says 1 minute) - so playtime is guestimate based on player avg"
@@ -1750,7 +2405,12 @@
       "currency": "CAD",
       "hours": 59.5,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": "Played Pre - Alpha 0.8.2c until the achievement \"pre-alpha completed\" popped"
@@ -1763,7 +2423,12 @@
       "currency": "CAD",
       "hours": 13,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 42,
+        "total": 51,
+        "ratio": 0.8235294117647058
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1776,7 +2441,12 @@
       "currency": "CAD",
       "hours": 5,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 14,
+        "total": 26,
+        "ratio": 0.5384615384615384
+      },
       "coop": true,
       "replay": true,
       "note": null
@@ -1789,7 +2459,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
@@ -1802,7 +2477,12 @@
       "currency": "CAD",
       "hours": 14,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 9,
+        "total": 21,
+        "ratio": 0.42857142857142855
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1815,7 +2495,12 @@
       "currency": "CAD",
       "hours": null,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 24,
+        "total": 97,
+        "ratio": 0.24742268041237114
+      },
       "coop": true,
       "replay": false,
       "note": "Playtime stats don't show up for ODST for some reason"
@@ -1828,7 +2513,12 @@
       "currency": "CAD",
       "hours": 29.2,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": "Endings A, B, C, C2, D, E"
@@ -1841,7 +2531,12 @@
       "currency": "CAD",
       "hours": 1,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 5,
+        "total": 7,
+        "ratio": 0.7142857142857143
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1854,7 +2549,12 @@
       "currency": "CAD",
       "hours": 17,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1867,7 +2567,12 @@
       "currency": "CAD",
       "hours": 0.75,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1880,7 +2585,12 @@
       "currency": "CAD",
       "hours": 34.4,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 48,
+        "total": 75,
+        "ratio": 0.64
+      },
       "coop": false,
       "replay": true,
       "note": "Hours approximate, picked up old save and did all DLCs + Yes Man ending"
@@ -1893,7 +2603,12 @@
       "currency": "CAD",
       "hours": 227,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was A20 wins on all characters"
@@ -1906,7 +2621,12 @@
       "currency": "CAD",
       "hours": 15,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1919,7 +2639,12 @@
       "currency": "CAD",
       "hours": 111.9,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": "Criteria for me was A10 wins on all characters + an A10 win in multiplayer, will come back after early access"
@@ -1932,7 +2657,12 @@
       "currency": "CAD",
       "hours": 2,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1945,7 +2675,12 @@
       "currency": "CAD",
       "hours": 63,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": "Started couch co-op with Nicole, but she dropped early on because split screen UI was dogshit"
@@ -1958,7 +2693,12 @@
       "currency": "CAD",
       "hours": 4.1,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 9,
+        "total": 22,
+        "ratio": 0.4090909090909091
+      },
       "coop": true,
       "replay": false,
       "note": null
@@ -1971,7 +2711,12 @@
       "currency": "CAD",
       "hours": 23.3,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": "Endings A & B - Couldn't find August on the night of day 2 in order to do ending C"
@@ -1984,7 +2729,12 @@
       "currency": "CAD",
       "hours": 10,
       "hoursApproximate": false,
-      "completion": "not-applicable",
+      "completion": {
+        "state": "not-applicable",
+        "earned": null,
+        "total": null,
+        "ratio": null
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -1997,7 +2747,12 @@
       "currency": "CAD",
       "hours": 90.6,
       "hoursApproximate": false,
-      "completion": "achieved",
+      "completion": {
+        "state": "achieved",
+        "earned": null,
+        "total": null,
+        "ratio": 1
+      },
       "coop": false,
       "replay": false,
       "note": null
@@ -2010,7 +2765,12 @@
       "currency": "CAD",
       "hours": 6.5,
       "hoursApproximate": false,
-      "completion": "none",
+      "completion": {
+        "state": "partial",
+        "earned": 8,
+        "total": 30,
+        "ratio": 0.26666666666666666
+      },
       "coop": true,
       "replay": false,
       "note": null

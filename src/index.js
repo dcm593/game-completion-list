@@ -1,3 +1,4 @@
 import "./styles.css";
+import { render } from "./app.js";
 
-console.log("Webpack template ready. Start building!");
+render();
