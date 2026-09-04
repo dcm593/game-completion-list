@@ -74,3 +74,23 @@ deployed page is fully static and the JSON is version-controlled.
 | --- | --- |
 | `npm run sync` | Reads the sheet, writes `src/data/games.json`, checks the parsed totals against the sheet's own totals row. |
 | `npm run probe -- 18 30` | Dumps raw, unmasked cell data for the given 1-based rows. Used to work out how formatting encodes things. |
+
+## Cover art
+
+Landscape art is fetched from SteamGridDB at build time and committed under
+`src/assets/covers/`, so the deployed page makes no third-party requests.
+
+```
+npm run covers              # resolve anything not already downloaded
+npm run covers -- --dry     # report resolutions without downloading
+npm run covers -- --force   # re-resolve everything
+```
+
+Add `STEAMGRIDDB=<key>` to `.env`. Every resolution prints the name SteamGridDB
+actually matched, prefixed with `~` when it differs from the search term, so a
+bad match is visible immediately.
+
+Rows that aren't standalone games (DLC, chapter splits, mods, challenge modes)
+are corrected in `src/data/cover-overrides.js`, which maps a sheet title to a
+different search term, an exact SteamGridDB id, or a hand-supplied file in
+`src/assets/covers/manual/`.

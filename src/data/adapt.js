@@ -3,6 +3,7 @@
 // spreadsheet is organized, and re-syncing can't ripple into layout code.
 
 import games from "./games.json";
+import { coverFor } from "./covers.js";
 
 // The design keys its palette off display names; the parser emits slugs.
 const PLATFORM_NAME = {
@@ -33,6 +34,7 @@ export function toDesignGame(game) {
     coop: game.coop,
     replay: game.replay,
     note: game.note,
+    art: coverFor(game.title),
     ...completionFlags(game),
     // null means "no bar to draw", but for two opposite reasons — the game
     // has no achievement system, or nobody has filled the number in yet.

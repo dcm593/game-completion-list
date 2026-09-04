@@ -56,24 +56,18 @@ export function card(game, { isOpen, onToggle }) {
   if (game.replay) badges.push(["REPLAY", "oklch(0.70 0.13 300)"]);
   if (game.note) badges.push(["NOTE", "oklch(0.70 0.13 85)"]);
 
-  return h(
+  const body = h(
     "div",
     {
       style: {
         position: "relative",
-        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         gap: "12px",
         padding: "14px 15px",
-        borderRadius: "13px",
-        background: "#12121a",
-        border: `1px solid ${line(".08")}`,
-        cursor: game.note ? "pointer" : "default",
       },
-      onclick: game.note ? onToggle : null,
     },
-    // Platform tint bleeding down from the top edge.
+    // Platform tint bleeding down from the art above.
     h("div", {
       style: {
         position: "absolute",
@@ -202,5 +196,61 @@ export function card(game, { isOpen, onToggle }) {
           text: game.note,
         })
       : null
+  );
+
+  return h(
+    "div",
+    {
+      style: {
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: "13px",
+        background: "#12121a",
+        border: `1px solid ${line(".08")}`,
+        cursor: game.note ? "pointer" : "default",
+      },
+      onclick: game.note ? onToggle : null,
+    },
+    art(game, col),
+    body
+  );
+}
+
+// 2:1 landscape header. The gradient at the foot of the image carries the
+// artwork into the card body so the seam doesn't read as a hard edge.
+function art(game, col) {
+  return h(
+    "div",
+    {
+      style: {
+        position: "relative",
+        width: "100%",
+        aspectRatio: "2 / 1",
+        overflow: "hidden",
+        background: game.art
+          ? "#0d0d14"
+          : "repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 6px, rgba(255,255,255,.015) 6px 12px)",
+      },
+    },
+    game.art
+      ? h("img", {
+          src: game.art,
+          alt: "",
+          // 76 images on one page: defer everything below the fold.
+          loading: "lazy",
+          decoding: "async",
+          style: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+        })
+      : null,
+    h("div", {
+      style: {
+        position: "absolute",
+        inset: 0,
+        background: `linear-gradient(180deg, transparent 45%, ${alpha(col, ".25")} 80%, #12121a)`,
+        pointerEvents: "none",
+      },
+    })
   );
 }

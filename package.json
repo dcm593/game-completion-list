@@ -8,7 +8,8 @@
     "dev": "webpack serve",
     "deploy": "git subtree push --prefix dist origin gh-pages",
     "sync": "node --env-file=.env scripts/fetch-sheet.js",
-    "probe": "node --env-file=.env scripts/probe-sheet.js"
+    "probe": "node --env-file=.env scripts/probe-sheet.js",
+    "covers": "node --env-file=.env scripts/fetch-covers.js"
   },
   "author": "Damon Martin-Durocher",
   "license": "ISC",

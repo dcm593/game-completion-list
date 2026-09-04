@@ -90,17 +90,42 @@ function place(game, rank) {
       })
     ),
 
-    h("div", {
-      style: {
-        position: "relative",
-        flex: 1,
-        minHeight: first ? "120px" : "96px",
-        borderRadius: "10px",
-        border: `1px solid ${line(".08")}`,
-        background:
-          "repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 6px, rgba(255,255,255,.015) 6px 12px)",
+    h(
+      "div",
+      {
+        style: {
+          position: "relative",
+          flex: 1,
+          minHeight: first ? "120px" : "96px",
+          borderRadius: "10px",
+          overflow: "hidden",
+          border: `1px solid ${line(".08")}`,
+          // The diagonal hatch stays as the backdrop for entries with no art:
+          // an unranked placeholder, or a title the fetch couldn't resolve.
+          background: game.art
+            ? "#0d0d14"
+            : "repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 6px, rgba(255,255,255,.015) 6px 12px)",
+        },
       },
-    }),
+      game.art
+        ? h("img", {
+            src: game.art,
+            alt: "",
+            decoding: "async",
+            style: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+          })
+        : null,
+      game.art
+        ? h("div", {
+            style: {
+              position: "absolute",
+              inset: 0,
+              background: `linear-gradient(180deg, transparent 55%, ${alpha(col, ".3")})`,
+              pointerEvents: "none",
+            },
+          })
+        : null
+    ),
 
     // Titles read exactly as written in the sheet's Top 3 block, rather than
     // borrowing the longer row title from the games table.
