@@ -1,4 +1,34 @@
-import { s } from "./dom.js";
+import { h, s } from "./dom.js";
+import platinumPng from "../assets/icons/platinum-trophy.png";
+import steamPng from "../assets/icons/steam-100.png";
+
+// Which set the cards and rail use. "sheet" is the artwork lifted from the
+// spreadsheet's own in-cell images; "drawn" is the inline SVG below.
+// Both render at the same size, so this is a straight swap.
+export const ICON_STYLE = "sheet";
+
+export const platinumIcon = (size) =>
+  ICON_STYLE === "sheet" ? sheetIcon(platinumPng, "Platinum trophy", size) : platinumTrophy(size);
+
+export const perfectIcon = (size) =>
+  ICON_STYLE === "sheet" ? sheetIcon(steamPng, "100% achievements", size) : steamPerfect(size);
+
+// The trophy is portrait and the badge square, so "contain" keeps each at its
+// own proportions inside the square slot rather than distorting either.
+function sheetIcon(src, alt, size) {
+  return h("img", {
+    src,
+    alt,
+    decoding: "async",
+    style: {
+      width: `${size}px`,
+      height: `${size}px`,
+      objectFit: "contain",
+      display: "block",
+      flex: "none",
+    },
+  });
+}
 
 // Completion marks, drawn rather than sourced.
 //

@@ -4,7 +4,7 @@ import {
 } from "./ui/theme.js";
 import { GAMES, YEARS, TOP3 } from "./data/adapt.js";
 import { card } from "./components/card.js";
-import { platinumTrophy, steamPerfect } from "./ui/icons.js";
+import { platinumIcon, perfectIcon } from "./ui/icons.js";
 import { podium } from "./views/podium.js";
 import { scatter } from "./views/scatter.js";
 import { timeline } from "./views/timeline.js";
@@ -209,8 +209,8 @@ function rail() {
         },
       },
       h("div", { style: label(), text: "COMPLETION" }),
-      counter(platinumTrophy(20), "PLATINUMS", platinums),
-      counter(steamPerfect(20), "FULL CLEARS", hundreds)
+      counter(platinumIcon(20), "PLATINUMS", platinums),
+      counter(perfectIcon(20), "FULL CLEARS", hundreds)
     )
   );
 }

@@ -1,6 +1,6 @@
 import { h } from "../ui/dom.js";
 import { PLAT, MONO, SANS, INK, dim, line, alpha, badge, GOOD, WARN } from "../ui/theme.js";
-import { platinumTrophy, steamPerfect } from "../ui/icons.js";
+import { platinumIcon, perfectIcon } from "../ui/icons.js";
 
 const TROPHY = "oklch(0.80 0.11 254)";
 const HUNDRED = "oklch(0.80 0.13 168)";
@@ -103,8 +103,8 @@ export function card(game, { isOpen, onToggle }) {
         text: PLAT[game.pl].short,
       }),
       h("div", { style: { flex: 1 } }),
-      game.plat ? medal("Platinum trophy", platinumTrophy(MEDAL_SIZE)) : null,
-      game.hundred ? medal("100% achievements", steamPerfect(MEDAL_SIZE)) : null
+      game.plat ? medal("Platinum trophy", platinumIcon(MEDAL_SIZE)) : null,
+      game.hundred ? medal("100% achievements", perfectIcon(MEDAL_SIZE)) : null
     ),
 
     // Always two lines tall, whether or not the title wraps, so the rows
