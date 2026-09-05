@@ -99,13 +99,24 @@ export function card(game, { isOpen, onToggle }) {
       game.hundred ? medal(HUNDRED, "100", "100% achievements") : null
     ),
 
+    // Always two lines tall, whether or not the title wraps, so the rows
+    // below start at the same height on every card. The longest title in the
+    // list is 44 characters and its longest word is 11, so two lines is
+    // enough at every column width; the clamp is a guard rather than an
+    // expected truncation, and the tooltip keeps the full text reachable.
     h("div", {
+      title: game.t,
       style: {
         position: "relative",
         font: `600 14px/1.3 ${SANS}`,
         letterSpacing: "-.01em",
         textWrap: "pretty",
         color: INK,
+        minHeight: "2.6em",
+        display: "-webkit-box",
+        WebkitBoxOrient: "vertical",
+        WebkitLineClamp: 2,
+        overflow: "hidden",
       },
       text: game.t,
     }),
@@ -174,13 +185,21 @@ export function card(game, { isOpen, onToggle }) {
         : null
     ),
 
-    badges.length
-      ? h(
-          "div",
-          { style: { position: "relative", display: "flex", gap: "5px", flexWrap: "wrap" } },
-          badges.map(([text, c]) => h("div", { style: badge(c), text }))
-        )
-      : null,
+    // Rendered even when empty. 43 of 76 cards carry no badges, and letting
+    // the row collapse was the largest source of misalignment across a grid.
+    h(
+      "div",
+      {
+        style: {
+          position: "relative",
+          display: "flex",
+          gap: "5px",
+          flexWrap: "wrap",
+          minHeight: "19px",
+        },
+      },
+      badges.map(([text, c]) => h("div", { style: badge(c), text }))
+    ),
 
     isOpen && game.note
       ? h("div", {
