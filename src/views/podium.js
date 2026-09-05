@@ -107,12 +107,22 @@ function place(game, rank) {
             : "repeating-linear-gradient(135deg, rgba(255,255,255,.055) 0 6px, rgba(255,255,255,.015) 6px 12px)",
         },
       },
+      // Absolutely positioned rather than height:100%. The box is a flex item
+      // sized by flex-grow, and a percentage height against that resolves
+      // inconsistently - which left the art short of its container.
       game.art
         ? h("img", {
             src: game.art,
             alt: "",
             decoding: "async",
-            style: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+            style: {
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            },
           })
         : null,
       game.art
@@ -141,7 +151,9 @@ function place(game, rank) {
     }),
     h("div", {
       style: { position: "relative", font: `500 9px/1 ${MONO}`, letterSpacing: ".1em", color: dim(".35") },
-      text: game.placeholder ? "NOT YET RANKED" : PLAT[game.pl].short,
+      // Placeholders already say "To be determined" in the title above; the
+      // empty string keeps the row's height so all three cards stay aligned.
+      text: game.placeholder ? "" : PLAT[game.pl].short,
     }),
 
     h(

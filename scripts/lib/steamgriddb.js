@@ -33,27 +33,51 @@ export async function search(term) {
   return api(`/search/autocomplete/${encodeURIComponent(term)}`);
 }
 
-export async function grids(gameId) {
-  return api(`/grids/game/${gameId}?dimensions=${DIMENSIONS}&types=static&nsfw=false&humor=false`);
+export async function grids(gameId, styles = null) {
+  const filter = styles ? `&styles=${styles}` : "";
+  return api(
+    `/grids/game/${gameId}?dimensions=${DIMENSIONS}&types=static&nsfw=false&humor=false${filter}`
+  );
 }
+
+// Hero art is the wide banner Steam shows behind a library page. It is the
+// best source of text-free artwork because Steam composites the wordmark on
+// top as a separate asset, so the image underneath is almost always clean.
+// Coverage is far better than the "no_logo" grid tag, which is sparse.
+const HERO_DIMENSIONS = "1920x620";
+
+export async function heroes(gameId) {
+  return api(
+    `/heroes/game/${gameId}?dimensions=${HERO_DIMENSIONS}&types=static&nsfw=false&humor=false`
+  );
+}
+
+// The card prints the title underneath, so a logo baked into the art is
+// redundant and clashes with the caption.
+export const PREFERRED_STYLE = "no_logo";
 
 // Community uploads vary wildly in quality. Rank by net votes first, then
 // prefer the lighter file: the smaller tier, and a compressed format over a
 // lossless one. A 920x430 PNG is typically 10x the bytes of the equivalent
 // JPEG for art that renders at 232px wide.
-const STYLE_RANK = { alternate: 3, material: 2, no_logo: 1, white_logo: 0, blurred: 0 };
+// Text-free art first, since the card captions itself; then net votes; then
+// the lighter file.
+const STYLE_RANK = { no_logo: 3, alternate: 2, material: 1, blurred: 0, white_logo: 0 };
 const MIME_RANK = { "image/webp": 2, "image/jpeg": 1, "image/png": 0 };
 
-export function pickBest(list) {
-  return [...list].sort((a, b) => {
-    const votes = (g) => (g.upvotes ?? 0) - (g.downvotes ?? 0);
-    return (
-      votes(b) - votes(a) ||
-      a.width - b.width ||
-      (MIME_RANK[b.mime] ?? 0) - (MIME_RANK[a.mime] ?? 0) ||
-      (STYLE_RANK[b.style] ?? 0) - (STYLE_RANK[a.style] ?? 0)
-    );
-  })[0];
+export function pickBest(list, { exclude = [] } = {}) {
+  const excluded = new Set(exclude);
+  return [...list]
+    .filter((g) => !excluded.has(g.id))
+    .sort((a, b) => {
+      const votes = (g) => (g.upvotes ?? 0) - (g.downvotes ?? 0);
+      return (
+        (STYLE_RANK[b.style] ?? 0) - (STYLE_RANK[a.style] ?? 0) ||
+        votes(b) - votes(a) ||
+        a.width - b.width ||
+        (MIME_RANK[b.mime] ?? 0) - (MIME_RANK[a.mime] ?? 0)
+      );
+    })[0];
 }
 
 // The search endpoint is fuzzy and returns near-misses, so prefer an exact

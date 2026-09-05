@@ -93,7 +93,7 @@ export const TOP3 = Object.fromEntries(
         })
       : // A year still in progress has no Top 3 yet.
         [0, 1, 2].map(() => ({
-          t: "Awaiting your pick",
+          t: "To be determined",
           pl: "Steam",
           h: null,
           p: null,

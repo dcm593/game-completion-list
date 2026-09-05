@@ -16,7 +16,9 @@
 export const COVER_OVERRIDES = {
   // DLC and expansions: fall back to the base game's art.
   "God of War Ragnarök: Valhalla DLC": { search: "God of War Ragnarok" },
-  "Elden Ring: Shadows of the Erdtree DLC": { search: "Elden Ring Shadow of the Erdtree" },
+  // Hand-supplied: the DLC has its own key art, which reads better here than
+  // the base game grid the search returns.
+  "Elden Ring: Shadows of the Erdtree DLC": { file: "elden-ring-shadow-of-the-erdtree.jpg" },
   "Lies of P: Overture DLC": { search: "Lies of P" },
   "Risk of Rain 2: Seekers of the Storm DLC": { search: "Risk of Rain 2" },
   "Risk of Rain 2: Alloyed Collective DLC": { search: "Risk of Rain 2" },
