@@ -1,5 +1,6 @@
 import { h } from "../ui/dom.js";
 import { PLAT, MONO, SANS, INK, dim, line, alpha, badge, GOOD, WARN } from "../ui/theme.js";
+import { platinumTrophy, steamPerfect } from "../ui/icons.js";
 
 const TROPHY = "oklch(0.80 0.11 254)";
 const HUNDRED = "oklch(0.80 0.13 168)";
@@ -23,22 +24,19 @@ function completionParts(game, platformColor) {
   return { pct, color, text };
 }
 
-function medal(color, glyph, title) {
+const MEDAL_SIZE = 22;
+
+function medal(title, glyph) {
   return h(
     "div",
     {
       title,
       style: {
-        width: "22px",
-        height: "22px",
-        borderRadius: "99px",
+        width: `${MEDAL_SIZE}px`,
+        height: `${MEDAL_SIZE}px`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: alpha(color, ".18"),
-        border: `1px solid ${alpha(color, ".45")}`,
-        font: `700 9px/1 ${MONO}`,
-        color,
         flex: "none",
       },
     },
@@ -77,9 +75,19 @@ export function card(game, { isOpen, onToggle }) {
       },
     }),
 
+    // Fixed height so a card without a completion mark lines up with one that
+    // has it — the same drift the title and badge rows had.
     h(
       "div",
-      { style: { position: "relative", display: "flex", alignItems: "center", gap: "8px" } },
+      {
+        style: {
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          minHeight: `${MEDAL_SIZE}px`,
+        },
+      },
       h("div", {
         style: {
           width: "7px",
@@ -95,8 +103,8 @@ export function card(game, { isOpen, onToggle }) {
         text: PLAT[game.pl].short,
       }),
       h("div", { style: { flex: 1 } }),
-      game.plat ? medal(TROPHY, "PS", "Platinum trophy") : null,
-      game.hundred ? medal(HUNDRED, "100", "100% achievements") : null
+      game.plat ? medal("Platinum trophy", platinumTrophy(MEDAL_SIZE)) : null,
+      game.hundred ? medal("100% achievements", steamPerfect(MEDAL_SIZE)) : null
     ),
 
     // Always two lines tall, whether or not the title wraps, so the rows

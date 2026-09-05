@@ -4,6 +4,7 @@ import {
 } from "./ui/theme.js";
 import { GAMES, YEARS, TOP3 } from "./data/adapt.js";
 import { card } from "./components/card.js";
+import { platinumTrophy, steamPerfect } from "./ui/icons.js";
 import { podium } from "./views/podium.js";
 import { scatter } from "./views/scatter.js";
 import { timeline } from "./views/timeline.js";
@@ -208,26 +209,30 @@ function rail() {
         },
       },
       h("div", { style: label(), text: "COMPLETION" }),
-      counter("oklch(0.72 0.12 254)", "PS", "PLATINUMS", platinums),
-      counter("oklch(0.75 0.13 168)", "100", "FULL CLEARS", hundreds)
+      counter(platinumTrophy(20), "PLATINUMS", platinums),
+      counter(steamPerfect(20), "FULL CLEARS", hundreds)
     )
   );
 }
 
-function counter(color, glyph, text, count) {
+function counter(glyph, text, count) {
   return h(
     "div",
     { style: { display: "flex", alignItems: "center", gap: "9px" } },
-    h("div", {
-      style: {
-        width: "20px", height: "20px", borderRadius: "99px",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        background: color.replace(")", " / .16)"),
-        border: `1px solid ${color.replace(")", " / .4)")}`,
-        font: `700 8px/1 ${MONO}`, color, flex: "none",
+    h(
+      "div",
+      {
+        style: {
+          width: "20px",
+          height: "20px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flex: "none",
+        },
       },
-      text: glyph,
-    }),
+      glyph
+    ),
     h("div", { style: { font: `400 10.5px/1 ${MONO}`, color: dim(".55") }, text }),
     h("div", { style: { flex: 1 } }),
     h("div", { style: { font: `400 10.5px/1 ${MONO}`, color: dim(".35") }, text: String(count) })
