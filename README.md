@@ -109,5 +109,6 @@ node scripts/downscale-png.js <in.png> <out.png> 96
 ```
 
 That script is a dependency-free box-filter resampler (Node's zlib does the
-PNG half). `src/ui/icons.js` can switch between these images and a set of
-inline SVG equivalents via its `ICON_STYLE` constant.
+PNG half). 96px is 3x the size the badges are drawn at, so they stay sharp on
+any display; the originals cost ~812KB for icons under a thousandth of the
+page's pixels.
