@@ -94,3 +94,20 @@ Rows that aren't standalone games (DLC, chapter splits, mods, challenge modes)
 are corrected in `src/data/cover-overrides.js`, which maps a sheet title to a
 different search term, an exact SteamGridDB id, or a hand-supplied file in
 `src/assets/covers/manual/`.
+
+### Badge images
+
+The platinum trophy and 100% badge come from the spreadsheet's own in-cell
+images. Sheets does not expose those through the REST API, but an `.xlsx`
+export is a zip and they sit in `xl/media/`; `xl/drawings/drawing1.xml` maps
+each one to the legend row that gives it meaning.
+
+They arrive far larger than they are drawn, so they are downscaled first:
+
+```
+node scripts/downscale-png.js <in.png> <out.png> 96
+```
+
+That script is a dependency-free box-filter resampler (Node's zlib does the
+PNG half). `src/ui/icons.js` can switch between these images and a set of
+inline SVG equivalents via its `ICON_STYLE` constant.

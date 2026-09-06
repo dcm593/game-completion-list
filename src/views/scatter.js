@@ -19,9 +19,15 @@ const H_MAX = Math.log10(300);
 const P_MIN = Math.log10(2);
 const P_MAX = Math.log10(200);
 
+// Both axes clamp to the drawn domain so a point outside it lands on the
+// boundary rather than escaping the plot. Bargain-bin buys are what hit this:
+// Half-Life at $1.13 and Half-Life 2 at $1.60 sit below the $2 floor, and a
+// couple of very short games sit under the 3h mark. The tooltip still reports
+// each point's true hours and price.
 const clampHours = (v) => Math.min(300, Math.max(3, v));
+const clampPrice = (v) => Math.min(200, Math.max(2, v));
 const fx = (hours) => (Math.log10(clampHours(hours)) - H_MIN) / (H_MAX - H_MIN);
-const fy = (price) => 1 - (Math.log10(price) - P_MIN) / (P_MAX - P_MIN);
+const fy = (price) => 1 - (Math.log10(clampPrice(price)) - P_MIN) / (P_MAX - P_MIN);
 const X = (hours) => L + fx(hours) * PW;
 const Y = (price) => T + fy(price) * PLOT_H;
 
