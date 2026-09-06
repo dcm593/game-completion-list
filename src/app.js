@@ -273,7 +273,7 @@ function yearSection(year, index) {
       h("div", { style: { flex: 1 } }),
       h("div", {
         style: { font: `400 10.5px/1 ${MONO}`, color: dim(".38") },
-        text: `${shown.length} of ${all.length} rows - click a card for its sheet note`,
+        text: `${shown.length} of ${all.length} games - click a card for its sheet note`,
       })
     ),
 
