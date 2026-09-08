@@ -44,7 +44,9 @@ function medal(title, glyph) {
   );
 }
 
-export function card(game, { isOpen, onToggle }) {
+// Cards with a note are clickable and open it in an overlay; the note is not
+// rendered here, so a card's height never depends on whether it is open.
+export function card(game, { onOpenNote }) {
   const col = PLAT[game.pl].c;
   const { pct, color, text } = completionParts(game, col);
   const rate = game.h && game.p > 0 ? game.p / game.h : null;
@@ -207,22 +209,7 @@ export function card(game, { isOpen, onToggle }) {
         },
       },
       badges.map(([text, c]) => h("div", { style: badge(c), text }))
-    ),
-
-    isOpen && game.note
-      ? h("div", {
-          style: {
-            position: "relative",
-            font: `400 11.5px/1.55 ${SANS}`,
-            color: dim(".62"),
-            padding: "10px 11px",
-            borderRadius: "8px",
-            background: line(".04"),
-            border: `1px solid ${line(".07")}`,
-          },
-          text: game.note,
-        })
-      : null
+    )
   );
 
   return h(
@@ -238,7 +225,7 @@ export function card(game, { isOpen, onToggle }) {
         border: `1px solid ${line(".08")}`,
         cursor: game.note ? "pointer" : "default",
       },
-      onclick: game.note ? onToggle : null,
+      onclick: game.note ? onOpenNote : null,
     },
     art(game, col),
     body

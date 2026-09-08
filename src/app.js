@@ -4,6 +4,7 @@ import {
 } from "./ui/theme.js";
 import { GAMES, YEARS, TOP3 } from "./data/adapt.js";
 import { card } from "./components/card.js";
+import { noteModal } from "./components/note-modal.js";
 import { platinumIcon, perfectIcon } from "./ui/icons.js";
 import { podium } from "./views/podium.js";
 import { scatter } from "./views/scatter.js";
@@ -26,6 +27,16 @@ function set(patch) {
 
 const viewOf = (year) => state.view[year] ?? "podium";
 const chipOf = (year) => state.chip[year] ?? "All";
+
+const openGame = () => GAMES.find((g) => `${g.y}:${g.t}` === state.open) ?? null;
+const closeNote = () => set({ open: null });
+
+// Bound once, not per render: render() rebuilds the whole tree on every state
+// change, so a listener attached alongside the modal would stack up one copy
+// per open.
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && state.open) closeNote();
+});
 
 function jump(year) {
   const el = document.getElementById(`y${year}`);
@@ -353,13 +364,9 @@ function yearSection(year, index) {
           gap: "14px",
         },
       },
-      shown.map((game) => {
-        const key = `${game.y}:${game.t}`;
-        return card(game, {
-          isOpen: state.open === key,
-          onToggle: () => set({ open: state.open === key ? null : key }),
-        });
-      })
+      shown.map((game) =>
+        card(game, { onOpenNote: () => set({ open: `${game.y}:${game.t}` }) })
+      )
     )
   );
 }
@@ -378,6 +385,11 @@ function chipStyleFor(active) {
 
 export function render() {
   const root = document.getElementById("app");
+  const note = openGame();
+
+  // The page behind the overlay shouldn't scroll under it.
+  document.body.style.overflow = note ? "hidden" : "";
+
   clear(root);
   root.append(
     h(
@@ -413,4 +425,8 @@ export function render() {
       )
     )
   );
+
+  // Appended after the page so it stacks above it without the sticky header
+  // or rail needing to know about it.
+  if (note) root.append(noteModal(note, { onClose: closeNote }));
 }
