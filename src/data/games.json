@@ -1133,7 +1133,7 @@
       "games": [
         {
           "year": 2026,
-          "title": "Fear and Hunger",
+          "title": "Fear & Hunger",
           "platform": "steam",
           "price": 6.98,
           "currency": "CAD",
@@ -1331,7 +1331,7 @@
         },
         {
           "year": 2026,
-          "title": "Fear and Hunger 2: Termina",
+          "title": "Fear & Hunger 2: Termina",
           "platform": "steam",
           "price": 10.48,
           "currency": "CAD",
@@ -2507,7 +2507,7 @@
     },
     {
       "year": 2026,
-      "title": "Fear and Hunger",
+      "title": "Fear & Hunger",
       "platform": "steam",
       "price": 6.98,
       "currency": "CAD",
@@ -2705,7 +2705,7 @@
     },
     {
       "year": 2026,
-      "title": "Fear and Hunger 2: Termina",
+      "title": "Fear & Hunger 2: Termina",
       "platform": "steam",
       "price": 10.48,
       "currency": "CAD",

@@ -67,7 +67,7 @@ export const COVER_OVERRIDES = {
   "Split Fiction": { file: "split-fiction.webp" },
 
   // ---------------------------------------------------------------- 2026
-  "Fear and Hunger": { file: "fear-and-hunger.webp" },
+  "Fear & Hunger": { file: "fear-and-hunger.webp" },
   "Iron Lung": { file: "iron-lung.webp" },
   "Marvel's Spider-Man 2": { file: "marvels-spider-man-2.webp" },
   "Fallout: New Vegas": { file: "fallout-new-vegas.webp" },
@@ -84,7 +84,7 @@ export const COVER_OVERRIDES = {
 
   // Spelled with "&" upstream, so searching "and" fuzzy-matches to an
   // unrelated title. Pinned by id.
-  "Fear and Hunger 2: Termina": { id: 5357907 },
+  "Fear & Hunger 2: Termina": { id: 5357907 },
 
   // Canonical title differs from the sheet's.
   "Exit 8": { search: "The Exit 8" },

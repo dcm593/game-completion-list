@@ -21,7 +21,7 @@ import c16 from "../assets/covers/exit-8.webp";
 import c17 from "../assets/covers/manual/faith.webp";
 import c18 from "../assets/covers/manual/fallout-new-vegas.webp";
 import c19 from "../assets/covers/manual/fear-and-hunger.webp";
-import c20 from "../assets/covers/fear-and-hunger-2-termina.webp";
+import c20 from "../assets/covers/fear-hunger-2-termina.webp";
 import c21 from "../assets/covers/ghost-of-tsushima-iki-island-dlc.webp";
 import c22 from "../assets/covers/manual/god-of-war-ragnarok.webp";
 import c23 from "../assets/covers/manual/hades.webp";
@@ -98,8 +98,8 @@ export const COVERS = {
   "exit-8": c16,
   "faith-the-unholy-trinity": c17,
   "fallout-new-vegas": c18,
-  "fear-and-hunger": c19,
-  "fear-and-hunger-2-termina": c20,
+  "fear-hunger": c19,
+  "fear-hunger-2-termina": c20,
   "ghost-of-tsushima-iki-island-dlc": c21,
   "god-of-war-ragnarok-valhalla-dlc": c22,
   "hades": c23,
