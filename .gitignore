@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .env
+.claudeignore
 
 # Google service account key
 *.json.key
