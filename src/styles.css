@@ -1,3 +1,11 @@
+/* Reserve the scrollbar's space permanently. Opening a note locks body
+   scrolling, which removes the scrollbar; without a reserved gutter the
+   content behind the dialog widens by the scrollbar's width and visibly
+   jumps sideways on every open and close. */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   background: #0b0b0f;
