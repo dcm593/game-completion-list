@@ -15,12 +15,12 @@
 
 export const COVER_OVERRIDES = {
   // DLC and expansions: fall back to the base game's art.
-  "God of War Ragnarök: Valhalla DLC": { search: "God of War Ragnarok" },
+  "God of War Ragnarök: Valhalla DLC": { file: "god-of-war-ragnarok.jpg" },
   // Hand-supplied: the DLC has its own key art, which reads better here than
   // the base game grid the search returns.
   "Elden Ring: Shadows of the Erdtree DLC": { file: "elden-ring-shadow-of-the-erdtree.jpg" },
   "Lies of P: Overture DLC": { search: "Lies of P" },
-  "Risk of Rain 2: Seekers of the Storm DLC": { search: "Risk of Rain 2" },
+  "Risk of Rain 2: Seekers of the Storm DLC": { file: "risk-of-rain-2-sots.jpg" },
   "Risk of Rain 2: Alloyed Collective DLC": { search: "Risk of Rain 2" },
 
   // A challenge mode inside Celeste, not a separate release.
@@ -30,8 +30,8 @@ export const COVER_OVERRIDES = {
   // safer match and reads correctly on a card.
   "Terraria: Calamity Mod": { search: "Terraria" },
 
-  // DELTARUNE ships in chapters; all three rows are the same game.
-  "DELTARUNE Chapter 1 & 2": { search: "DELTARUNE" },
+  // DELTARUNE ships in chapters; will use separate art for each.
+  "DELTARUNE Chapter 1 & 2": { file: "deltarune.jpg" },
   "DELTARUNE Chapters 3 & 4": { search: "DELTARUNE" },
   "DELTARUNE Chapter 5": { search: "DELTARUNE" },
 
@@ -46,9 +46,25 @@ export const COVER_OVERRIDES = {
   "Fear and Hunger 2: Termina": { id: 5357907 },
 
   // Spelling in the sheet differs from the canonical title.
-  "Deaths Door": { search: "Death's Door" },
+  "Death's Door": { file: "deaths-door.jpg" },
   "Time Splitters: Future Perfect": { search: "TimeSplitters Future Perfect" },
   "Exit 8": { search: "The Exit 8" },
+
+  // Manual uploads for 2024 items
+  "Doom Eternal (+DLCs)": { file: "doom-eternal.jpg" },
+  "Half-Life (+DLCs)" : { file: "half-life.jpg" },
+  "Halo 3" : { file: "halo-3.jpg" },
+  "Horizon Forbidden West" : { file: "horizon-forbidden-west.jpg" },
+  "Little Nightmares II" : { file: "little-nightmares-2.jpg" },
+  "Luigi's Mansion 3" : { file: "luigis-mansion-3.jpg" },
+  "Marvel's Spider-Man Remastered" : { file: "marvels-spider-man.jpg" },
+  "Marvel's Spider-Man: Miles Morales" : { file: "marvels-spider-man-miles-morales.jpg" },
+  "Outer Wilds (+Echos of the Eye DLC)" : { file: "outer-wilds.jpg" },
+  "Resident Evil 2 (+Extra Modes)" : { file: "resident-evil-2.jpg" },
+  "Resident Evil 3" : { file: "resident-evil-3.jpg" },
+  "Subnautica: Below Zero" : { file: "subnautica-below-zero.jpg" },
+  "Superhot VR" : { file: "superhot.jpg" },
+  "The Legend of Zelda: Tears of the Kingdom" : { file: "tears-of-the-kingdom.jpg" },
 };
 
 // "Doom Eternal (+DLCs)" -> "Doom Eternal". Deliberately does not touch a

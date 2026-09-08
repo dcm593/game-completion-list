@@ -12,7 +12,7 @@
 // wrong match is visible immediately and can be corrected by adding an entry
 // to src/data/cover-overrides.js.
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { setTimeout as sleep } from "node:timers/promises";
 import {
@@ -68,9 +68,30 @@ function extensionOf(url) {
   return match ? match[1].toLowerCase() : null;
 }
 
+// Webpack copies whatever bytes it is given, so a hand-supplied file that
+// isn't actually an image builds cleanly and only fails in the browser, as a
+// silently broken <img>. Sniffing the magic number turns that into a warning
+// here instead. A wrong extension is harmless - browsers sniff content too -
+// but it is worth reporting so the tree stays honest.
+const SIGNATURES = [
+  ["jpg", (b) => b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff],
+  ["png", (b) => b[0] === 0x89 && b.toString("ascii", 1, 4) === "PNG"],
+  ["gif", (b) => b.toString("ascii", 0, 3) === "GIF"],
+  ["webp", (b) => b.toString("ascii", 0, 4) === "RIFF" && b.toString("ascii", 8, 12) === "WEBP"],
+  ["avif", (b) => b.toString("ascii", 4, 8) === "ftyp" && /avif|heic|mif1/.test(b.toString("ascii", 8, 12))],
+  ["svg", (b) => /^\s*(<\?xml|<svg)/.test(b.toString("utf8", 0, 64))],
+];
+
+function sniffImage(buffer) {
+  if (buffer.length < 16) return null;
+  return SIGNATURES.find(([, test]) => test(buffer))?.[0] ?? null;
+}
+
 const resolved = new Map();
 const failures = [];
 const takedowns = [];
+const badFiles = [];
+const mislabelled = [];
 let fetched = 0;
 
 for (const title of titles) {
@@ -78,6 +99,18 @@ for (const title of titles) {
   const override = COVER_OVERRIDES[title] ?? {};
 
   if (override.file) {
+    const path = new URL(override.file, MANUAL_DIR);
+    if (!existsSync(path)) {
+      badFiles.push({ title, file: override.file, reason: "file not found" });
+    } else {
+      const kind = sniffImage(readFileSync(path));
+      const ext = extensionOf(override.file);
+      if (!kind) {
+        badFiles.push({ title, file: override.file, reason: "not a recognisable image" });
+      } else if (kind !== ext && !(kind === "jpg" && ext === "jpeg")) {
+        mislabelled.push({ file: override.file, ext, kind });
+      }
+    }
     resolved.set(slug, { file: `manual/${override.file}`, via: "manual" });
     continue;
   }
@@ -206,6 +239,19 @@ if (withText.length) {
 if (takedowns.length) {
   console.warn(`\nskipped ${takedowns.length} taken-down asset(s):`);
   for (const t of takedowns) console.warn(`  ${t.title}  [grid ${t.gridId}]`);
+}
+
+if (mislabelled.length) {
+  console.warn(`
+${mislabelled.length} manual file(s) with a misleading extension (harmless, browsers sniff):`);
+  for (const m of mislabelled) console.warn(`  ${m.file}  is actually ${m.kind.toUpperCase()}`);
+}
+
+if (badFiles.length) {
+  console.error(`
+${badFiles.length} manual file(s) will render as a broken image:`);
+  for (const b of badFiles) console.error(`  ${b.title}  ->  manual/${b.file}  (${b.reason})`);
+  process.exitCode = 1;
 }
 
 if (failures.length) {
