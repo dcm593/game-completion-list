@@ -42,6 +42,17 @@ const existing = new Map(
 // One row per distinct title; DELTARUNE's three chapters share one lookup.
 const titles = [...new Set(games.games.map((g) => g.title))];
 
+// An override is keyed by the exact sheet title, so correcting a spelling in
+// the sheet silently orphans its entry: the row quietly falls back to a search
+// and the hand-picked art is bypassed with nothing in the output to say so.
+// Catch that here rather than noticing the wrong cover on the page.
+const staleKeys = Object.keys(COVER_OVERRIDES).filter((k) => !titles.includes(k));
+if (staleKeys.length) {
+  console.warn(`${staleKeys.length} override key(s) match no sheet title - the row will fall back to a search:`);
+  for (const key of staleKeys) console.warn(`  ${JSON.stringify(key)}`);
+  console.warn("");
+}
+
 // SteamGridDB replaces a taken-down asset with a notice image rather than
 // removing the grid or returning 404, so it arrives as a perfectly valid
 // download. These are the notice's bytes in each format it is served as.
