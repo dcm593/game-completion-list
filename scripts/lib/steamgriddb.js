@@ -92,12 +92,6 @@ export function pickGame(results, term) {
   );
 }
 
-export const EXT_BY_MIME = {
-  "image/png": "png",
-  "image/jpeg": "jpg",
-  "image/webp": "webp",
-};
-
 export async function download(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Download failed ${res.status}: ${url}`);

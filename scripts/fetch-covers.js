@@ -12,13 +12,24 @@
 // wrong match is visible immediately and can be corrected by adding an entry
 // to src/data/cover-overrides.js.
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
+import {
+  readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, unlinkSync,
+} from "node:fs";
 import { createHash } from "node:crypto";
+import sharp from "sharp";
 import { setTimeout as sleep } from "node:timers/promises";
 import {
-  search, grids, heroes, pickBest, pickGame, download, EXT_BY_MIME, PREFERRED_STYLE,
+  search, grids, heroes, pickBest, pickGame, download, PREFERRED_STYLE,
 } from "./lib/steamgriddb.js";
 import { COVER_OVERRIDES, normalizeTitle, slugify } from "../src/data/cover-overrides.js";
+
+// Matches scripts/optimize-manual.js: 2x the podium's first-place art, the
+// largest place a cover is ever drawn.
+const MAX_WIDTH = 1000;
+const QUALITY = 82;
+
+const toWebp = (buffer) =>
+  sharp(buffer).resize({ width: MAX_WIDTH, withoutEnlargement: true }).webp({ quality: QUALITY }).toBuffer();
 
 const ROOT = new URL("..", import.meta.url);
 const COVER_DIR = new URL("src/assets/covers/", ROOT);
@@ -200,14 +211,13 @@ for (const title of titles) {
       continue;
     }
 
-    // The thumbnail is always JPEG regardless of the original's mime, so read
-    // the extension off the URL actually downloaded.
-    const chosenUrl = assetUrl(best, source);
-    const ext = extensionOf(chosenUrl) ?? EXT_BY_MIME[best.mime] ?? "png";
-    const file = `${slug}.${ext}`;
+    // Everything is stored as WebP at the same cap as the manual art, so both
+    // halves of the set are consistent and neither ships more pixels than the
+    // largest place it is drawn.
+    const file = `${slug}.webp`;
 
     if (!dryRun) {
-      writeFileSync(new URL(file, COVER_DIR), bytes);
+      writeFileSync(new URL(file, COVER_DIR), await toWebp(bytes));
       fetched++;
     }
 
@@ -238,6 +248,18 @@ if (!dryRun) {
     "",
   ];
   writeFileSync(GENERATED, lines.join("\n"));
+}
+
+// A title that switches to hand-picked art leaves its old download behind,
+// and those accumulate - 52 files and 5.3MB at one point. Nothing outside the
+// generated map is referenced, and every file here is re-fetchable.
+if (!dryRun) {
+  const used = new Set([...resolved.values()].map((r) => r.file));
+  const orphans = readdirSync(COVER_DIR, { withFileTypes: true })
+    .filter((e) => e.isFile() && !used.has(e.name))
+    .map((e) => e.name);
+  for (const name of orphans) unlinkSync(new URL(name, COVER_DIR));
+  if (orphans.length) console.log(`pruned ${orphans.length} unreferenced cover(s)`);
 }
 
 console.log(`\nresolved ${resolved.size} of ${titles.length} titles` + (dryRun ? " (dry run)" : `, downloaded ${fetched}`));

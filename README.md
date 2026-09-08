@@ -112,3 +112,23 @@ That script is a dependency-free box-filter resampler (Node's zlib does the
 PNG half). 96px is 3x the size the badges are drawn at, so they stay sharp on
 any display; the originals cost ~812KB for icons under a thousandth of the
 page's pixels.
+
+### Optimizing art
+
+Covers are stored as WebP capped at 1000px wide - 2x the podium's first-place
+art, the largest place any cover is drawn. Fetched art is converted during
+`npm run covers`; hand-supplied art is converted by:
+
+```
+npm run optimize
+```
+
+That resizes and re-encodes everything in `src/assets/covers/manual/` in place
+and rewrites the file references in `cover-overrides.js` to match. It is
+idempotent, so re-run it after dropping in new art. Originals stay in git
+history if one is ever needed back.
+
+Size matters here for two reasons: transfer bytes, and decoded memory. A
+browser expands every image to width x height x 4 bytes of RAM regardless of
+how small it is displayed, so a 3840x1240 cover cost 18MB of memory to draw a
+253px card. The first pass took the manual set from 24.1MB to 2.0MB.
