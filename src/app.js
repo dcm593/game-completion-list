@@ -5,6 +5,7 @@ import {
 import { GAMES, YEARS, TOP3 } from "./data/adapt.js";
 import { card } from "./components/card.js";
 import { noteModal } from "./components/note-modal.js";
+import { hideHoverCard } from "./components/hover-card.js";
 import { platinumIcon, perfectIcon } from "./ui/icons.js";
 import { podium } from "./views/podium.js";
 import { scatter } from "./views/scatter.js";
@@ -386,6 +387,10 @@ function chipStyleFor(active) {
 export function render() {
   const root = document.getElementById("app");
   const note = openGame();
+
+  // Switching view or filter removes whatever is under the cursor, and a
+  // removed element never fires mouseleave - so the card would hang around.
+  hideHoverCard();
 
   // The page behind the overlay shouldn't scroll under it.
   document.body.style.overflow = note ? "hidden" : "";

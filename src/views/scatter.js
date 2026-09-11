@@ -1,5 +1,6 @@
 import { h, s } from "../ui/dom.js";
 import { PLAT, MONO, SANS, INK, dim, line, alpha } from "../ui/theme.js";
+import { attachHoverCard } from "../components/hover-card.js";
 
 // Plot geometry. The dot overlays are positioned in percentages derived from
 // these numbers rather than hardcoded, so the grid and the dots cannot drift
@@ -131,24 +132,50 @@ function grid(freeCount) {
   }, kids);
 }
 
+// The dot is drawn inside a zero-size anchor so the plot coordinate stays the
+// dot's centre whatever its radius; the translate(-50%,-50%) keeps it there,
+// and the hover scale composes onto that same transform.
+const CENTRE = "translate(-50%,-50%)";
+const HOVER_SCALE = 1.35;
+
 function dot(game, { radius, key, atX, atY }) {
   const col = PLAT[game.pl].c;
   const price = game.p === 0 ? "free" : `$${game.p.toFixed(2)}`;
-  return h(
+  const rate = game.h && game.p > 0 ? `$${(game.p / game.h).toFixed(2)}/h` : null;
+
+  const mark = h("div", {
+    style: {
+      position: "absolute", left: 0, top: 0, transform: CENTRE,
+      width: `${radius}px`, height: `${radius}px`, borderRadius: "99px",
+      background: alpha(col, ".35"), border: `1.5px solid ${col}`,
+      boxShadow: `0 0 16px ${alpha(col, ".45")}`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      font: `700 10px/1 ${MONO}`, color: "#f2efea",
+      cursor: "default",
+      transition: "transform .13s ease, box-shadow .13s ease",
+    },
+  }, key ?? "");
+
+  const anchor = h(
     "div",
     { style: { position: "absolute", left: pct(atX), top: pct(atY), width: 0, height: 0 } },
-    h("div", {
-      title: `${game.t} - ${game.h}h - ${price}`,
-      style: {
-        position: "absolute", left: 0, top: 0, transform: "translate(-50%,-50%)",
-        width: `${radius}px`, height: `${radius}px`, borderRadius: "99px",
-        background: alpha(col, ".35"), border: `1.5px solid ${col}`,
-        boxShadow: `0 0 16px ${alpha(col, ".45")}`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        font: `700 10px/1 ${MONO}`, color: "#f2efea",
-      },
-    }, key ?? "")
+    mark
   );
+
+  const rows = [["HOURS", `${game.h}h`], ["PRICE", price]];
+  if (rate) rows.push(["PER HOUR", rate]);
+
+  attachHoverCard(mark, game, rows, (on) => {
+    mark.style.transform = on ? `${CENTRE} scale(${HOVER_SCALE})` : CENTRE;
+    mark.style.boxShadow = on
+      ? `0 0 22px ${alpha(col, ".75")}`
+      : `0 0 16px ${alpha(col, ".45")}`;
+    // Lift the hovered dot above its neighbours; the plot is dense enough that
+    // a scaled dot would otherwise grow underneath the ones drawn after it.
+    anchor.style.zIndex = on ? "5" : "";
+  });
+
+  return anchor;
 }
 
 export function scatter(games) {

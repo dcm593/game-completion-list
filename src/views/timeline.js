@@ -1,5 +1,6 @@
 import { h } from "../ui/dom.js";
 import { PLAT, ORDER, MONO, SANS, INK, dim, line, alpha } from "../ui/theme.js";
+import { attachHoverCard } from "../components/hover-card.js";
 
 // Hours per platform as a single proportional band each, subdivided into one
 // segment per game (longest first) so a year reads as both a total and a
@@ -64,6 +65,34 @@ export function timeline(games) {
   );
 }
 
+// Segments alternate through three opacities so neighbours stay distinguishable
+// at a glance; hovering lifts whichever one it is to full strength.
+const SEGMENT_ALPHA = (i) => 0.68 - (i % 3) * 0.16;
+const HOVER_ALPHA = 1;
+
+function segment(game, index, col) {
+  const resting = alpha(col, SEGMENT_ALPHA(index).toFixed(2));
+
+  const bar = h("div", {
+    style: {
+      flex: game.h, minWidth: "3px", borderRadius: "5px",
+      background: resting,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      overflow: "hidden",
+      font: `700 10px/1 ${MONO}`, color: "rgba(11,11,15,.72)",
+      cursor: "default",
+      transition: "background .13s ease",
+    },
+    text: game.h >= 20 ? String(index + 1) : "",
+  });
+
+  attachHoverCard(bar, game, [["HOURS", `${game.h}h`]], (on) => {
+    bar.style.background = on ? alpha(col, HOVER_ALPHA) : resting;
+  });
+
+  return bar;
+}
+
 function band(name, games, max) {
   const col = PLAT[name].c;
   const list = games.filter((g) => g.pl === name && g.h).sort((a, b) => b.h - a.h);
@@ -112,19 +141,7 @@ function band(name, games, max) {
             overflow: "hidden",
           },
         },
-        list.map((g, i) =>
-          h("div", {
-            title: `${g.t} - ${g.h}h`,
-            style: {
-              flex: g.h, minWidth: "3px", borderRadius: "5px",
-              background: alpha(col, (0.68 - (i % 3) * 0.16).toFixed(2)),
-              display: "flex", alignItems: "center", justifyContent: "center",
-              overflow: "hidden",
-              font: `700 10px/1 ${MONO}`, color: "rgba(11,11,15,.72)",
-            },
-            text: g.h >= 20 ? String(i + 1) : "",
-          })
-        )
+        list.map((g, i) => segment(g, i, col))
       )
     ),
 
