@@ -215,3 +215,31 @@
   text-wrap: pretty;
   color: rgba(233, 231, 228, 0.78);
 }
+
+/* Phone: the note rises from the bottom edge as a sheet, where it is in
+   reach of a thumb, rather than floating mid-screen. */
+@media (max-width: 720px) {
+  .note-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .note {
+    width: 100%;
+    max-height: 85vh;
+    max-height: 85dvh;
+    border-bottom: none;
+    border-radius: 16px 16px 0 0;
+    animation: sheet-up 0.22s ease-out;
+  }
+
+  .note-body {
+    padding: 4px 18px 28px;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}

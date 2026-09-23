@@ -562,3 +562,15 @@
     gap: 6px 14px;
   }
 }
+
+/* Touch: the smallest dots are a few pixels across, well under a
+   fingertip. An invisible ring widens what counts as tapping one without
+   changing how it looks. */
+@media (hover: none) {
+  .scatter-mark::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    border-radius: 99px;
+  }
+}
