@@ -5,6 +5,7 @@ import { card } from "./components/card.js";
 import { noteModal } from "./components/note-modal.js";
 import { hideHoverCard } from "./components/hover-card.js";
 import { platinumIcon, perfectIcon } from "./ui/icons.js";
+import { onNarrowChange } from "./ui/media.js";
 import { podium } from "./views/podium.js";
 import { scatter } from "./views/scatter.js";
 import { timeline } from "./views/timeline.js";
@@ -36,6 +37,10 @@ const closeNote = () => set({ open: null });
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && state.open) closeNote();
 });
+
+// The stylesheet reflows everything else on its own; the scatter's geometry
+// is computed in JS, so crossing the phone breakpoint needs a redraw.
+onNarrowChange(() => render());
 
 // Where it lands is the section's scroll-margin-top, which the stylesheet
 // sets to clear whatever is pinned to the top at the current width.
@@ -102,7 +107,83 @@ function header() {
         { label: "TOTAL HOURS", value: totalHours.toLocaleString(), unit: "played" },
         { label: "TOTAL SPEND", value: `$${totalSpend.toLocaleString()}`, unit: "CAD" },
         { label: "AVG COST / HOUR", value: `$${(totalSpend / totalHours).toFixed(2)}` },
-      ])
+      ]),
+      summary()
+    )
+  );
+}
+
+// ----------------------------------------------------------------- summary
+
+// The rail's platform and completion counts, carried in the header on screens
+// too narrow for the rail (the stylesheet hides it otherwise). `long` spells
+// the names out; the one-row layout uses abbreviations and bare icons.
+function platformItems(long) {
+  return ORDER.map((name) =>
+    h(
+      "div",
+      { class: "summary-item", style: tint(name) },
+      h("div", { class: "dot" }),
+      h("span", { text: long ? PLAT[name].short : PLAT[name].abbr }),
+      h("span", { class: "summary-count", text: String(platformCount(name)) })
+    )
+  );
+}
+
+function markItems(long) {
+  return [
+    [platinumIcon(), "PLATINUMS", platinumCount()],
+    [perfectIcon(), "FULL CLEARS", hundredCount()],
+  ].map(([glyph, text, count]) =>
+    h(
+      "div",
+      { class: "summary-item", title: text },
+      h("div", { class: "summary-mark" }, glyph),
+      long ? h("span", { text }) : null,
+      h("span", { class: "summary-count", text: String(count) })
+    )
+  );
+}
+
+function summary() {
+  // One row: platforms, a divider, then the completion marks.
+  return h(
+    "div",
+    { class: "summary" },
+    platformItems(false),
+    h("div", { class: "summary-divider" }),
+    markItems(false)
+  );
+
+  // Two rows: platforms on one, completion marks on the other, with the names
+  // spelled out. To compare, comment out the return above and uncomment this.
+  // return h(
+  //   "div",
+  //   { class: "summary summary--rows" },
+  //   h("div", { class: "summary-row" }, platformItems(true)),
+  //   h("div", { class: "summary-row" }, markItems(true))
+  // );
+}
+
+// ---------------------------------------------------------------- year bar
+
+// The rail's year buttons, pinned under the header where the rail doesn't
+// fit (the stylesheet hides it otherwise).
+function yearBar() {
+  return h(
+    "nav",
+    { class: "yearbar", "aria-label": "Jump to year" },
+    h(
+      "div",
+      { class: "yearbar-inner" },
+      YEARS.map((y) =>
+        h(
+          "button",
+          { class: "yearbar-btn", onclick: () => jump(y.year) },
+          h("span", { class: "yearbar-year", text: String(y.year) }),
+          yearTag(y, true)
+        )
+      )
     )
   );
 }
@@ -280,6 +361,7 @@ export function render() {
       "div",
       { class: "page" },
       header(),
+      yearBar(),
       h(
         "div",
         { class: "layout" },

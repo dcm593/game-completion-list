@@ -1,6 +1,7 @@
 import { h, s } from "../ui/dom.js";
 import { PLAT, tint } from "../ui/theme.js";
 import { attachHoverCard } from "../components/hover-card.js";
+import { isNarrow } from "../ui/media.js";
 
 // Plot geometry, in viewBox units. The dot overlays are positioned in
 // percentages derived from these numbers rather than hardcoded, so the grid
@@ -19,7 +20,25 @@ const WIDE = {
   dotScale: 1,
 };
 
-const geometry = () => WIDE;
+// Portrait layout for phones. The wide box squeezed into a ~350px column
+// draws its 11-unit labels at under 4px; a viewBox about as wide as the
+// screen keeps them near their true size, and the extra height keeps the
+// points from crowding. One fewer hour tick, since the labels would touch.
+const NARROW = {
+  W: 380,
+  H: 478,
+  L: 58,
+  R: 14,
+  T: 16,
+  PLOT_H: 360,
+  LANE_Y: 410,
+  LANE_H: 40,
+  Y_TITLE_X: 12,
+  hourTicks: [5, 10, 30, 100, 250],
+  dotScale: 0.8,
+};
+
+const geometry = () => (isNarrow() ? NARROW : WIDE);
 
 const H_MIN = Math.log10(3);
 const H_MAX = Math.log10(300);

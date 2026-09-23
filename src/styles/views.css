@@ -461,3 +461,104 @@
   font: 400 10px/1 var(--mono);
   color: rgba(233, 231, 228, 0.4);
 }
+
+/* ------------------------------------------------------------------- phone */
+
+@media (max-width: 720px) {
+  /* Podium: the winner first as a full-width hero, then #2 and #3 as
+     compact rows - art on the left, details on the right. The rank moves
+     from under each card onto its top-left corner. */
+  .podium {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .podium-place {
+    position: relative;
+  }
+
+  .podium-place--first {
+    order: -1;
+  }
+
+  .podium-place .podium-card {
+    min-height: 0;
+  }
+
+  .podium-rank {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 3;
+    padding: 5px 7px;
+    border-radius: 6px;
+    font-size: 11px;
+    background: rgba(6, 6, 9, 0.72);
+    backdrop-filter: blur(4px);
+  }
+
+  .podium-place--first .podium-rank {
+    font-size: 12px;
+  }
+
+  .podium-place--first .podium-stat {
+    font-size: 22px;
+  }
+
+  .podium-place--runner .podium-card {
+    flex-direction: row;
+  }
+
+  .podium-place--runner .cover {
+    width: 36%;
+    max-width: 160px;
+    aspect-ratio: auto;
+    min-height: 92px;
+  }
+
+  .podium-place--runner .cover-fade {
+    background: linear-gradient(
+      90deg,
+      transparent 50%,
+      color-mix(in oklch, var(--pc) 25%, transparent) 82%,
+      var(--surface)
+    );
+  }
+
+  .podium-place--runner .podium-body {
+    min-width: 0;
+    gap: 4px;
+    padding: 11px 12px;
+  }
+
+  .podium-place--runner .podium-title {
+    font-size: 13.5px;
+  }
+
+  .podium-place--runner .podium-stats {
+    gap: 10px;
+    padding-top: 8px;
+  }
+
+  .podium-place--runner .podium-stat {
+    font-size: 15px;
+  }
+
+  .podium-place--runner .podium-rate {
+    font-size: 9.5px;
+  }
+
+  /* Bands: drop the indent so the tracks get the full width. */
+  .band-indent {
+    margin-left: 0;
+  }
+
+  .bands {
+    gap: 22px;
+  }
+
+  .band-legend {
+    gap: 6px 14px;
+  }
+}

@@ -183,3 +183,69 @@
   gap: 5px;
   min-height: 19px;
 }
+
+/* Phone: two cards per row, so everything inside tightens up. The
+   COMPLETION label goes - the bar already says what the figure is - which
+   keeps a fraction like "38/51 · 74%" on one line at this width. */
+@media (max-width: 720px) {
+  .card {
+    --medal: 18px;
+    border-radius: 11px;
+  }
+
+  .card-body {
+    gap: 9px;
+    padding: 10px 11px 11px;
+  }
+
+  .card-top {
+    gap: 6px;
+  }
+
+  .card-platform {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .card-medals {
+    gap: 4px;
+  }
+
+  /* Half-width columns are narrow enough that the longest titles (the Dark
+     Pictures pair, Little Nightmares with its DLC) need a third line. The
+     two-line minimum still holds for everything else. */
+  .card-title {
+    font-size: 13px;
+    -webkit-line-clamp: 3;
+  }
+
+  .completion-label {
+    display: none;
+  }
+
+  .completion-value {
+    font-size: 9.5px;
+    letter-spacing: 0.03em;
+  }
+
+  .card-stats {
+    gap: 6px;
+  }
+
+  .card-hours {
+    font-size: 13.5px;
+  }
+
+  .card-price {
+    font-size: 10px;
+  }
+
+  .card-rate {
+    font-size: 9.5px;
+  }
+
+  .badge {
+    font-size: 7.5px;
+    padding: 3px 5px;
+  }
+}

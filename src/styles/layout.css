@@ -303,3 +303,313 @@
   grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
   gap: 14px;
 }
+
+/* ---------------------------------------------------- summary and year bar
+   Below 1100px these two stand in for the rail: the summary carries its
+   platform and completion counts in the header, and the year bar is the
+   one thing left pinned to the top. Hidden above that width. */
+
+.summary,
+.yearbar {
+  display: none;
+}
+
+.summary {
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Two-row variant - see summary() in app.js. */
+.summary--rows {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: 0.04em;
+  color: rgba(233, 231, 228, 0.55);
+}
+
+.summary-item .dot {
+  --size: 8px;
+}
+
+.summary-count {
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.summary-mark {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.summary-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.yearbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(14px);
+  background: rgba(11, 11, 15, 0.86);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.yearbar-inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 8px var(--gutter);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+
+.yearbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+}
+
+.yearbar-year {
+  font: 700 15px/1 var(--mono);
+  letter-spacing: -0.02em;
+}
+
+/* ------------------------------------------------------------------ tablet */
+
+@media (max-width: 1100px) {
+  .layout {
+    display: block;
+  }
+
+  .rail {
+    display: none;
+  }
+
+  .main {
+    padding: 24px 0 80px;
+    gap: 52px;
+  }
+
+  /* The header scrolls away; the year bar under it is what stays pinned. */
+  .header {
+    position: relative;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding-block: 18px 16px;
+  }
+
+  .yearbar {
+    display: block;
+  }
+
+  .summary {
+    display: flex;
+  }
+
+  /* All-time figures as boxed cells: games, hours, and one wider cell for
+     the two price figures. */
+  .header .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 8px;
+  }
+
+  .header .stat,
+  .header .stat-pair {
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .header .stat-pair {
+    display: flex;
+  }
+
+  .header .stat-pair .stat {
+    flex: 1;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+  }
+
+  .header .stat-pair .stat + .stat {
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* ------------------------------------------------------------------- phone */
+
+@media (max-width: 720px) {
+  .header-inner {
+    padding-block: 14px;
+    gap: 14px;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+
+  /* 2x2: games and hours, then the price pair across the full width. The
+     year's figures take the same boxed cells as the header's. */
+  .header .stats,
+  .year-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .header .stat-pair,
+  .year-stats .stat-pair {
+    grid-column: 1 / -1;
+  }
+
+  .year-stats {
+    padding: 0;
+    border: none;
+  }
+
+  .year-stats > .stat,
+  .year-stats > .stat:first-child,
+  .year-stats .stat-pair {
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .year-stats .stat-pair {
+    display: flex;
+  }
+
+  .year-stats .stat-pair .stat {
+    flex: 1;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+  }
+
+  .year-stats .stat-pair .stat + .stat {
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .main {
+    padding: 20px 0 64px;
+    gap: 44px;
+  }
+
+  .year {
+    gap: 16px;
+  }
+
+  .year-head {
+    align-items: center;
+    gap: 8px 12px;
+  }
+
+  .year-title {
+    font-size: 28px;
+  }
+
+  .year-meta {
+    flex-basis: 100%;
+    margin-left: 0;
+    line-height: 1.4;
+  }
+
+  .panel {
+    gap: 18px;
+    padding: 14px 14px 18px;
+    border-radius: 14px;
+  }
+
+  /* Three equal segments across the panel, with shorter labels to fit. */
+  .tabs {
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .tab {
+    padding: 9px 6px;
+  }
+
+  .tab-long {
+    display: none;
+  }
+
+  .tab-short {
+    display: inline;
+  }
+
+  /* One row that scrolls sideways, bleeding to the screen edges, rather
+     than wrapping onto a second line. */
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
+
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    flex: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .yearbar-btn {
+    gap: 6px;
+  }
+
+  .yearbar .tag {
+    padding: 3px 5px;
+    font-size: 8px;
+  }
+}
