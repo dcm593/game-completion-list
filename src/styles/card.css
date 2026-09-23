@@ -1,0 +1,185 @@
+/* Grid cards - see src/components/card.js. */
+
+.card {
+  --medal: 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 13px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Cards with a sheet note open it on click. */
+.card--note {
+  cursor: pointer;
+}
+
+.card-body {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 15px;
+}
+
+/* Platform tint bleeding down from the art above, kept under the content. */
+.card-body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--pc) 20%, transparent),
+    transparent 55%
+  );
+}
+
+/* Fixed height so a card without a completion mark lines up with one that
+   has it. */
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--medal);
+}
+
+.card-platform {
+  font: 500 8.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 231, 228, 0.5);
+}
+
+.card-medals {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.medal {
+  width: var(--medal);
+  height: var(--medal);
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Always two lines tall, whether or not the title wraps, so the rows below
+   start at the same height on every card. The longest title in the list is
+   44 characters and its longest word is 11, so two lines is enough at every
+   column width; the clamp is a guard rather than an expected truncation, and
+   the tooltip keeps the full text reachable. */
+.card-title {
+  font: 600 14px/1.3 var(--sans);
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  color: var(--ink);
+  min-height: 2.6em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Completion bar. --cc is the bar's colour: the platform's while partial,
+   trophy blue or full-clear green at 100%, and a dim grey with no figure. */
+.completion {
+  --cc: var(--pc);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.completion--none {
+  --cc: rgba(233, 231, 228, 0.3);
+}
+
+.completion--trophy {
+  --cc: oklch(0.8 0.11 254);
+}
+
+.completion--hundred {
+  --cc: oklch(0.8 0.13 168);
+}
+
+.completion-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.completion-label {
+  font: 500 8.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.completion-value {
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--cc);
+}
+
+.completion-track {
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.completion-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--cc);
+}
+
+.completion--trophy .completion-fill,
+.completion--hundred .completion-fill {
+  box-shadow: 0 0 10px var(--cc);
+}
+
+.card-stats {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-hours {
+  font: 600 15px/1 var(--sans);
+  letter-spacing: -0.02em;
+}
+
+.card-price {
+  font: 500 11px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.55);
+}
+
+.card-rate {
+  margin-left: auto;
+  font: 500 10.5px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.4);
+}
+
+.card-rate.is-good {
+  color: var(--good);
+}
+
+.card-rate.is-warn {
+  color: var(--warn);
+}
+
+/* Rendered even when empty. 43 of 76 cards carry no badges, and letting the
+   row collapse was the largest source of misalignment across a grid. */
+.card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-height: 19px;
+}

@@ -1,7 +1,5 @@
-import { h, clear } from "./ui/dom.js";
-import {
-  PLAT, ORDER, CHIPS, MONO, SANS, INK, dim, line, tagStyle, label, GOOD, WARN,
-} from "./ui/theme.js";
+import { h, clear, cx } from "./ui/dom.js";
+import { PLAT, ORDER, CHIPS, tint } from "./ui/theme.js";
 import { GAMES, YEARS, TOP3 } from "./data/adapt.js";
 import { card } from "./components/card.js";
 import { noteModal } from "./components/note-modal.js";
@@ -12,9 +10,9 @@ import { scatter } from "./views/scatter.js";
 import { timeline } from "./views/timeline.js";
 
 const VIEWS = [
-  { key: "podium", label: "Podium" },
-  { key: "scatter", label: "Value scatter" },
-  { key: "timeline", label: "Platform hours" },
+  { key: "podium", label: "Podium", short: "Podium" },
+  { key: "scatter", label: "Value scatter", short: "Scatter" },
+  { key: "timeline", label: "Platform hours", short: "Hours" },
 ];
 
 // Whole-page re-render on interaction. The dataset is 76 rows and every view
@@ -39,47 +37,48 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && state.open) closeNote();
 });
 
+// Where it lands is the section's scroll-margin-top, which the stylesheet
+// sets to clear whatever is pinned to the top at the current width.
 function jump(year) {
-  const el = document.getElementById(`y${year}`);
-  if (!el) return;
-  window.scrollTo({
-    top: el.getBoundingClientRect().top + window.pageYOffset - 116,
-    behavior: "smooth",
-  });
+  document.getElementById(`y${year}`)?.scrollIntoView({ behavior: "smooth" });
 }
 
-// ------------------------------------------------------------------ header
+const platinumCount = () => GAMES.filter((g) => g.plat).length;
+const hundredCount = () => GAMES.filter((g) => g.hundred).length;
+const platformCount = (name) => GAMES.filter((g) => g.pl === name).length;
 
-function statTile(item, opts = {}) {
+// ------------------------------------------------------------------- stats
+
+function statTile(item) {
   return h(
     "div",
-    {
-      style: {
-        display: "flex", flexDirection: "column", gap: "5px",
-        padding: "0 26px",
-        borderLeft: opts.plain ? "none" : `1px solid ${line(".08")}`,
-      },
-    },
-    h("div", { style: label({ letterSpacing: ".13em", fontSize: "9px" }), text: item.label }),
+    { class: "stat" },
+    h("div", { class: "label", text: item.label }),
     h(
       "div",
-      { style: { display: "flex", alignItems: "baseline", gap: "5px" } },
-      h("div", {
-        style: { fontSize: "23px", fontWeight: 600, letterSpacing: "-.02em", lineHeight: 1 },
-        text: item.value,
-      }),
-      item.unit
-        ? h("div", { style: { font: `400 10px/1 ${MONO}`, color: dim(".35") }, text: item.unit })
-        : null,
+      { class: "stat-row" },
+      h("div", { class: "stat-value", text: item.value }),
+      item.unit ? h("div", { class: "stat-unit", text: item.unit }) : null,
       item.delta
-        ? h("div", {
-            style: { font: `500 10.5px/1 ${MONO}`, color: item.up ? GOOD : WARN },
-            text: item.delta,
-          })
+        ? h("div", { class: cx("stat-delta", item.up ? "is-up" : "is-down"), text: item.delta })
         : null
     )
   );
 }
+
+// Games and hours stand alone; the two price figures share a pair, which the
+// stylesheet turns into a single cell on narrow screens.
+function stats([games, hours, ...price], extraClass) {
+  return h(
+    "div",
+    { class: cx("stats", extraClass) },
+    statTile(games),
+    statTile(hours),
+    h("div", { class: "stat-pair" }, price.map(statTile))
+  );
+}
+
+// ------------------------------------------------------------------ header
 
 function header() {
   const totalGames = YEARS.reduce((a, y) => a + y.games, 0);
@@ -88,45 +87,22 @@ function header() {
 
   return h(
     "div",
-    {
-      style: {
-        position: "sticky", top: 0, zIndex: 30,
-        backdropFilter: "blur(14px)",
-        background: "rgba(11,11,15,.86)",
-        borderBottom: `1px solid ${line(".07")}`,
-      },
-    },
+    { class: "header" },
     h(
       "div",
-      {
-        style: {
-          maxWidth: "1560px", margin: "0 auto", padding: "16px 40px",
-          display: "flex", alignItems: "center", gap: "36px",
-        },
-      },
+      { class: "header-inner" },
       h(
         "div",
-        { style: { display: "flex", flexDirection: "column", gap: "3px", flex: "none" } },
-        h("div", {
-          style: { fontSize: "17px", fontWeight: 600, letterSpacing: "-.01em" },
-          text: "Games I Beat",
-        }),
-        h("div", {
-          style: { font: `400 10.5px/1 ${MONO}`, color: dim(".42"), letterSpacing: ".04em" },
-          text: "COMPLETION LOG",
-        })
+        { class: "brand" },
+        h("div", { class: "brand-name", text: "Games I Beat" }),
+        h("div", { class: "brand-sub", text: "COMPLETION LOG" })
       ),
-      h("div", { style: { flex: 1 } }),
-      h(
-        "div",
-        { style: { display: "flex", alignItems: "stretch" } },
-        [
-          { label: "TOTAL GAMES", value: String(totalGames), unit: "beaten" },
-          { label: "TOTAL HOURS", value: totalHours.toLocaleString(), unit: "played" },
-          { label: "TOTAL SPEND", value: `$${totalSpend.toLocaleString()}`, unit: "CAD" },
-          { label: "AVG COST / HOUR", value: `$${(totalSpend / totalHours).toFixed(2)}`, unit: "" },
-        ].map((item) => statTile(item))
-      )
+      stats([
+        { label: "TOTAL GAMES", value: String(totalGames), unit: "beaten" },
+        { label: "TOTAL HOURS", value: totalHours.toLocaleString(), unit: "played" },
+        { label: "TOTAL SPEND", value: `$${totalSpend.toLocaleString()}`, unit: "CAD" },
+        { label: "AVG COST / HOUR", value: `$${(totalSpend / totalHours).toFixed(2)}` },
+      ])
     )
   );
 }
@@ -134,95 +110,49 @@ function header() {
 // -------------------------------------------------------------------- rail
 
 function rail() {
-  const platinums = GAMES.filter((g) => g.plat).length;
-  const hundreds = GAMES.filter((g) => g.hundred).length;
-
   return h(
     "div",
-    {
-      style: {
-        position: "sticky", top: "104px", padding: "34px 0 40px",
-        display: "flex", flexDirection: "column", gap: "26px",
-      },
-    },
-    h("div", { style: label(), text: "JUMP TO YEAR" }),
+    { class: "rail" },
+    h("div", { class: "label", text: "JUMP TO YEAR" }),
     h(
       "div",
-      { style: { display: "flex", flexDirection: "column", gap: "6px" } },
+      { class: "rail-years" },
       YEARS.map((y) =>
         h(
           "button",
-          {
-            onclick: () => jump(y.year),
-            style: {
-              display: "flex", flexDirection: "column", gap: "6px", alignItems: "flex-start",
-              padding: "12px 14px", borderRadius: "10px", cursor: "pointer", textAlign: "left",
-              border: `1px solid ${line(".09")}`, background: line(".03"), color: INK,
-            },
-          },
+          { class: "rail-year", onclick: () => jump(y.year) },
           h(
             "div",
-            { style: { display: "flex", alignItems: "baseline", gap: "9px" } },
-            h("div", {
-              style: { font: `700 19px/1 ${MONO}`, letterSpacing: "-.02em" },
-              text: String(y.year),
-            }),
-            h("div", {
-              style: tagStyle(y.tag === "complete"),
-              text: y.tag === "complete" ? "done" : "live",
-            })
+            { class: "rail-year-head" },
+            h("div", { class: "rail-year-num", text: String(y.year) }),
+            yearTag(y, true)
           ),
-          h("div", {
-            style: { font: `400 10px/1 ${MONO}`, color: dim(".42") },
-            text: `${y.games} games - ${y.hoursLabel} h`,
-          })
+          h("div", { class: "rail-year-sub", text: `${y.games} games - ${y.hoursLabel} h` })
         )
       )
     ),
 
     h(
       "div",
-      {
-        style: {
-          display: "flex", flexDirection: "column", gap: "12px",
-          paddingTop: "22px", borderTop: `1px solid ${line(".08")}`,
-        },
-      },
-      h("div", { style: label(), text: "PLATFORMS" }),
+      { class: "rail-group" },
+      h("div", { class: "label", text: "PLATFORMS" }),
       ORDER.map((name) =>
         h(
           "div",
-          { style: { display: "flex", alignItems: "center", gap: "9px" } },
-          h("div", {
-            style: {
-              width: "9px", height: "9px", borderRadius: "99px",
-              background: PLAT[name].c, boxShadow: `0 0 10px ${PLAT[name].c}`, flex: "none",
-            },
-          }),
-          h("div", {
-            style: { font: `400 10.5px/1 ${MONO}`, color: dim(".55"), letterSpacing: ".04em" },
-            text: PLAT[name].short,
-          }),
-          h("div", { style: { flex: 1 } }),
-          h("div", {
-            style: { font: `400 10.5px/1 ${MONO}`, color: dim(".35") },
-            text: String(GAMES.filter((g) => g.pl === name).length),
-          })
+          { class: "rail-row", style: tint(name) },
+          h("div", { class: "dot" }),
+          h("div", { class: "rail-name", text: PLAT[name].short }),
+          h("div", { class: "rail-count", text: String(platformCount(name)) })
         )
       )
     ),
 
     h(
       "div",
-      {
-        style: {
-          display: "flex", flexDirection: "column", gap: "10px",
-          paddingTop: "22px", borderTop: `1px solid ${line(".08")}`,
-        },
-      },
-      h("div", { style: label(), text: "COMPLETION" }),
-      counter(platinumIcon(20), "PLATINUMS", platinums),
-      counter(perfectIcon(20), "FULL CLEARS", hundreds)
+      { class: "rail-group rail-group--marks" },
+      h("div", { class: "label", text: "COMPLETION" }),
+      counter(platinumIcon(), "PLATINUMS", platinumCount()),
+      counter(perfectIcon(), "FULL CLEARS", hundredCount())
     )
   );
 }
@@ -230,25 +160,18 @@ function rail() {
 function counter(glyph, text, count) {
   return h(
     "div",
-    { style: { display: "flex", alignItems: "center", gap: "9px" } },
-    h(
-      "div",
-      {
-        style: {
-          width: "20px",
-          height: "20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flex: "none",
-        },
-      },
-      glyph
-    ),
-    h("div", { style: { font: `400 10.5px/1 ${MONO}`, color: dim(".55") }, text }),
-    h("div", { style: { flex: 1 } }),
-    h("div", { style: { font: `400 10.5px/1 ${MONO}`, color: dim(".35") }, text: String(count) })
+    { class: "rail-row" },
+    h("div", { class: "rail-mark" }, glyph),
+    h("div", { class: "rail-name", text }),
+    h("div", { class: "rail-count", text: String(count) })
   );
+}
+
+// `short` gives the rail's done/live wording rather than the full tag.
+function yearTag(year, short = false) {
+  const done = year.tag === "complete";
+  const text = short ? (done ? "done" : "live") : year.tag;
+  return h("div", { class: cx("tag", done ? "tag--done" : "tag--live"), text });
 }
 
 // ----------------------------------------------------------------- section
@@ -268,75 +191,48 @@ function yearSection(year, index) {
 
   return h(
     "div",
-    {
-      id: `y${year.year}`,
-      style: {
-        scrollMarginTop: "120px", display: "flex", flexDirection: "column", gap: "20px",
-      },
-    },
+    { id: `y${year.year}`, class: "year" },
     h(
       "div",
-      { style: { display: "flex", alignItems: "flex-end", gap: "16px" } },
-      h("div", {
-        style: { font: `700 34px/1 ${MONO}`, letterSpacing: "-.03em" },
-        text: String(year.year),
-      }),
-      h("div", { style: tagStyle(year.tag === "complete"), text: year.tag }),
-      h("div", { style: { flex: 1 } }),
-      h("div", {
-        style: { font: `400 10.5px/1 ${MONO}`, color: dim(".38") },
-        text: `${shown.length} of ${all.length} games - click a card for its sheet note`,
-      })
+      { class: "year-head" },
+      h("div", { class: "year-title", text: String(year.year) }),
+      yearTag(year),
+      h(
+        "div",
+        { class: "year-meta" },
+        `${shown.length} of ${all.length} games - `,
+        h("span", { class: "hover-only", text: "click" }),
+        h("span", { class: "touch-only", text: "tap" }),
+        " a card for its sheet note"
+      )
     ),
 
-    h(
-      "div",
-      {
-        style: {
-          display: "flex", flexWrap: "wrap", gap: "10px 0",
-          padding: "18px 0", borderTop: `1px solid ${line(".08")}`,
-          borderBottom: `1px solid ${line(".08")}`,
-        },
-      },
+    stats(
       [
         { label: "GAMES BEATEN", value: String(year.games), ...delta(year.games, prev?.games) },
         { label: "HOURS PLAYED", value: year.hoursLabel, ...delta(year.hours, prev?.hours) },
         { label: "SPEND (CAD)", value: year.spendLabel, ...delta(year.spend, prev?.spend) },
         { label: "AVG COST / HOUR", value: `$${(year.spend / year.hours).toFixed(2)}` },
-      ].map((item, i) => statTile(item, { plain: i === 0 }))
+      ],
+      "year-stats"
     ),
 
     h(
       "div",
-      {
-        style: {
-          position: "relative", overflow: "hidden",
-          border: `1px solid ${line(".09")}`, borderRadius: "18px",
-          background: `linear-gradient(160deg, ${line(".035")}, ${line(".01")})`,
-          padding: "26px 26px 28px",
-          display: "flex", flexDirection: "column", gap: "22px",
-        },
-      },
+      { class: "panel" },
       h(
         "div",
-        {
-          style: {
-            display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap",
-            padding: "4px", borderRadius: "999px", background: line(".04"),
-            alignSelf: "flex-start",
-          },
-        },
+        { class: "tabs" },
         VIEWS.map((v) =>
-          h("button", {
-            onclick: () => set({ view: { ...state.view, [year.year]: v.key } }),
-            style: {
-              font: `500 12px/1 ${SANS}`, padding: "8px 16px", borderRadius: "999px",
-              border: "none", cursor: "pointer",
-              background: view === v.key ? "#f2efea" : "transparent",
-              color: view === v.key ? "#101014" : dim(".6"),
+          h(
+            "button",
+            {
+              class: cx("tab", view === v.key && "is-active"),
+              onclick: () => set({ view: { ...state.view, [year.year]: v.key } }),
             },
-            text: v.label,
-          })
+            h("span", { class: "tab-long", text: v.label }),
+            h("span", { class: "tab-short", text: v.short })
+          )
         )
       ),
       view === "podium" ? podium(TOP3[year.year] ?? []) : null,
@@ -346,11 +242,11 @@ function yearSection(year, index) {
 
     h(
       "div",
-      { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } },
+      { class: "chips" },
       CHIPS.map((c) =>
         h("button", {
+          class: cx("chip", chip === c && "is-active"),
           onclick: () => set({ chip: { ...state.chip, [year.year]: c } }),
-          style: chipStyleFor(chip === c),
           text: c,
         })
       )
@@ -358,28 +254,12 @@ function yearSection(year, index) {
 
     h(
       "div",
-      {
-        style: {
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(232px, 1fr))",
-          gap: "14px",
-        },
-      },
+      { class: "grid" },
       shown.map((game) =>
         card(game, { onOpenNote: () => set({ open: `${game.y}:${game.t}` }) })
       )
     )
   );
-}
-
-function chipStyleFor(active) {
-  return {
-    font: `500 11.5px/1 ${MONO}`, letterSpacing: ".06em",
-    padding: "8px 13px", borderRadius: "999px", cursor: "pointer",
-    border: `1px solid ${line(active ? ".28" : ".1")}`,
-    background: active ? line(".1") : "transparent",
-    color: active ? "#f4f2ef" : dim(".55"),
-  };
 }
 
 // ------------------------------------------------------------------ render
@@ -392,41 +272,19 @@ export function render() {
   // removed element never fires mouseleave - so the card would hang around.
   hideHoverCard();
 
-  // The page behind the overlay shouldn't scroll under it.
-  document.body.style.overflow = note ? "hidden" : "";
+  document.body.classList.toggle("is-locked", Boolean(note));
 
   clear(root);
   root.append(
     h(
       "div",
-      {
-        style: {
-          minHeight: "100vh",
-          background:
-            "radial-gradient(1200px 600px at 78% -10%, oklch(0.30 0.06 254 / .32), transparent 60%), #0b0b0f",
-        },
-      },
+      { class: "page" },
       header(),
       h(
         "div",
-        {
-          style: {
-            maxWidth: "1560px", margin: "0 auto", padding: "0 40px",
-            display: "grid", gridTemplateColumns: "212px 1fr", gap: "44px",
-            alignItems: "start",
-          },
-        },
+        { class: "layout" },
         rail(),
-        h(
-          "div",
-          {
-            style: {
-              padding: "34px 0 110px", display: "flex", flexDirection: "column",
-              gap: "62px", minWidth: 0,
-            },
-          },
-          YEARS.map((year, i) => yearSection(year, i))
-        )
+        h("div", { class: "main" }, YEARS.map((year, i) => yearSection(year, i)))
       )
     )
   );

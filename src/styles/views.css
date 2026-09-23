@@ -1,0 +1,463 @@
+/* The three views inside a year's panel: podium, value scatter, and platform
+   hours. */
+
+/* ------------------------------------------------------------------ podium */
+
+.podium {
+  display: grid;
+  grid-template-columns: 1fr 1.24fr 1fr;
+  gap: 18px;
+  align-items: end;
+}
+
+.podium-place {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.podium-place[data-rank="1"] {
+  --medal: oklch(0.8 0.13 85);
+}
+
+.podium-place[data-rank="2"] {
+  --medal: oklch(0.8 0.02 260);
+}
+
+.podium-place[data-rank="3"] {
+  --medal: oklch(0.68 0.1 55);
+}
+
+.podium-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 268px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid color-mix(in oklch, var(--pc) 30%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 18px 44px -18px color-mix(in oklch, var(--pc) 40%, transparent);
+}
+
+.podium-place--first .podium-card {
+  min-height: 310px;
+  border-color: color-mix(in oklch, var(--pc) 50%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 18px 44px -18px color-mix(in oklch, var(--pc) 75%, transparent);
+}
+
+/* Platform glow behind the top of the card. It sits above the art on
+   purpose, tinting it. */
+.podium-glow {
+  position: absolute;
+  left: 50%;
+  top: -70px;
+  z-index: 1;
+  width: 120%;
+  height: 190px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklch, var(--pc) 24%, transparent),
+    transparent
+  );
+}
+
+.podium-place--first .podium-glow {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklch, var(--pc) 40%, transparent),
+    transparent
+  );
+}
+
+.podium-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 15px;
+}
+
+.podium-place--first .podium-body {
+  padding: 16px 18px;
+}
+
+.podium-title {
+  font: 600 15px/1.2 var(--sans);
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  color: var(--ink);
+}
+
+.podium-title.is-placeholder {
+  color: rgba(233, 231, 228, 0.4);
+}
+
+.podium-place--first .podium-title {
+  font-size: 19px;
+}
+
+.podium-platform {
+  font: 500 9px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: rgba(233, 231, 228, 0.45);
+}
+
+.podium-spacer {
+  flex: 1;
+  min-height: 8px;
+}
+
+.podium-stats {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.podium-stat {
+  font: 600 21px/1 var(--sans);
+  letter-spacing: -0.02em;
+}
+
+.podium-stat--price {
+  color: rgba(233, 231, 228, 0.62);
+}
+
+.podium-place--first .podium-stat {
+  font-size: 26px;
+}
+
+.podium-rate {
+  margin-left: auto;
+  font: 500 10.5px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.4);
+}
+
+/* The rank sits under the card rather than inside it, so the artwork can run
+   edge to edge the way it does on the grid cards. */
+.podium-rank {
+  font: 700 13px/1 var(--mono);
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--medal);
+}
+
+.podium-place--first .podium-rank {
+  font-size: 15px;
+}
+
+/* ----------------------------------------------------------------- scatter */
+
+.scatter-plot {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.scatter-plot svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.scatter-plot text {
+  font-family: var(--mono);
+}
+
+.plot-frame {
+  fill: rgba(255, 255, 255, 0.015);
+  stroke: rgba(255, 255, 255, 0.08);
+}
+
+.plot-grid {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.plot-tick {
+  fill: rgba(233, 231, 228, 0.4);
+  font-size: 11px;
+}
+
+.plot-rate {
+  stroke: oklch(0.7 0.13 254 / 0.35);
+  stroke-dasharray: 5 5;
+}
+
+.plot-rate-label {
+  fill: oklch(0.72 0.1 254);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+}
+
+.plot-lane {
+  fill: oklch(0.75 0.13 168 / 0.05);
+  stroke: oklch(0.75 0.13 168 / 0.28);
+  stroke-dasharray: 4 4;
+}
+
+.plot-lane-label {
+  fill: oklch(0.78 0.13 168);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.plot-axis {
+  fill: rgba(233, 231, 228, 0.32);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+/* The dot layers are positioned inline, from the same numbers as the SVG. */
+.scatter-layer {
+  position: absolute;
+}
+
+/* The dot is drawn inside a zero-size anchor so the plot coordinate stays
+   the dot's centre whatever its size; the translate keeps it there, and the
+   hover scale composes onto that same transform. */
+.scatter-dot {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Lift the hovered dot above its neighbours; the plot is dense enough that a
+   scaled dot would otherwise grow underneath the ones drawn after it. */
+.scatter-dot.is-hot {
+  z-index: 5;
+}
+
+.scatter-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--d);
+  height: var(--d);
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99px;
+  cursor: default;
+  font: 700 10px/1 var(--mono);
+  color: var(--ink-bright);
+  background: color-mix(in oklch, var(--pc) 35%, transparent);
+  border: 1.5px solid var(--pc);
+  box-shadow: 0 0 16px color-mix(in oklch, var(--pc) 45%, transparent);
+  transition:
+    transform 0.13s ease,
+    box-shadow 0.13s ease;
+}
+
+.scatter-dot.is-hot .scatter-mark {
+  transform: translate(-50%, -50%) scale(1.35);
+  box-shadow: 0 0 22px color-mix(in oklch, var(--pc) 75%, transparent);
+}
+
+.outliers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.outlier {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.outlier-num {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99px;
+  font: 700 10px/1 var(--mono);
+  color: var(--ink-bright);
+  background: color-mix(in oklch, var(--pc) 35%, transparent);
+  border: 1.5px solid var(--pc);
+}
+
+.outlier-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.outlier-title {
+  font: 500 12px/1.2 var(--sans);
+  color: var(--ink);
+}
+
+.outlier-stat {
+  font: 400 10px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.45);
+}
+
+/* ------------------------------------------------------------------- bands */
+
+.bands {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 14px;
+}
+
+.band {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.band-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.band-head .dot {
+  --size: 8px;
+}
+
+.band-abbr {
+  font: 700 15px/1 var(--mono);
+  letter-spacing: 0.02em;
+  color: var(--pc);
+}
+
+.band-name {
+  font: 500 10.5px/1 var(--mono);
+  letter-spacing: 0.08em;
+  color: rgba(233, 231, 228, 0.5);
+}
+
+.band-sum {
+  margin-left: auto;
+  font: 600 13px/1 var(--sans);
+  color: rgba(233, 231, 228, 0.7);
+}
+
+/* The track, legend and axis sit indented under the platform heading. */
+.band-indent {
+  margin-left: 54px;
+}
+
+.band-track {
+  position: relative;
+  height: 42px;
+}
+
+.band-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid color-mix(in oklch, var(--pc) 55%, transparent);
+  background: color-mix(in oklch, var(--pc) 10%, transparent);
+  box-shadow: 0 0 26px -6px color-mix(in oklch, var(--pc) 50%, transparent);
+}
+
+/* Segments step through three opacities so neighbours stay distinguishable
+   at a glance; hovering lifts whichever one it is to full strength. */
+.segment {
+  min-width: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  cursor: default;
+  font: 700 10px/1 var(--mono);
+  color: rgba(11, 11, 15, 0.72);
+  background: color-mix(in oklch, var(--pc) 68%, transparent);
+  transition: background 0.13s ease;
+}
+
+.segment:nth-child(3n + 2) {
+  background: color-mix(in oklch, var(--pc) 52%, transparent);
+}
+
+.segment:nth-child(3n) {
+  background: color-mix(in oklch, var(--pc) 36%, transparent);
+}
+
+.segment.is-hot {
+  background: var(--pc);
+}
+
+.band-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.legend-num {
+  font: 700 9.5px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.legend-title {
+  font: 400 11px/1.3 var(--sans);
+  color: var(--ink);
+}
+
+.legend-hours {
+  font: 400 10px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.4);
+}
+
+.axis {
+  position: relative;
+  height: 28px;
+  margin-top: 4px;
+}
+
+.axis-tick {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transform: translateX(-50%);
+}
+
+.axis-tick::before {
+  content: "";
+  width: 1px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.axis-label {
+  font: 400 10px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.4);
+}

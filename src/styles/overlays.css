@@ -1,0 +1,217 @@
+/* Things drawn over the page: the hover card and the sheet note. */
+
+/* ------------------------------------------------------------- hover card */
+
+.hovercard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 212px;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateZ(0);
+  transition: opacity 0.12s ease;
+  border-radius: 11px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.85);
+}
+
+.hovercard.is-shown {
+  visibility: visible;
+  opacity: 1;
+}
+
+.hovercard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 2px 12px 12px;
+}
+
+.hovercard-top {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.hovercard-top .dot {
+  --size: 6px;
+  box-shadow: 0 0 8px var(--pc);
+}
+
+.hovercard-platform {
+  font: 500 8px/1 var(--mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 231, 228, 0.5);
+}
+
+.hovercard-title {
+  font: 600 13px/1.3 var(--sans);
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  color: var(--ink);
+}
+
+.hovercard-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hovercard-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hovercard-key {
+  margin-right: auto;
+  font: 500 8px/1.4 var(--mono);
+  letter-spacing: 0.1em;
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.hovercard-value {
+  font: 500 11px/1.4 var(--mono);
+  color: rgba(233, 231, 228, 0.75);
+}
+
+/* -------------------------------------------------------------- sheet note */
+
+.note-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 6, 9, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(520px, 100%);
+  max-height: min(80vh, 640px);
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid color-mix(in oklch, var(--pc) 40%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 30px 80px -20px rgba(0, 0, 0, 0.8),
+    0 0 60px -30px var(--pc);
+}
+
+.note .cover {
+  aspect-ratio: 2.6 / 1;
+}
+
+.note .cover-fade {
+  background: linear-gradient(
+    180deg,
+    transparent 40%,
+    color-mix(in oklch, var(--pc) 30%, transparent) 78%,
+    var(--surface)
+  );
+}
+
+.note-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 99px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(6, 6, 9, 0.6);
+  backdrop-filter: blur(4px);
+  color: var(--ink);
+  font: 400 18px/1 var(--sans);
+}
+
+.note-body {
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 4px 22px 24px;
+}
+
+.note-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.note-platform {
+  font: 500 8.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 231, 228, 0.5);
+}
+
+.note-year {
+  margin-left: auto;
+  font: 500 9px/1 var(--mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.note-title {
+  font: 600 20px/1.25 var(--sans);
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  color: var(--ink);
+}
+
+.note-stats {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.note-hours {
+  font: 600 16px/1 var(--sans);
+  letter-spacing: -0.02em;
+}
+
+.note-price {
+  font: 500 11px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.55);
+}
+
+.note-rate {
+  margin-left: auto;
+  font: 500 10.5px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.4);
+}
+
+.note-label {
+  font: 500 8.5px/1 var(--mono);
+  letter-spacing: 0.14em;
+  color: rgba(233, 231, 228, 0.3);
+}
+
+.note-text {
+  font: 400 13.5px/1.65 var(--sans);
+  text-wrap: pretty;
+  color: rgba(233, 231, 228, 0.78);
+}

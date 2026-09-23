@@ -1,0 +1,305 @@
+/* The page frame: header, rail, and the per-year sections. */
+
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 78% -10%, oklch(0.3 0.06 254 / 0.32), transparent 60%),
+    var(--bg);
+}
+
+.layout {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 212px 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.main {
+  min-width: 0;
+  padding: 34px 0 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+}
+
+/* ------------------------------------------------------------------ header */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(14px);
+  background: rgba(11, 11, 15, 0.86);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.header-inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 16px var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.brand {
+  flex: none;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: 0.04em;
+  color: rgba(233, 231, 228, 0.42);
+}
+
+/* ------------------------------------------------------------------- stats
+   Used by both the header's all-time figures and each year's. The two price
+   figures share a .stat-pair: on a wide screen it is display: contents, so
+   its tiles sit in the row like any other, and on a narrow one it becomes a
+   single cell holding both. */
+
+.stats {
+  display: flex;
+  align-items: stretch;
+}
+
+.stat-pair {
+  display: contents;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 26px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat .label {
+  letter-spacing: 0.13em;
+}
+
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.stat-value {
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat-unit {
+  font: 400 10px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.stat-delta {
+  font: 500 10.5px/1 var(--mono);
+}
+
+.stat-delta.is-up {
+  color: var(--good);
+}
+
+.stat-delta.is-down {
+  color: var(--warn);
+}
+
+.year-stats {
+  flex-wrap: wrap;
+  gap: 10px 0;
+  padding: 18px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.year-stats > .stat:first-child {
+  border-left: none;
+}
+
+/* -------------------------------------------------------------------- rail */
+
+.rail {
+  position: sticky;
+  top: 104px;
+  padding: 34px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.rail-years {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rail-year {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+}
+
+.rail-year-head {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.rail-year-num {
+  font: 700 19px/1 var(--mono);
+  letter-spacing: -0.02em;
+}
+
+.rail-year-sub {
+  font: 400 10px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.42);
+}
+
+.rail-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rail-group--marks {
+  gap: 10px;
+}
+
+.rail-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.rail-row .dot {
+  --size: 9px;
+}
+
+.rail-name {
+  font: 400 10.5px/1 var(--mono);
+  letter-spacing: 0.04em;
+  color: rgba(233, 231, 228, 0.55);
+}
+
+.rail-count {
+  margin-left: auto;
+  font: 400 10.5px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.35);
+}
+
+.rail-mark {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+/* ----------------------------------------------------------------- section */
+
+.year {
+  scroll-margin-top: var(--scroll-offset);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.year-head {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.year-title {
+  font: 700 34px/1 var(--mono);
+  letter-spacing: -0.03em;
+}
+
+.year-meta {
+  margin-left: auto;
+  font: 400 10.5px/1 var(--mono);
+  color: rgba(233, 231, 228, 0.38);
+}
+
+/* The box holding the podium / scatter / hours views. */
+.panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 26px 26px 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+}
+
+.tabs {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tab {
+  font: 500 12px/1 var(--sans);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(233, 231, 228, 0.6);
+}
+
+.tab.is-active {
+  background: var(--ink-bright);
+  color: #101014;
+}
+
+.tab-short {
+  display: none;
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: 14px;
+}

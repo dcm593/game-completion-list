@@ -1,0 +1,235 @@
+/* ------------------------------------------------------------------ tokens
+   Colours and type the whole page draws from. Platform colours are not here:
+   they are data (src/ui/theme.js) and arrive as --pc, set inline on whichever
+   element a platform tints. Anything tinted takes a fraction of it with
+   color-mix(in oklch, var(--pc) N%, transparent) - the platform colour at
+   N% opacity. */
+
+:root {
+  --bg: #0b0b0f;
+  --surface: #12121a;
+  --art-bg: #0d0d14;
+  --ink: #e9e7e4;
+  --ink-bright: #f2efea;
+
+  --good: oklch(0.78 0.13 168);
+  --warn: oklch(0.72 0.15 25);
+  --done: oklch(0.75 0.13 168);
+  --live: oklch(0.78 0.13 85);
+  --accent: oklch(0.7 0.13 254);
+
+  --mono: "JetBrains Mono", monospace;
+  --sans: "Space Grotesk", system-ui, sans-serif;
+
+  /* Side padding of the page, and how far below the top a jumped-to year
+     lands - clear of whatever is pinned there. */
+  --gutter: 40px;
+  --scroll-offset: 116px;
+}
+
+/* Reserve the scrollbar's space permanently. Opening a note locks body
+   scrolling, which removes the scrollbar; without a reserved gutter the
+   content behind the dialog widens by the scrollbar's width and visibly
+   jumps sideways on every open and close. */
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The page behind an open note shouldn't scroll under it. */
+body.is-locked {
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: oklch(0.8 0.1 254);
+}
+
+::selection {
+  background: oklch(0.7 0.13 254 / 0.35);
+}
+
+/* -------------------------------------------------------------- primitives */
+
+.label {
+  font: 500 9px/1 var(--mono);
+  letter-spacing: 0.14em;
+  color: rgba(233, 231, 228, 0.3);
+}
+
+/* Wording that depends on the input: "click" with a mouse, "tap" on touch. */
+@media (hover: hover) {
+  .touch-only {
+    display: none;
+  }
+}
+
+@media (hover: none) {
+  .hover-only {
+    display: none;
+  }
+}
+
+/* A platform's glowing colour dot. Contexts resize it through --size. */
+.dot {
+  --size: 7px;
+  width: var(--size);
+  height: var(--size);
+  flex: none;
+  border-radius: 99px;
+  background: var(--pc);
+  box-shadow: 0 0 10px var(--pc);
+}
+
+.icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* A year's status: done, live, complete. */
+.tag {
+  font: 500 9px/1 var(--mono);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 4px 7px;
+  border-radius: 4px;
+  color: var(--tc);
+  background: color-mix(in oklch, var(--tc) 14%, transparent);
+  border: 1px solid color-mix(in oklch, var(--tc) 30%, transparent);
+}
+
+.tag--done {
+  --tc: var(--done);
+}
+
+.tag--live {
+  --tc: var(--live);
+}
+
+/* The small labels on a grid card: co-op, replay, note. */
+.badge {
+  font: 700 8.5px/1 var(--mono);
+  letter-spacing: 0.1em;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: var(--bc);
+  background: color-mix(in oklch, var(--bc) 16%, transparent);
+  border: 1px solid color-mix(in oklch, var(--bc) 35%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.badge--coop {
+  --bc: oklch(0.7 0.13 25);
+}
+
+.badge--replay {
+  --bc: oklch(0.7 0.13 300);
+}
+
+.badge--note {
+  --bc: oklch(0.7 0.13 85);
+}
+
+/* Platform filter pills. */
+.chip {
+  font: 500 11.5px/1 var(--mono);
+  letter-spacing: 0.06em;
+  padding: 8px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: rgba(233, 231, 228, 0.55);
+}
+
+.chip.is-active {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.1);
+  color: #f4f2ef;
+}
+
+/* Shared header art - see src/components/cover.js. */
+.cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  flex: none;
+  overflow: hidden;
+  background: var(--art-bg);
+}
+
+.cover--empty {
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.055) 0 6px,
+    rgba(255, 255, 255, 0.015) 6px 12px
+  );
+}
+
+.cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    color-mix(in oklch, var(--pc) 25%, transparent) 80%,
+    var(--surface)
+  );
+}
+
+/* Intro above the scatter and the platform bands. */
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chart-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.chart-title {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.chart-desc {
+  font-size: 12.5px;
+  line-height: 1.5;
+  max-width: 480px;
+  color: rgba(233, 231, 228, 0.5);
+}

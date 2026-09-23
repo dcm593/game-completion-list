@@ -10,23 +10,13 @@ import steamPng from "../assets/icons/steam-100.png";
 // Both are downscaled to a 96px longest edge by scripts/downscale-png.js -
 // 3x the size they are drawn at, so they stay sharp on any display without
 // carrying the ~812KB the originals cost.
+//
+// Each fills whatever box it is put in (.icon), so the size is set by the
+// context - a card's medal slot, the rail, the summary strip.
 
-export const platinumIcon = (size) => icon(platinumPng, "Platinum trophy", size);
-export const perfectIcon = (size) => icon(steamPng, "100% achievements", size);
+export const platinumIcon = () => icon(platinumPng, "Platinum trophy");
+export const perfectIcon = () => icon(steamPng, "100% achievements");
 
-// The trophy is portrait and the badge square, so "contain" keeps each at its
-// own proportions inside the square slot rather than distorting either.
-function icon(src, alt, size) {
-  return h("img", {
-    src,
-    alt,
-    decoding: "async",
-    style: {
-      width: `${size}px`,
-      height: `${size}px`,
-      objectFit: "contain",
-      display: "block",
-      flex: "none",
-    },
-  });
+function icon(src, alt) {
+  return h("img", { src, alt, decoding: "async", class: "icon" });
 }
