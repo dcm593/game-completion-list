@@ -82,6 +82,15 @@
   color: rgba(233, 231, 228, 0.75);
 }
 
+/* "1 / 2 here" - only on a card whose target overlaps others. */
+.hovercard-pile {
+  padding-top: 7px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font: 500 8px/1.4 var(--mono);
+  letter-spacing: 0.06em;
+  color: oklch(0.72 0.1 254);
+}
+
 /* -------------------------------------------------------------- sheet note */
 
 .note-backdrop {
