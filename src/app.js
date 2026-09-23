@@ -48,6 +48,54 @@ function jump(year) {
   document.getElementById(`y${year}`)?.scrollIntoView({ behavior: "smooth" });
 }
 
+// ------------------------------------------------------------ current year
+
+// The year being read is marked in the rail and the year bar. Kept out of
+// state on purpose: it changes as the page scrolls, and a full re-render per
+// scroll frame would be wasteful, so this just toggles a class on the buttons.
+
+// How far past its landing point a year's top can sit and still count as
+// being read - so the next year takes over as its heading nears the top,
+// rather than only once it is pinned there.
+const READ_SLACK = 80;
+
+function currentYear() {
+  const sections = YEARS.map((y) => document.getElementById(`y${y.year}`)).filter(Boolean);
+  if (!sections.length) return null;
+
+  // A last year shorter than the screen can never reach the top, so at the
+  // very bottom of the page it wins regardless.
+  const root = document.documentElement;
+  if (window.innerHeight + window.scrollY >= root.scrollHeight - 2) return sections.at(-1).id;
+
+  const line = parseFloat(getComputedStyle(sections[0]).scrollMarginTop) + READ_SLACK;
+  let current = sections[0];
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top <= line) current = section;
+  }
+  return current.id;
+}
+
+function markCurrentYear() {
+  const id = currentYear();
+  for (const button of document.querySelectorAll("[data-year]")) {
+    button.classList.toggle("is-current", `y${button.dataset.year}` === id);
+  }
+}
+
+let markQueued = false;
+function queueMark() {
+  if (markQueued) return;
+  markQueued = true;
+  requestAnimationFrame(() => {
+    markQueued = false;
+    markCurrentYear();
+  });
+}
+
+window.addEventListener("scroll", queueMark, { passive: true });
+window.addEventListener("resize", queueMark);
+
 const platinumCount = () => GAMES.filter((g) => g.plat).length;
 const hundredCount = () => GAMES.filter((g) => g.hundred).length;
 const platformCount = (name) => GAMES.filter((g) => g.pl === name).length;
@@ -116,53 +164,39 @@ function header() {
 // ----------------------------------------------------------------- summary
 
 // The rail's platform and completion counts, carried in the header on screens
-// too narrow for the rail (the stylesheet hides it otherwise). `long` spells
-// the names out; the one-row layout uses abbreviations and bare icons.
-function platformItems(long) {
-  return ORDER.map((name) =>
-    h(
-      "div",
-      { class: "summary-item", style: tint(name) },
-      h("div", { class: "dot" }),
-      h("span", { text: long ? PLAT[name].short : PLAT[name].abbr }),
-      h("span", { class: "summary-count", text: String(platformCount(name)) })
-    )
-  );
-}
-
-function markItems(long) {
-  return [
-    [platinumIcon(), "PLATINUMS", platinumCount()],
-    [perfectIcon(), "FULL CLEARS", hundredCount()],
-  ].map(([glyph, text, count]) =>
-    h(
-      "div",
-      { class: "summary-item", title: text },
-      h("div", { class: "summary-mark" }, glyph),
-      long ? h("span", { text }) : null,
-      h("span", { class: "summary-count", text: String(count) })
-    )
+// too narrow for the rail (the stylesheet hides it otherwise). Platforms sit
+// left of a divider and completion marks right of it, each a name with its
+// count centred underneath.
+function summaryItem(name, marker, count, style) {
+  return h(
+    "div",
+    { class: "summary-item", style },
+    h("div", { class: "summary-name", text: name }),
+    h("div", { class: "summary-count" }, marker, String(count))
   );
 }
 
 function summary() {
-  // One row: platforms, a divider, then the completion marks.
+  const mark = (glyph) => h("div", { class: "summary-mark" }, glyph);
+
   return h(
     "div",
     { class: "summary" },
-    platformItems(false),
+    h(
+      "div",
+      { class: "summary-side" },
+      ORDER.map((name) =>
+        summaryItem(PLAT[name].short, h("div", { class: "dot" }), platformCount(name), tint(name))
+      )
+    ),
     h("div", { class: "summary-divider" }),
-    markItems(false)
+    h(
+      "div",
+      { class: "summary-side" },
+      summaryItem("PLATINUMS", mark(platinumIcon()), platinumCount()),
+      summaryItem("FULL CLEARS", mark(perfectIcon()), hundredCount())
+    )
   );
-
-  // Two rows: platforms on one, completion marks on the other, with the names
-  // spelled out. To compare, comment out the return above and uncomment this.
-  // return h(
-  //   "div",
-  //   { class: "summary summary--rows" },
-  //   h("div", { class: "summary-row" }, platformItems(true)),
-  //   h("div", { class: "summary-row" }, markItems(true))
-  // );
 }
 
 // ---------------------------------------------------------------- year bar
@@ -179,7 +213,7 @@ function yearBar() {
       YEARS.map((y) =>
         h(
           "button",
-          { class: "yearbar-btn", onclick: () => jump(y.year) },
+          { class: "yearbar-btn", "data-year": y.year, onclick: () => jump(y.year) },
           h("span", { class: "yearbar-year", text: String(y.year) }),
           yearTag(y, true)
         )
@@ -201,7 +235,7 @@ function rail() {
       YEARS.map((y) =>
         h(
           "button",
-          { class: "rail-year", onclick: () => jump(y.year) },
+          { class: "rail-year", "data-year": y.year, onclick: () => jump(y.year) },
           h(
             "div",
             { class: "rail-year-head" },
@@ -374,4 +408,7 @@ export function render() {
   // Appended after the page so it stacks above it without the sticky header
   // or rail needing to know about it.
   if (note) root.append(noteModal(note, { onClose: closeNote }));
+
+  // The rebuilt year buttons start unmarked.
+  markCurrentYear();
 }
