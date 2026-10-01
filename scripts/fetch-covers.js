@@ -21,7 +21,8 @@ import { setTimeout as sleep } from "node:timers/promises";
 import {
   search, grids, heroes, pickBest, pickGame, download, PREFERRED_STYLE,
 } from "./lib/steamgriddb.js";
-import { COVER_OVERRIDES, normalizeTitle, slugify } from "../src/data/cover-overrides.js";
+import { COVER_OVERRIDES } from "../src/data/cover-overrides.js";
+import { normalizeTitle, slugify } from "../src/data/titles.js";
 
 // Matches scripts/optimize-manual.js: 2x the podium's first-place art, the
 // largest place a cover is ever drawn.
@@ -51,7 +52,7 @@ const existing = new Map(
 );
 
 // One row per distinct title; DELTARUNE's three chapters share one lookup.
-const titles = [...new Set(games.games.map((g) => g.title))];
+const titles = [...new Set(games.years.flatMap((y) => y.games.map((g) => g.title)))];
 
 // An override is keyed by the exact sheet title, so correcting a spelling in
 // the sheet silently orphans its entry: the row quietly falls back to a search

@@ -13,16 +13,6 @@ export function toRgb(color) {
   };
 }
 
-export function toHex(color) {
-  const rgb = toRgb(color);
-  if (!rgb) return null;
-  const channel = (v) =>
-    Math.round(v * 255)
-      .toString(16)
-      .padStart(2, "0");
-  return `#${channel(rgb.red)}${channel(rgb.green)}${channel(rgb.blue)}`;
-}
-
 export function distance(a, b) {
   const x = toRgb(a);
   const y = toRgb(b);
@@ -49,8 +39,4 @@ export function matchSwatch(color, swatches, tolerance = DEFAULT_TOLERANCE) {
 
 export function fontColor(cell) {
   return cell?.effectiveFormat?.textFormat?.foregroundColor ?? null;
-}
-
-export function fillColor(cell) {
-  return cell?.effectiveFormat?.backgroundColor ?? null;
 }

@@ -12,7 +12,7 @@
 //   search: "..."   run this query instead of the row title
 //
 // Keys must match the sheet title exactly. Anything not listed falls through
-// to the automatic normalizer, which strips "(+DLCs)"-style parentheticals.
+// to normalizeTitle (src/data/titles.js), which strips "(+DLCs)"-style parentheticals.
 //
 // `npm run covers` validates every `file` entry: a missing or undecodable
 // image is an error, and an extension that disagrees with the file's contents
@@ -89,21 +89,3 @@ export const COVER_OVERRIDES = {
   // Canonical title differs from the sheet's.
   "Exit 8": { search: "The Exit 8" },
 };
-
-// "Doom Eternal (+DLCs)" -> "Doom Eternal". Deliberately does not touch a
-// parenthesised year; those rows are handled by an explicit override.
-export function normalizeTitle(title) {
-  return title
-    .replace(/\s*\(\+[^)]*\)/g, "")
-    .replace(/\s*\((?!\d{4}\))[^)]*\)/g, "")
-    .trim();
-}
-
-export function slugify(title) {
-  return title
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}

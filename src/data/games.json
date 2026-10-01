@@ -4,13 +4,10 @@
       "year": 2024,
       "games": [
         {
-          "year": 2024,
           "title": "Subnautica: Below Zero",
           "platform": "steam",
           "price": 26.79,
-          "currency": "CAD",
           "hours": 14.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -22,13 +19,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Horizon Forbidden West",
           "platform": "playstation",
           "price": 99.89,
-          "currency": "CAD",
           "hours": 66,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -40,13 +34,10 @@
           "note": "Hours inaccurate - started in 2022 then dropped when Elden Ring released, picked up again in 2024"
         },
         {
-          "year": 2024,
           "title": "Doom Eternal (+DLCs)",
           "platform": "playstation",
           "price": 33.29,
-          "currency": "CAD",
           "hours": 22,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 36,
@@ -58,13 +49,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "God of War Ragnarök: Valhalla DLC",
           "platform": "playstation",
           "price": 0,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -76,13 +64,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Little Nightmares (+Secrets of the Maw DLC)",
           "platform": "playstation",
           "price": 9.99,
-          "currency": "CAD",
           "hours": 9,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 11,
@@ -94,13 +79,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Little Nightmares II",
           "platform": "playstation",
           "price": 29.74,
-          "currency": "CAD",
           "hours": 4,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 14,
@@ -112,13 +94,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Death's Door",
           "platform": "playstation",
           "price": 22.46,
-          "currency": "CAD",
           "hours": 13,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -130,13 +109,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Metroid Prime Remastered",
           "platform": "nintendo",
           "price": 55.49,
-          "currency": "CAD",
           "hours": 15,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -148,13 +124,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Marvel's Spider-Man Remastered",
           "platform": "playstation",
           "price": 0,
-          "currency": "CAD",
           "hours": 30,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -166,13 +139,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Outer Wilds (+Echos of the Eye DLC)",
           "platform": "steam",
           "price": 36.61,
-          "currency": "CAD",
           "hours": 44.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -184,13 +154,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Paper Mario: The Origami King",
           "platform": "nintendo",
           "price": 83.99,
-          "currency": "CAD",
           "hours": 30,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -202,13 +169,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Borderlands 3 (+DLCs/Raid Bosses)",
           "platform": "playstation",
           "price": 127.19,
-          "currency": "CAD",
           "hours": 107,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -220,13 +184,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Marvel's Spider-Man: Miles Morales",
           "platform": "playstation",
           "price": 95.39,
-          "currency": "CAD",
           "hours": 14,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -238,13 +199,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Resident Evil 2 (+Extra Modes)",
           "platform": "steam",
           "price": 79.99,
-          "currency": "CAD",
           "hours": 37.8,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 31,
@@ -256,13 +214,10 @@
           "note": "Hours inaccurate - did Leon campgain, dropped for a year or two, picked up again in 2024"
         },
         {
-          "year": 2024,
           "title": "Super Mario Galaxy",
           "platform": "nintendo",
           "price": 79.99,
-          "currency": "CAD",
           "hours": 30,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -274,13 +229,10 @@
           "note": "Hours inaccurate - three games as part of 3D all stars sharing hours (64, Sunshine, and Galaxy)"
         },
         {
-          "year": 2024,
           "title": "Luigi's Mansion 3",
           "platform": "nintendo",
           "price": 81.57,
-          "currency": "CAD",
           "hours": 20,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -292,13 +244,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Lies of P",
           "platform": "playstation",
           "price": 66.59,
-          "currency": "CAD",
           "hours": 46,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -310,13 +259,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Superhot VR",
           "platform": "steam",
           "price": 0,
-          "currency": "CAD",
           "hours": 1.25,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -328,13 +274,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Resident Evil 3",
           "platform": "steam",
           "price": 52.79,
-          "currency": "CAD",
           "hours": 5.7,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 20,
@@ -346,13 +289,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "DELTARUNE Chapter 1 & 2",
           "platform": "nintendo",
           "price": 32.99,
-          "currency": "CAD",
           "hours": 9,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -364,13 +304,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Elden Ring: Shadow of the Erdtree DLC",
           "platform": "playstation",
           "price": 59.37,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -382,13 +319,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Half-Life: Alyx",
           "platform": "steam",
           "price": 29.43,
-          "currency": "CAD",
           "hours": 10.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 29,
@@ -400,13 +334,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Celeste: C Sides",
           "platform": "nintendo",
           "price": 26.24,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -418,13 +349,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Super Mario 64",
           "platform": "nintendo",
           "price": 0,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -436,13 +364,10 @@
           "note": "Shares hours with Galaxy"
         },
         {
-          "year": 2024,
           "title": "Risk of Rain 2: Seekers of the Storm DLC",
           "platform": "steam",
           "price": 18.86,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -454,13 +379,10 @@
           "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
         },
         {
-          "year": 2024,
           "title": "Control (+DLCs)",
           "platform": "playstation",
           "price": 14.84,
-          "currency": "CAD",
           "hours": 54,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -472,13 +394,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Halo 3",
           "platform": "steam",
           "price": 27.74,
-          "currency": "CAD",
           "hours": 8.8,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 19,
@@ -490,13 +409,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "Half-Life (+DLCs)",
           "platform": "steam",
           "price": 1.13,
-          "currency": "CAD",
           "hours": 13,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -508,13 +424,10 @@
           "note": null
         },
         {
-          "year": 2024,
           "title": "The Legend of Zelda: Tears of the Kingdom",
           "platform": "nintendo",
           "price": 65,
-          "currency": "CAD",
           "hours": 95,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -541,13 +454,10 @@
       "year": 2025,
       "games": [
         {
-          "year": 2025,
           "title": "Terraria: Calamity Mod",
           "platform": "steam",
           "price": 0,
-          "currency": "CAD",
           "hours": 86,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -559,13 +469,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Ghost of Tsushima (+Iki Island DLC)",
           "platform": "playstation",
           "price": 41.95,
-          "currency": "CAD",
           "hours": 86,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -577,13 +484,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "The Binding of Isaac",
           "platform": "steam",
           "price": 54.41,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -595,13 +499,10 @@
           "note": "Criteria for me was triple dead god"
         },
         {
-          "year": 2025,
           "title": "Unravel Two",
           "platform": "nintendo",
           "price": 0,
-          "currency": "CAD",
           "hours": 5,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -613,13 +514,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Spelunky 2",
           "platform": "steam",
           "price": 12.64,
-          "currency": "CAD",
           "hours": 100,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -631,13 +529,10 @@
           "note": "Criteria for me was completing Cosmic Ocean, hours inaccurate - approximate of what I played this year (~500 hrs all time)"
         },
         {
-          "year": 2025,
           "title": "Remnant: From the Ashes",
           "platform": "steam",
           "price": 70.99,
-          "currency": "CAD",
           "hours": 28,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 29,
@@ -649,13 +544,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Spelunky HD",
           "platform": "playstation",
           "price": 0,
-          "currency": "CAD",
           "hours": 47,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -667,13 +559,10 @@
           "note": "Criteria for me was all trophies (PS4 edition has no platinum trophy)"
         },
         {
-          "year": 2025,
           "title": "Hollow Knight",
           "platform": "playstation",
           "price": 13.19,
-          "currency": "CAD",
           "hours": 48,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -685,13 +574,10 @@
           "note": "Picked up an old 107% save that had 33 hours, finished the rest"
         },
         {
-          "year": 2025,
           "title": "Tunic",
           "platform": "playstation",
           "price": 0,
-          "currency": "CAD",
           "hours": 31,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -703,13 +589,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "My Time at Portia",
           "platform": "nintendo",
           "price": 37.79,
-          "currency": "CAD",
           "hours": 50,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -721,13 +604,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Aperture Desk Job",
           "platform": "steam",
           "price": 0,
-          "currency": "CAD",
           "hours": 0.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -739,13 +619,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Half-Life 2 (+EP1 & EP2)",
           "platform": "steam",
           "price": 1.6,
-          "currency": "CAD",
           "hours": 16.6,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 20,
@@ -757,13 +634,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Stardew Valley",
           "platform": "playstation",
           "price": 19.99,
-          "currency": "CAD",
           "hours": 54,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -775,13 +649,10 @@
           "note": "Picked up old year 4 save Nicole and I played, took it to perfection"
         },
         {
-          "year": 2025,
           "title": "DELTARUNE Chapters 3 & 4",
           "platform": "nintendo",
           "price": 0,
-          "currency": "CAD",
           "hours": 12,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -793,13 +664,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Before Your Eyes",
           "platform": "steam",
           "price": 7.83,
-          "currency": "CAD",
           "hours": 2.2,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 4,
@@ -811,13 +679,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "DREDGE",
           "platform": "steam",
           "price": 37.17,
-          "currency": "CAD",
           "hours": 21.8,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -829,13 +694,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Lies of P: Overture DLC",
           "platform": "playstation",
           "price": 44.39,
-          "currency": "CAD",
           "hours": 10,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -847,13 +709,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Astro's Playroom",
           "platform": "playstation",
           "price": 0,
-          "currency": "CAD",
           "hours": 3,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -865,13 +724,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "The Legend of Zelda: Ocarina of Time",
           "platform": "nintendo",
           "price": 0,
-          "currency": "CAD",
           "hours": 17,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -883,13 +739,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "The Dark Pictures Anthology: Man of Medan",
           "platform": "steam",
           "price": 9.67,
-          "currency": "CAD",
           "hours": 4.8,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 9,
@@ -901,13 +754,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "The Dark Pictures Anthology: Little Hope",
           "platform": "steam",
           "price": 14.62,
-          "currency": "CAD",
           "hours": 5.1,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 8,
@@ -919,13 +769,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Ori and the Blind Forest: Definitive Edition",
           "platform": "steam",
           "price": 6.24,
-          "currency": "CAD",
           "hours": 5.9,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 31,
@@ -937,13 +784,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Hollow Knight: Silksong",
           "platform": "playstation",
           "price": 29.96,
-          "currency": "CAD",
           "hours": 66.2,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -955,13 +799,10 @@
           "note": "100% Save file, all mementos"
         },
         {
-          "year": 2025,
           "title": "Spider-Man (2000)",
           "platform": "nintendo",
           "price": 0,
-          "currency": "CAD",
           "hours": 3.1,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -973,13 +814,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Ori and the Will of the Wisps",
           "platform": "steam",
           "price": 13.18,
-          "currency": "CAD",
           "hours": 9.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 18,
@@ -991,13 +829,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "FAITH: The Unholy Trinity",
           "platform": "steam",
           "price": 7.16,
-          "currency": "CAD",
           "hours": 5,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 16,
@@ -1009,13 +844,10 @@
           "note": "Played offline on Steam Deck, hours did not sync right (says 1 minute) - so playtime is guestimate based on player avg"
         },
         {
-          "year": 2025,
           "title": "Voices of the Void",
           "platform": "steam",
           "price": 0,
-          "currency": "CAD",
           "hours": 59.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -1027,13 +859,10 @@
           "note": "Played Pre - Alpha 0.8.2c until the achievement \"pre-alpha completed\" popped"
         },
         {
-          "year": 2025,
           "title": "Alien: Isolation",
           "platform": "playstation",
           "price": 14.84,
-          "currency": "CAD",
           "hours": 13,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 42,
@@ -1045,13 +874,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "TimeSplitters: Future Perfect",
           "platform": "playstation",
           "price": 3.74,
-          "currency": "CAD",
           "hours": 5,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 14,
@@ -1063,13 +889,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Risk of Rain 2: Alloyed Collective DLC",
           "platform": "steam",
           "price": 18.86,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1081,13 +904,10 @@
           "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
         },
         {
-          "year": 2025,
           "title": "Split Fiction",
           "platform": "playstation",
           "price": 74.36,
-          "currency": "CAD",
           "hours": 14,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 9,
@@ -1099,13 +919,10 @@
           "note": null
         },
         {
-          "year": 2025,
           "title": "Halo 3: ODST",
           "platform": "steam",
           "price": 0,
-          "currency": "CAD",
           "hours": null,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 24,
@@ -1132,13 +949,10 @@
       "year": 2026,
       "games": [
         {
-          "year": 2026,
           "title": "Fear & Hunger",
           "platform": "steam",
           "price": 6.98,
-          "currency": "CAD",
           "hours": 29.2,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -1150,13 +964,10 @@
           "note": "Endings A, B, C, C2, D, E"
         },
         {
-          "year": 2026,
           "title": "Iron Lung",
           "platform": "steam",
           "price": 7.56,
-          "currency": "CAD",
           "hours": 1,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 5,
@@ -1168,13 +979,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Marvel's Spider-Man 2",
           "platform": "playstation",
           "price": 56.93,
-          "currency": "CAD",
           "hours": 17,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1186,13 +994,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Exit 8",
           "platform": "steam",
           "price": 5.54,
-          "currency": "CAD",
           "hours": 0.75,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1204,13 +1009,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Fallout: New Vegas",
           "platform": "steam",
           "price": 4.99,
-          "currency": "CAD",
           "hours": 34.4,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 48,
@@ -1222,13 +1024,10 @@
           "note": "Hours approximate, picked up old save and did all DLCs + Yes Man ending"
         },
         {
-          "year": 2026,
           "title": "Slay the Spire",
           "platform": "steam",
           "price": 3.54,
-          "currency": "CAD",
           "hours": 227,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1240,13 +1039,10 @@
           "note": "Criteria for me was A20 wins on all characters"
         },
         {
-          "year": 2026,
           "title": "Another Crab's Treasure",
           "platform": "playstation",
           "price": 22.19,
-          "currency": "CAD",
           "hours": 15,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1258,13 +1054,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Slay the Spire 2",
           "platform": "steam",
           "price": 32.96,
-          "currency": "CAD",
           "hours": 111.9,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -1276,13 +1069,10 @@
           "note": "Criteria for me was A10 wins on all characters + an A10 win in multiplayer, will come back after early access"
         },
         {
-          "year": 2026,
           "title": "What Remains of Edith Finch",
           "platform": "playstation",
           "price": 0,
-          "currency": "CAD",
           "hours": 2,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1294,13 +1084,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Tiny Tina's Wonderlands",
           "platform": "playstation",
           "price": 106.55,
-          "currency": "CAD",
           "hours": 63,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1312,13 +1099,10 @@
           "note": "Started couch co-op with Nicole, but she dropped early on because split screen UI was dogshit"
         },
         {
-          "year": 2026,
           "title": "Backrooms: Escape Together",
           "platform": "steam",
           "price": 10.09,
-          "currency": "CAD",
           "hours": 4.1,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 9,
@@ -1330,13 +1114,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Fear & Hunger 2: Termina",
           "platform": "steam",
           "price": 10.48,
-          "currency": "CAD",
           "hours": 23.3,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -1348,13 +1129,10 @@
           "note": "Endings A & B - Couldn't find August on the night of day 2 in order to do ending C"
         },
         {
-          "year": 2026,
           "title": "DELTARUNE Chapter 5",
           "platform": "nintendo",
           "price": 0,
-          "currency": "CAD",
           "hours": 10,
-          "hoursApproximate": false,
           "completion": {
             "state": "not-applicable",
             "earned": null,
@@ -1366,13 +1144,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "Hades",
           "platform": "steam",
           "price": 12.27,
-          "currency": "CAD",
           "hours": 90.6,
-          "hoursApproximate": false,
           "completion": {
             "state": "achieved",
             "earned": null,
@@ -1384,13 +1159,10 @@
           "note": null
         },
         {
-          "year": 2026,
           "title": "The Dark Pictures Anthology: House of Ashes",
           "platform": "steam",
           "price": 29.29,
-          "currency": "CAD",
           "hours": 6.5,
-          "hoursApproximate": false,
           "completion": {
             "state": "partial",
             "earned": 8,
@@ -1404,1376 +1176,6 @@
       ],
       "reported": null,
       "topThree": []
-    }
-  ],
-  "games": [
-    {
-      "year": 2024,
-      "title": "Subnautica: Below Zero",
-      "platform": "steam",
-      "price": 26.79,
-      "currency": "CAD",
-      "hours": 14.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Horizon Forbidden West",
-      "platform": "playstation",
-      "price": 99.89,
-      "currency": "CAD",
-      "hours": 66,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Hours inaccurate - started in 2022 then dropped when Elden Ring released, picked up again in 2024"
-    },
-    {
-      "year": 2024,
-      "title": "Doom Eternal (+DLCs)",
-      "platform": "playstation",
-      "price": 33.29,
-      "currency": "CAD",
-      "hours": 22,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 36,
-        "total": 51,
-        "ratio": 0.7058823529411765
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "God of War Ragnarök: Valhalla DLC",
-      "platform": "playstation",
-      "price": 0,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Little Nightmares (+Secrets of the Maw DLC)",
-      "platform": "playstation",
-      "price": 9.99,
-      "currency": "CAD",
-      "hours": 9,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 11,
-        "total": 22,
-        "ratio": 0.5
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Little Nightmares II",
-      "platform": "playstation",
-      "price": 29.74,
-      "currency": "CAD",
-      "hours": 4,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 14,
-        "total": 35,
-        "ratio": 0.4
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Death's Door",
-      "platform": "playstation",
-      "price": 22.46,
-      "currency": "CAD",
-      "hours": 13,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Metroid Prime Remastered",
-      "platform": "nintendo",
-      "price": 55.49,
-      "currency": "CAD",
-      "hours": 15,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Marvel's Spider-Man Remastered",
-      "platform": "playstation",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 30,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Outer Wilds (+Echos of the Eye DLC)",
-      "platform": "steam",
-      "price": 36.61,
-      "currency": "CAD",
-      "hours": 44.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Paper Mario: The Origami King",
-      "platform": "nintendo",
-      "price": 83.99,
-      "currency": "CAD",
-      "hours": 30,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Borderlands 3 (+DLCs/Raid Bosses)",
-      "platform": "playstation",
-      "price": 127.19,
-      "currency": "CAD",
-      "hours": 107,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": true,
-      "replay": true,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Marvel's Spider-Man: Miles Morales",
-      "platform": "playstation",
-      "price": 95.39,
-      "currency": "CAD",
-      "hours": 14,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Resident Evil 2 (+Extra Modes)",
-      "platform": "steam",
-      "price": 79.99,
-      "currency": "CAD",
-      "hours": 37.8,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 31,
-        "total": 44,
-        "ratio": 0.7045454545454546
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Hours inaccurate - did Leon campgain, dropped for a year or two, picked up again in 2024"
-    },
-    {
-      "year": 2024,
-      "title": "Super Mario Galaxy",
-      "platform": "nintendo",
-      "price": 79.99,
-      "currency": "CAD",
-      "hours": 30,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Hours inaccurate - three games as part of 3D all stars sharing hours (64, Sunshine, and Galaxy)"
-    },
-    {
-      "year": 2024,
-      "title": "Luigi's Mansion 3",
-      "platform": "nintendo",
-      "price": 81.57,
-      "currency": "CAD",
-      "hours": 20,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Lies of P",
-      "platform": "playstation",
-      "price": 66.59,
-      "currency": "CAD",
-      "hours": 46,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Superhot VR",
-      "platform": "steam",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 1.25,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Resident Evil 3",
-      "platform": "steam",
-      "price": 52.79,
-      "currency": "CAD",
-      "hours": 5.7,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 20,
-        "total": 32,
-        "ratio": 0.625
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "DELTARUNE Chapter 1 & 2",
-      "platform": "nintendo",
-      "price": 32.99,
-      "currency": "CAD",
-      "hours": 9,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Elden Ring: Shadow of the Erdtree DLC",
-      "platform": "playstation",
-      "price": 59.37,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Half-Life: Alyx",
-      "platform": "steam",
-      "price": 29.43,
-      "currency": "CAD",
-      "hours": 10.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 29,
-        "total": 42,
-        "ratio": 0.6904761904761905
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Celeste: C Sides",
-      "platform": "nintendo",
-      "price": 26.24,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Super Mario 64",
-      "platform": "nintendo",
-      "price": 0,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": true,
-      "note": "Shares hours with Galaxy"
-    },
-    {
-      "year": 2024,
-      "title": "Risk of Rain 2: Seekers of the Storm DLC",
-      "platform": "steam",
-      "price": 18.86,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
-    },
-    {
-      "year": 2024,
-      "title": "Control (+DLCs)",
-      "platform": "playstation",
-      "price": 14.84,
-      "currency": "CAD",
-      "hours": 54,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Halo 3",
-      "platform": "steam",
-      "price": 27.74,
-      "currency": "CAD",
-      "hours": 8.8,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 19,
-        "total": 91,
-        "ratio": 0.2087912087912088
-      },
-      "coop": true,
-      "replay": true,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "Half-Life (+DLCs)",
-      "platform": "steam",
-      "price": 1.13,
-      "currency": "CAD",
-      "hours": 13,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2024,
-      "title": "The Legend of Zelda: Tears of the Kingdom",
-      "platform": "nintendo",
-      "price": 65,
-      "currency": "CAD",
-      "hours": 95,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Terraria: Calamity Mod",
-      "platform": "steam",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 86,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Ghost of Tsushima (+Iki Island DLC)",
-      "platform": "playstation",
-      "price": 41.95,
-      "currency": "CAD",
-      "hours": 86,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "The Binding of Isaac",
-      "platform": "steam",
-      "price": 54.41,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was triple dead god"
-    },
-    {
-      "year": 2025,
-      "title": "Unravel Two",
-      "platform": "nintendo",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Spelunky 2",
-      "platform": "steam",
-      "price": 12.64,
-      "currency": "CAD",
-      "hours": 100,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was completing Cosmic Ocean, hours inaccurate - approximate of what I played this year (~500 hrs all time)"
-    },
-    {
-      "year": 2025,
-      "title": "Remnant: From the Ashes",
-      "platform": "steam",
-      "price": 70.99,
-      "currency": "CAD",
-      "hours": 28,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 29,
-        "total": 50,
-        "ratio": 0.58
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Spelunky HD",
-      "platform": "playstation",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 47,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was all trophies (PS4 edition has no platinum trophy)"
-    },
-    {
-      "year": 2025,
-      "title": "Hollow Knight",
-      "platform": "playstation",
-      "price": 13.19,
-      "currency": "CAD",
-      "hours": 48,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": true,
-      "note": "Picked up an old 107% save that had 33 hours, finished the rest"
-    },
-    {
-      "year": 2025,
-      "title": "Tunic",
-      "platform": "playstation",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 31,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "My Time at Portia",
-      "platform": "nintendo",
-      "price": 37.79,
-      "currency": "CAD",
-      "hours": 50,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Aperture Desk Job",
-      "platform": "steam",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 0.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Half-Life 2 (+EP1 & EP2)",
-      "platform": "steam",
-      "price": 1.6,
-      "currency": "CAD",
-      "hours": 16.6,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 20,
-        "total": 69,
-        "ratio": 0.2898550724637681
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Stardew Valley",
-      "platform": "playstation",
-      "price": 19.99,
-      "currency": "CAD",
-      "hours": 54,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": true,
-      "replay": true,
-      "note": "Picked up old year 4 save Nicole and I played, took it to perfection"
-    },
-    {
-      "year": 2025,
-      "title": "DELTARUNE Chapters 3 & 4",
-      "platform": "nintendo",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 12,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Before Your Eyes",
-      "platform": "steam",
-      "price": 7.83,
-      "currency": "CAD",
-      "hours": 2.2,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 4,
-        "total": 11,
-        "ratio": 0.36363636363636365
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "DREDGE",
-      "platform": "steam",
-      "price": 37.17,
-      "currency": "CAD",
-      "hours": 21.8,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Lies of P: Overture DLC",
-      "platform": "playstation",
-      "price": 44.39,
-      "currency": "CAD",
-      "hours": 10,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Astro's Playroom",
-      "platform": "playstation",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 3,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "The Legend of Zelda: Ocarina of Time",
-      "platform": "nintendo",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 17,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "The Dark Pictures Anthology: Man of Medan",
-      "platform": "steam",
-      "price": 9.67,
-      "currency": "CAD",
-      "hours": 4.8,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 9,
-        "total": 30,
-        "ratio": 0.3
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "The Dark Pictures Anthology: Little Hope",
-      "platform": "steam",
-      "price": 14.62,
-      "currency": "CAD",
-      "hours": 5.1,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 8,
-        "total": 30,
-        "ratio": 0.26666666666666666
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Ori and the Blind Forest: Definitive Edition",
-      "platform": "steam",
-      "price": 6.24,
-      "currency": "CAD",
-      "hours": 5.9,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 31,
-        "total": 57,
-        "ratio": 0.543859649122807
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Hollow Knight: Silksong",
-      "platform": "playstation",
-      "price": 29.96,
-      "currency": "CAD",
-      "hours": 66.2,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "100% Save file, all mementos"
-    },
-    {
-      "year": 2025,
-      "title": "Spider-Man (2000)",
-      "platform": "nintendo",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 3.1,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Ori and the Will of the Wisps",
-      "platform": "steam",
-      "price": 13.18,
-      "currency": "CAD",
-      "hours": 9.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 18,
-        "total": 37,
-        "ratio": 0.4864864864864865
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "FAITH: The Unholy Trinity",
-      "platform": "steam",
-      "price": 7.16,
-      "currency": "CAD",
-      "hours": 5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 16,
-        "total": 32,
-        "ratio": 0.5
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Played offline on Steam Deck, hours did not sync right (says 1 minute) - so playtime is guestimate based on player avg"
-    },
-    {
-      "year": 2025,
-      "title": "Voices of the Void",
-      "platform": "steam",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 59.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Played Pre - Alpha 0.8.2c until the achievement \"pre-alpha completed\" popped"
-    },
-    {
-      "year": 2025,
-      "title": "Alien: Isolation",
-      "platform": "playstation",
-      "price": 14.84,
-      "currency": "CAD",
-      "hours": 13,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 42,
-        "total": 51,
-        "ratio": 0.8235294117647058
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "TimeSplitters: Future Perfect",
-      "platform": "playstation",
-      "price": 3.74,
-      "currency": "CAD",
-      "hours": 5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 14,
-        "total": 26,
-        "ratio": 0.5384615384615384
-      },
-      "coop": true,
-      "replay": true,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Risk of Rain 2: Alloyed Collective DLC",
-      "platform": "steam",
-      "price": 18.86,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was hitting E8 on DLC characters, DLC added achievements to get back to 100%"
-    },
-    {
-      "year": 2025,
-      "title": "Split Fiction",
-      "platform": "playstation",
-      "price": 74.36,
-      "currency": "CAD",
-      "hours": 14,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 9,
-        "total": 21,
-        "ratio": 0.42857142857142855
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2025,
-      "title": "Halo 3: ODST",
-      "platform": "steam",
-      "price": 0,
-      "currency": "CAD",
-      "hours": null,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 24,
-        "total": 97,
-        "ratio": 0.24742268041237114
-      },
-      "coop": true,
-      "replay": false,
-      "note": "Playtime stats don't show up for ODST for some reason"
-    },
-    {
-      "year": 2026,
-      "title": "Fear & Hunger",
-      "platform": "steam",
-      "price": 6.98,
-      "currency": "CAD",
-      "hours": 29.2,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Endings A, B, C, C2, D, E"
-    },
-    {
-      "year": 2026,
-      "title": "Iron Lung",
-      "platform": "steam",
-      "price": 7.56,
-      "currency": "CAD",
-      "hours": 1,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 5,
-        "total": 7,
-        "ratio": 0.7142857142857143
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Marvel's Spider-Man 2",
-      "platform": "playstation",
-      "price": 56.93,
-      "currency": "CAD",
-      "hours": 17,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Exit 8",
-      "platform": "steam",
-      "price": 5.54,
-      "currency": "CAD",
-      "hours": 0.75,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Fallout: New Vegas",
-      "platform": "steam",
-      "price": 4.99,
-      "currency": "CAD",
-      "hours": 34.4,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 48,
-        "total": 75,
-        "ratio": 0.64
-      },
-      "coop": false,
-      "replay": true,
-      "note": "Hours approximate, picked up old save and did all DLCs + Yes Man ending"
-    },
-    {
-      "year": 2026,
-      "title": "Slay the Spire",
-      "platform": "steam",
-      "price": 3.54,
-      "currency": "CAD",
-      "hours": 227,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was A20 wins on all characters"
-    },
-    {
-      "year": 2026,
-      "title": "Another Crab's Treasure",
-      "platform": "playstation",
-      "price": 22.19,
-      "currency": "CAD",
-      "hours": 15,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Slay the Spire 2",
-      "platform": "steam",
-      "price": 32.96,
-      "currency": "CAD",
-      "hours": 111.9,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Criteria for me was A10 wins on all characters + an A10 win in multiplayer, will come back after early access"
-    },
-    {
-      "year": 2026,
-      "title": "What Remains of Edith Finch",
-      "platform": "playstation",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 2,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Tiny Tina's Wonderlands",
-      "platform": "playstation",
-      "price": 106.55,
-      "currency": "CAD",
-      "hours": 63,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Started couch co-op with Nicole, but she dropped early on because split screen UI was dogshit"
-    },
-    {
-      "year": 2026,
-      "title": "Backrooms: Escape Together",
-      "platform": "steam",
-      "price": 10.09,
-      "currency": "CAD",
-      "hours": 4.1,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 9,
-        "total": 22,
-        "ratio": 0.4090909090909091
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Fear & Hunger 2: Termina",
-      "platform": "steam",
-      "price": 10.48,
-      "currency": "CAD",
-      "hours": 23.3,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": "Endings A & B - Couldn't find August on the night of day 2 in order to do ending C"
-    },
-    {
-      "year": 2026,
-      "title": "DELTARUNE Chapter 5",
-      "platform": "nintendo",
-      "price": 0,
-      "currency": "CAD",
-      "hours": 10,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "not-applicable",
-        "earned": null,
-        "total": null,
-        "ratio": null
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "Hades",
-      "platform": "steam",
-      "price": 12.27,
-      "currency": "CAD",
-      "hours": 90.6,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "achieved",
-        "earned": null,
-        "total": null,
-        "ratio": 1
-      },
-      "coop": false,
-      "replay": false,
-      "note": null
-    },
-    {
-      "year": 2026,
-      "title": "The Dark Pictures Anthology: House of Ashes",
-      "platform": "steam",
-      "price": 29.29,
-      "currency": "CAD",
-      "hours": 6.5,
-      "hoursApproximate": false,
-      "completion": {
-        "state": "partial",
-        "earned": 8,
-        "total": 30,
-        "ratio": 0.26666666666666666
-      },
-      "coop": true,
-      "replay": false,
-      "note": null
     }
   ]
 }

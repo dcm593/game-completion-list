@@ -30,7 +30,7 @@
 // from another, so which icon a cell holds is inferred purely from its
 // column. Keep co-op in E and replay in F.
 
-import { fontColor, matchSwatch, toHex } from "./colors.js";
+import { fontColor, matchSwatch } from "./colors.js";
 
 const COL = { PRICE: 0, TITLE: 1, HOURS: 2, TROPHY: 3, COOP: 4, REPLAY: 5 };
 const NOTE_MARKER = "<--";
@@ -55,14 +55,13 @@ export function parsePrice(raw) {
 
 // Hours are genuinely missing for some games (shared playtime, stats that
 // never synced) and once literally "5?". Coercing either to 0 would quietly
-// drag down every average, so absence stays absence.
+// drag down every average, so absence stays absence. A "?" or "~" marking a
+// guess is stripped rather than kept: nothing on the page shows a figure as
+// approximate.
 export function parseHours(raw) {
-  if (!raw) return { hours: null, hoursApproximate: false };
-  const approximate = /[?~]/.test(raw);
+  if (!raw) return null;
   const n = Number(raw.replace(/[?~\s]/g, ""));
-  return Number.isFinite(n)
-    ? { hours: n, hoursApproximate: approximate }
-    : { hours: null, hoursApproximate: true };
+  return Number.isFinite(n) ? n : null;
 }
 
 // ---------------------------------------------------------------- legend
@@ -139,33 +138,31 @@ function readCompletion(row) {
 // rather than trusting a fixed index.
 function extractNote(row) {
   const index = row.findIndex((c) => c?.formattedValue?.trim() === NOTE_MARKER);
-  if (index === -1) return { note: null };
+  if (index === -1) return null;
   const rest = row
     .slice(index + 1)
     .map((c) => c?.formattedValue?.trim() ?? "")
     .filter(Boolean);
-  return { note: rest.join(" ") || null };
+  return rest.join(" ") || null;
 }
 
 // ---------------------------------------------------------------- blocks
 
-function parseGame(row, { year, swatches }) {
+// A game's year is implied by the block it sits in, so it isn't repeated on
+// every record; adapt.js sets it when flattening. Prices are all CAD.
+function parseGame(row, swatches) {
   const title = value(row, COL.TITLE);
   if (!title) return null;
 
-  const { note } = extractNote(row);
-
   return {
-    year,
     title,
     platform: matchSwatch(fontColor(row[COL.TITLE]), swatches) ?? "unknown",
     price: parsePrice(value(row, COL.PRICE)),
-    currency: "CAD",
-    ...parseHours(value(row, COL.HOURS)),
+    hours: parseHours(value(row, COL.HOURS)),
     completion: readCompletion(row),
     coop: hasIcon(row[COL.COOP]),
     replay: hasIcon(row[COL.REPLAY]),
-    note,
+    note: extractNote(row),
   };
 }
 
@@ -195,7 +192,7 @@ export function parseSheet(grid) {
     );
     if (headerRow === -1) continue;
 
-    let totalsHeader = grid.findIndex(
+    const totalsHeader = grid.findIndex(
       (row, i) => i > headerRow && value(row, COL.PRICE) === "$$$ Total"
     );
     // The final year is still in progress: no totals row yet.
@@ -203,7 +200,7 @@ export function parseSheet(grid) {
 
     const games = [];
     for (let i = headerRow + 1; i < blockEnd; i += 1) {
-      const game = parseGame(grid[i], { year, swatches });
+      const game = parseGame(grid[i], swatches);
       if (game) games.push(game);
     }
 
@@ -226,8 +223,5 @@ export function parseSheet(grid) {
     r = blockEnd;
   }
 
-  return {
-    years,
-    games: years.flatMap((y) => y.games),
-  };
+  return { years };
 }

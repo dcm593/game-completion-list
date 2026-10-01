@@ -23,7 +23,7 @@ export const GRID_FIELDS = [
     // blank cell omits the key entirely, so this is what distinguishes the
     // trophy / co-op / replay icons from nothing at all.
     "userEnteredValue," +
-    "effectiveFormat(backgroundColor,textFormat/foregroundColor)" +
+    "effectiveFormat(textFormat/foregroundColor)" +
     ")",
 ].join(",");
 

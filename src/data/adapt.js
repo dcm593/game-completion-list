@@ -23,10 +23,12 @@ function completionFlags(game) {
   };
 }
 
-export function toDesignGame(game) {
+// games.json stores each game under its year rather than repeating the year
+// on every record, so the year is passed in.
+export function toDesignGame(game, year) {
   const { state, earned, total, ratio } = game.completion;
   return {
-    y: game.year,
+    y: year,
     t: game.title,
     p: game.price,
     h: game.hours,
@@ -46,7 +48,7 @@ export function toDesignGame(game) {
   };
 }
 
-export const GAMES = games.games.map(toDesignGame);
+export const GAMES = games.years.flatMap((y) => y.games.map((g) => toDesignGame(g, y.year)));
 
 export const YEARS = games.years.map((y) => {
   const hours = y.games.reduce((sum, g) => sum + (g.hours ?? 0), 0);
@@ -88,7 +90,7 @@ export const TOP3 = Object.fromEntries(
           // Stats come from the matched row, but the label stays exactly as
           // written in the sheet's Top 3 block.
           return match
-            ? { ...toDesignGame(match), t: title }
+            ? { ...toDesignGame(match, y.year), t: title }
             : { t: title, pl: "Steam", h: null, p: null, unresolved: true };
         })
       : // A year still in progress has no Top 3 yet.
