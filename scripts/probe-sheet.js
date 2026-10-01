@@ -1,17 +1,13 @@
-// Answers the one open question: do the trophy / co-op / replay images come
-// back from the API at all?
+// Dumps the raw, unmasked API response for chosen sheet rows.
 //
 //   npm run probe -- 18 22 30 33
 //
-// Prints every field of every cell in the given 1-based sheet rows, unmasked.
-// Pick rows whose flags you know by eye (row 18 Borderlands 3 has trophy +
-// couch + replay; row 30 Super Mario 64 has replay alone) and compare.
-//
-// If the images are in-cell, they surface here as a cell value or formula and
-// the parser can key on them. If these rows come back with empty cells that
-// carry only a background color, the images are over-cell drawings, the REST
-// API will never expose them, and we fall back to adding plain columns to the
-// sheet for co-op and replay.
+// Prints every field of every cell in the given 1-based rows, A through J.
+// The sync asks the API for only the handful of fields the parser reads
+// (scripts/lib/sheets-api.js); this asks for everything, which is how to work
+// out how the sheet encodes something new before teaching parse.js about it.
+// That is how the in-cell images were found to arrive as an empty
+// userEnteredValue - see the notes at the top of src/data/parse.js.
 
 import { getSpreadsheet } from "./lib/sheets-api.js";
 
