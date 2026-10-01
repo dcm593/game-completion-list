@@ -104,7 +104,7 @@ function content(game, rows, pile) {
         "div",
         { class: "hovercard-top" },
         h("div", { class: "dot" }),
-        h("div", { class: "hovercard-platform", text: platformOf(game.platform).short })
+        h("div", { class: "platform-label", text: platformOf(game.platform).short })
       ),
       h("div", { class: "hovercard-title", text: game.title }),
       rows.length

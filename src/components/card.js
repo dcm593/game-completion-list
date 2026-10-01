@@ -48,7 +48,7 @@ export function card(game, { onOpenNote }) {
       "div",
       { class: "card-top" },
       h("div", { class: "dot" }),
-      h("div", { class: "card-platform", text: platformOf(game.platform).short }),
+      h("div", { class: "platform-label", text: platformOf(game.platform).short }),
       game.platinum || game.fullClear
         ? h(
             "div",

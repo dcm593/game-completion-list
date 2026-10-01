@@ -18,15 +18,15 @@
 }
 
 .podium-place[data-rank="1"] {
-  --medal: oklch(0.8 0.13 85);
+  --rank-color: oklch(0.8 0.13 85);
 }
 
 .podium-place[data-rank="2"] {
-  --medal: oklch(0.8 0.02 260);
+  --rank-color: oklch(0.8 0.02 260);
 }
 
 .podium-place[data-rank="3"] {
-  --medal: oklch(0.68 0.1 55);
+  --rank-color: oklch(0.68 0.1 55);
 }
 
 .podium-card {
@@ -151,7 +151,7 @@
   font: 700 13px/1 var(--mono);
   letter-spacing: 0.04em;
   text-align: center;
-  color: var(--medal);
+  color: var(--rank-color);
 }
 
 .podium-place--first .podium-rank {
@@ -240,22 +240,28 @@
   z-index: 5;
 }
 
-.scatter-mark {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--d);
-  height: var(--d);
-  transform: translate(-50%, -50%);
+/* A plotted point and its numbered key below the plot are the same tinted
+   circle, so the key reads as the dot it names. */
+.scatter-mark,
+.outlier-num {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 99px;
-  cursor: default;
   font: 700 10px/1 var(--mono);
   color: var(--ink-bright);
   background: color-mix(in oklch, var(--pc) 35%, transparent);
   border: 1.5px solid var(--pc);
+}
+
+.scatter-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  transform: translate(-50%, -50%);
+  cursor: default;
   box-shadow: 0 0 16px color-mix(in oklch, var(--pc) 45%, transparent);
   transition:
     transform 0.13s ease,
@@ -285,14 +291,6 @@
   width: 20px;
   height: 20px;
   flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 99px;
-  font: 700 10px/1 var(--mono);
-  color: var(--ink-bright);
-  background: color-mix(in oklch, var(--pc) 35%, transparent);
-  border: 1.5px solid var(--pc);
 }
 
 .outlier-text {

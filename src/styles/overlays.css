@@ -44,10 +44,8 @@
   box-shadow: 0 0 8px var(--pc);
 }
 
-.hovercard-platform {
-  font: 500 8px/1 var(--mono);
-  letter-spacing: 0.12em;
-  color: rgba(233, 231, 228, 0.5);
+.hovercard .platform-label {
+  font-size: 8px;
 }
 
 .hovercard-title {
@@ -174,12 +172,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.note-platform {
-  font: 500 8.5px/1 var(--mono);
-  letter-spacing: 0.12em;
-  color: rgba(233, 231, 228, 0.5);
 }
 
 .note-year {

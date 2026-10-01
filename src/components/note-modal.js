@@ -42,7 +42,7 @@ export function noteModal(game, { onClose }) {
           "div",
           { class: "note-top" },
           h("div", { class: "dot" }),
-          h("div", { class: "note-platform", text: platformOf(game.platform).short }),
+          h("div", { class: "platform-label", text: platformOf(game.platform).short }),
           h("div", { class: "note-year", text: String(game.year) })
         ),
         h("div", { class: "note-title", text: game.title }),

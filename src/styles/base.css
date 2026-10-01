@@ -21,10 +21,18 @@
   --mono: "JetBrains Mono", monospace;
   --sans: "Space Grotesk", system-ui, sans-serif;
 
-  /* Side padding of the page, and how far below the top a jumped-to year
-     lands - clear of whatever is pinned there. */
+  /* Side padding of the page. */
   --gutter: 40px;
-  --scroll-offset: 116px;
+
+  /* The sticky desktop header's rendered height: 16px of padding above and
+     below its stat tiles, plus a 1px border. The rail pins itself below it
+     and jumped-to years land below it, so if the header's contents change
+     height, update this one value. */
+  --header-h: 70px;
+
+  /* How far below the top a jumped-to year lands - clear of whatever is
+     pinned there. */
+  --scroll-offset: calc(var(--header-h) + 46px);
 }
 
 /* Reserve the scrollbar's space permanently. Opening a note locks body
@@ -56,17 +64,8 @@ button {
   font-family: inherit;
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  color: oklch(0.8 0.1 254);
-}
-
 ::selection {
-  background: oklch(0.7 0.13 254 / 0.35);
+  background: color-mix(in oklch, var(--accent) 35%, transparent);
 }
 
 /* -------------------------------------------------------------- primitives */
@@ -99,6 +98,13 @@ a:hover {
   border-radius: 99px;
   background: var(--pc);
   box-shadow: 0 0 10px var(--pc);
+}
+
+/* A platform's name, as the grid card, note and hover card print it. */
+.platform-label {
+  font: 500 8.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 231, 228, 0.5);
 }
 
 .icon {

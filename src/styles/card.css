@@ -1,7 +1,7 @@
 /* Grid cards - see src/components/card.js. */
 
 .card {
-  --medal: 22px;
+  --medal-size: 22px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -45,13 +45,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: var(--medal);
-}
-
-.card-platform {
-  font: 500 8.5px/1 var(--mono);
-  letter-spacing: 0.12em;
-  color: rgba(233, 231, 228, 0.5);
+  min-height: var(--medal-size);
 }
 
 .card-medals {
@@ -61,8 +55,8 @@
 }
 
 .medal {
-  width: var(--medal);
-  height: var(--medal);
+  width: var(--medal-size);
+  height: var(--medal-size);
   flex: none;
   display: flex;
   align-items: center;
@@ -191,7 +185,7 @@
    keeps a fraction like "38/51 · 74%" on one line at this width. */
 @media (max-width: 720px) {
   .card {
-    --medal: 18px;
+    --medal-size: 18px;
     border-radius: 11px;
   }
 
@@ -204,7 +198,7 @@
     gap: 6px;
   }
 
-  .card-platform {
+  .card .platform-label {
     font-size: 8px;
     letter-spacing: 0.1em;
   }

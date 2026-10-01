@@ -140,7 +140,7 @@ function grid(g, freeCount) {
 function dot(game, { size, key, atX, atY }) {
   const rate = costPerHour(game);
 
-  const mark = h("div", { class: "scatter-mark", style: { "--d": `${size}px` } }, key ?? "");
+  const mark = h("div", { class: "scatter-mark", style: { "--dot-size": `${size}px` } }, key ?? "");
 
   const anchor = h(
     "div",
