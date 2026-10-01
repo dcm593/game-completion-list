@@ -98,14 +98,12 @@ function grid(g, freeCount) {
     { r: 5, l: "$5/h" },
   ];
   for (const { r, l } of RATES) {
-    const seg = [];
-    for (let hours = HOURS.min; hours <= HOURS.max; hours *= 1.6) {
-      const price = r * hours;
-      if (price >= PRICE.min && price <= PRICE.max) seg.push([X(hours), Y(price)]);
-    }
-    if (seg.length < 2) continue;
-    const [x1, y1] = seg[0];
-    const [x2, y2] = seg[seg.length - 1];
+    // price = r * hours is a straight line on log-log axes, so each diagonal
+    // runs exactly between the two points where it meets the plot's edges.
+    const from = Math.max(HOURS.min, PRICE.min / r);
+    const to = Math.min(HOURS.max, PRICE.max / r);
+    if (from >= to) continue;
+    const [x1, y1, x2, y2] = [X(from), Y(r * from), X(to), Y(r * to)];
     kids.push(s("line", { class: "plot-rate", x1, y1, x2, y2 }));
     kids.push(
       s("text", { class: "plot-rate-label", x: x2 - 6, y: y2 - 8, "text-anchor": "end" }, l)
@@ -126,7 +124,7 @@ function grid(g, freeCount) {
   }
 
   kids.push(s("text", { class: "plot-axis", x: g.L, y: g.H - 8 }, "HOURS PLAYED"));
-  const mid = (g.T + g.PLOT_H) / 2;
+  const mid = g.T + g.PLOT_H / 2;
   kids.push(
     s("text", {
       class: "plot-axis", x: g.Y_TITLE_X, y: mid, "text-anchor": "middle",
@@ -203,7 +201,8 @@ export function scatter(games) {
       h("div", {
         class: "chart-desc",
         text:
-          "Log-log. Dashed diagonals are constant cost-per-hour; numbered points are the best and worst value of the year. " +
+          "Log-log. Dashed diagonals are constant cost-per-hour; numbered points cost under " +
+          `${formatRate(RATE_BARGAIN)} or over ${formatRate(RATE_STEEP)}. ` +
           "Free games sit in their own lane, since a log axis has no zero." +
           missing,
       })
