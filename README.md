@@ -16,9 +16,9 @@ npm install
 
 | Command         | What it does                                                        |
 | --------------- | ------------------------------------------------------------------- |
-| `npm run build` | Bundles `src/` into `dist/` (development mode, source maps).         |
+| `npm run build` | Bundles `src/` into `dist/` (production mode, minified, no source maps). |
 | `npm run dev`   | Starts the dev server with live reload at http://localhost:8080.    |
-| `npm run deploy`| Pushes the `dist/` folder to a `gh-pages` branch (build first).     |
+| `npm run deploy`| Builds, then pushes `dist/` to the `gh-pages` branch.               |
 
 ## Project structure
 
