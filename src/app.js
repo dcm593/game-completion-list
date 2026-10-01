@@ -251,7 +251,7 @@ function rail() {
             h("div", { class: "rail-year-num", text: String(y.year) }),
             yearTag(y, { short: true })
           ),
-          h("div", { class: "rail-year-sub", text: `${y.count} games - ${y.hoursLabel} h` })
+          h("div", { class: "rail-year-sub", text: `${y.count} games - ${y.hoursLabel}h` })
         )
       )
     ),

@@ -1,11 +1,10 @@
 // How hours, prices and value read on the page, in one place so a game reads
 // the same wherever it appears, plus the thresholds that grade value.
 
-// "14.5h". The card and note stat rows set the unit apart ("14.5 h") with
-// `spaced`. `missing` is what a game with no recorded hours shows instead.
-export function formatHours(hours, { missing = "—", spaced = false } = {}) {
-  if (hours == null) return missing;
-  return spaced ? `${hours} h` : `${hours}h`;
+// "14.5h" everywhere hours appear. `missing` is what a game with no recorded
+// hours shows instead.
+export function formatHours(hours, { missing = "—" } = {}) {
+  return hours == null ? missing : `${hours}h`;
 }
 
 // "$26.79", or "free" for a game that cost nothing. `whole` rounds to the

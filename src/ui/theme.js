@@ -21,9 +21,9 @@ export const platformOf = (slug) => PLAT[slug] ?? UNKNOWN;
 // The order platforms are listed in the rail, summary and hour bands.
 export const ORDER = ["nintendo", "playstation", "steam"];
 
-// Filter chips. These follow the original mockup's order rather than ORDER;
-// use ["all", ...ORDER] if they should match the rest of the page.
-export const CHIPS = ["all", "playstation", "steam", "nintendo"];
+// Filter chips: "all", then the platforms in the same order as everywhere
+// else on the page.
+export const CHIPS = ["all", ...ORDER];
 export const chipLabel = (chip) => (chip === "all" ? "All" : PLAT[chip].name);
 
 // Sets a platform's colour on an element for the stylesheet to tint with.

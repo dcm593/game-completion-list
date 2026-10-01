@@ -12,7 +12,7 @@ export function gameStats(game, { graded = false } = {}) {
   return h(
     "div",
     { class: "game-stats" },
-    h("div", { class: "game-hours", text: formatHours(game.hours, { missing: "n/a", spaced: true }) }),
+    h("div", { class: "game-hours", text: formatHours(game.hours, { missing: "n/a" }) }),
     h("div", { class: "game-price", text: formatPrice(game.price) }),
     rate == null
       ? null
