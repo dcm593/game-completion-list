@@ -9,9 +9,8 @@ import { gameStats } from "./game-stats.js";
 // height of its own row, so reading one note rearranged the grid around it.
 // An overlay leaves the layout untouched.
 //
-// Closes on the backdrop, the close button, and Escape. The Escape handler
-// lives in app.js, since render() rebuilds this element on every state change
-// and a listener added here would stack up.
+// Closes on the backdrop, the close button, and Escape. Escape and the focus
+// handling live in app.js, which opens and closes this.
 export function noteModal(game, { onClose }) {
   return h(
     "div",
@@ -26,6 +25,9 @@ export function noteModal(game, { onClose }) {
       {
         role: "dialog",
         "aria-modal": "true",
+        // Focusable so it can take focus on open without putting a focus ring
+        // on the close button for mouse users.
+        tabindex: "-1",
         "aria-label": `Note for ${game.title}`,
         onclick: (event) => event.stopPropagation(),
         class: "note",

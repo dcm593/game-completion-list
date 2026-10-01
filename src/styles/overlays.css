@@ -12,7 +12,8 @@
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
-  transform: translateZ(0);
+  /* Positioned by a transform from hover-card.js. */
+  will-change: transform;
   transition: opacity 0.12s ease;
   border-radius: 11px;
   background: var(--surface);
@@ -103,6 +104,13 @@
   padding: 24px;
   background: rgba(6, 6, 9, 0.72);
   backdrop-filter: blur(6px);
+}
+
+/* The dialog takes focus when it opens (for screen readers and the Tab trap
+   in app.js); the ring belongs on its close button, not around the whole
+   thing. */
+.note:focus {
+  outline: none;
 }
 
 .note {

@@ -1,6 +1,6 @@
-import { h, clear, cx } from "./ui/dom.js";
+import { h, cx } from "./ui/dom.js";
 import { platformOf, ORDER, CHIPS, chipLabel, tint } from "./ui/theme.js";
-import { GAMES, YEARS, TOTALS, COUNTS } from "./data/adapt.js";
+import { YEARS, TOTALS, COUNTS } from "./data/adapt.js";
 import { card } from "./components/card.js";
 import { noteModal } from "./components/note-modal.js";
 import { hideHoverCard } from "./components/hover-card.js";
@@ -10,37 +10,17 @@ import { podium } from "./views/podium.js";
 import { scatter } from "./views/scatter.js";
 import { timeline } from "./views/timeline.js";
 
+// How the page updates: the header, year bar and rail never change, so they
+// are built once. Each year section owns its tab and filter, and a click
+// swaps out only the part it affects - the view inside the panel, or the card
+// grid - so the buttons themselves persist and keep keyboard focus. The note
+// renders into a container of its own. No diffing layer is needed for that.
+
 const VIEWS = [
-  { key: "podium", label: "Podium", short: "Podium" },
-  { key: "scatter", label: "Value scatter", short: "Scatter" },
-  { key: "timeline", label: "Platform hours", short: "Hours" },
+  { key: "podium", label: "Podium", short: "Podium", render: (year) => podium(year.top3) },
+  { key: "scatter", label: "Value scatter", short: "Scatter", render: (year) => scatter(year.games) },
+  { key: "timeline", label: "Platform hours", short: "Hours", render: (year) => timeline(year.games) },
 ];
-
-// Whole-page re-render on interaction. The dataset is 76 rows and every view
-// is pure, so this stays well under a frame and avoids a diffing layer.
-const state = { view: {}, chip: {}, open: null };
-
-function set(patch) {
-  Object.assign(state, patch);
-  render();
-}
-
-const viewOf = (year) => state.view[year] ?? "podium";
-const chipOf = (year) => state.chip[year] ?? "all";
-
-const openGame = () => GAMES.find((g) => `${g.year}:${g.title}` === state.open) ?? null;
-const closeNote = () => set({ open: null });
-
-// Bound once, not per render: render() rebuilds the whole tree on every state
-// change, so a listener attached alongside the modal would stack up one copy
-// per open.
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && state.open) closeNote();
-});
-
-// The stylesheet reflows everything else on its own; the scatter's geometry
-// is computed in JS, so crossing the phone breakpoint needs a redraw.
-onNarrowChange(() => render());
 
 // Where it lands is the section's scroll-margin-top, which the stylesheet
 // sets to clear whatever is pinned to the top at the current width.
@@ -50,9 +30,9 @@ function jump(year) {
 
 // ------------------------------------------------------------ current year
 
-// The year being read is marked in the rail and the year bar. Kept out of
-// state on purpose: it changes as the page scrolls, and a full re-render per
-// scroll frame would be wasteful, so this just toggles a class on the buttons.
+// The year being read is marked in the rail and the year bar. It changes as
+// the page scrolls, so this toggles a class on the buttons on each frame that
+// scrolled rather than rebuilding anything.
 
 // How far past its landing point a year's top can sit and still count as
 // being read - so the next year takes over as its heading nears the top,
@@ -96,7 +76,40 @@ function queueMark() {
 window.addEventListener("scroll", queueMark, { passive: true });
 window.addEventListener("resize", queueMark);
 
-const platformCount = (slug) => COUNTS.platform[slug] ?? 0;
+// -------------------------------------------------------------------- note
+
+const noteRoot = h("div");
+let returnFocus = null;
+
+function openNote(game) {
+  hideHoverCard();
+  // Whatever opened the note gets focus back when it closes, so a keyboard
+  // user lands where they left off.
+  returnFocus = document.activeElement;
+  const modal = noteModal(game, { onClose: closeNote });
+  noteRoot.replaceChildren(modal);
+  document.body.classList.add("is-locked");
+  modal.querySelector("[role=dialog]").focus();
+}
+
+function closeNote() {
+  if (!noteRoot.firstChild) return;
+  noteRoot.replaceChildren();
+  document.body.classList.remove("is-locked");
+  returnFocus?.focus?.();
+  returnFocus = null;
+}
+
+// Escape closes the note. The close button is the dialog's only control, so
+// Tab stays on it rather than wandering into the page behind.
+document.addEventListener("keydown", (event) => {
+  if (!noteRoot.firstChild) return;
+  if (event.key === "Escape") closeNote();
+  if (event.key === "Tab") {
+    event.preventDefault();
+    noteRoot.querySelector(".note-close").focus();
+  }
+});
 
 // ------------------------------------------------------------------- stats
 
@@ -132,8 +145,6 @@ function stats([games, hours, ...price], extraClass) {
 // ------------------------------------------------------------------ header
 
 function header() {
-  const { games: totalGames, hours: totalHours, spend: totalSpend } = TOTALS;
-
   return h(
     "div",
     { class: "header" },
@@ -147,10 +158,10 @@ function header() {
         h("div", { class: "brand-sub", text: "COMPLETION LOG" })
       ),
       stats([
-        { label: "TOTAL GAMES", value: String(totalGames), unit: "beaten" },
-        { label: "TOTAL HOURS", value: totalHours.toLocaleString(), unit: "played" },
-        { label: "TOTAL SPEND", value: `$${totalSpend.toLocaleString()}`, unit: "CAD" },
-        { label: "AVG COST / HOUR", value: `$${(totalSpend / totalHours).toFixed(2)}` },
+        { label: "TOTAL GAMES", value: String(TOTALS.games), unit: "beaten" },
+        { label: "TOTAL HOURS", value: TOTALS.hours.toLocaleString(), unit: "played" },
+        { label: "TOTAL SPEND", value: `$${TOTALS.spend.toLocaleString()}`, unit: "CAD" },
+        { label: "AVG COST / HOUR", value: `$${(TOTALS.spend / TOTALS.hours).toFixed(2)}` },
       ]),
       summary()
     )
@@ -158,6 +169,8 @@ function header() {
 }
 
 // ----------------------------------------------------------------- summary
+
+const platformCount = (slug) => COUNTS.platform[slug] ?? 0;
 
 // The rail's platform and completion counts, carried in the header on screens
 // too narrow for the rail (the stylesheet hides it otherwise). Platforms sit
@@ -181,8 +194,8 @@ function summary() {
     h(
       "div",
       { class: "summary-side" },
-      ORDER.map((name) =>
-        summaryItem(platformOf(name).short, h("div", { class: "dot" }), platformCount(name), tint(name))
+      ORDER.map((slug) =>
+        summaryItem(platformOf(slug).short, h("div", { class: "dot" }), platformCount(slug), tint(slug))
       )
     ),
     h("div", { class: "summary-divider" }),
@@ -211,7 +224,7 @@ function yearBar() {
           "button",
           { class: "yearbar-btn", "data-year": y.year, onclick: () => jump(y.year) },
           h("span", { class: "yearbar-year", text: String(y.year) }),
-          yearTag(y, true)
+          yearTag(y, { short: true })
         )
       )
     )
@@ -226,8 +239,8 @@ function rail() {
     { class: "rail" },
     h("div", { class: "label", text: "JUMP TO YEAR" }),
     h(
-      "div",
-      { class: "rail-years" },
+      "nav",
+      { class: "rail-years", "aria-label": "Jump to year" },
       YEARS.map((y) =>
         h(
           "button",
@@ -236,7 +249,7 @@ function rail() {
             "div",
             { class: "rail-year-head" },
             h("div", { class: "rail-year-num", text: String(y.year) }),
-            yearTag(y, true)
+            yearTag(y, { short: true })
           ),
           h("div", { class: "rail-year-sub", text: `${y.count} games - ${y.hoursLabel} h` })
         )
@@ -247,13 +260,13 @@ function rail() {
       "div",
       { class: "rail-group" },
       h("div", { class: "label", text: "PLATFORMS" }),
-      ORDER.map((name) =>
+      ORDER.map((slug) =>
         h(
           "div",
-          { class: "rail-row", style: tint(name) },
+          { class: "rail-row", style: tint(slug) },
           h("div", { class: "dot" }),
-          h("div", { class: "rail-name", text: platformOf(name).short }),
-          h("div", { class: "rail-count", text: String(platformCount(name)) })
+          h("div", { class: "rail-name", text: platformOf(slug).short }),
+          h("div", { class: "rail-count", text: String(platformCount(slug)) })
         )
       )
     ),
@@ -278,8 +291,9 @@ function counter(glyph, text, count) {
   );
 }
 
-// `short` gives the rail's done/live wording rather than the full tag.
-function yearTag(year, short = false) {
+// `short` gives the rail and year bar's done/live wording rather than the
+// full tag.
+function yearTag(year, { short = false } = {}) {
   const done = year.tag === "complete";
   const text = short ? (done ? "done" : "live") : year.tag;
   return h("div", { class: cx("tag", done ? "tag--done" : "tag--live"), text });
@@ -287,20 +301,66 @@ function yearTag(year, short = false) {
 
 // ----------------------------------------------------------------- section
 
+// Change against the previous year, as "+12%".
+function delta(current, before) {
+  if (!before) return {};
+  const d = Math.round(((current - before) / before) * 100);
+  return { delta: `${d >= 0 ? "+" : ""}${d}%`, up: d >= 0 };
+}
+
+// Swaps `node` for `next` in the page and returns `next`, so a section can
+// keep a reference to whatever currently fills a slot.
+function swap(node, next) {
+  node.replaceWith(next);
+  return next;
+}
+
 function yearSection(year, index) {
-  const view = viewOf(year.year);
-  const chip = chipOf(year.year);
-  const all = year.games;
-  const shown = all.filter((g) => chip === "all" || g.platform === chip);
   const prev = YEARS[index - 1];
+  let view = VIEWS[0];
+  let chip = CHIPS[0];
 
-  const delta = (current, before) => {
-    if (!before) return {};
-    const d = Math.round(((current - before) / before) * 100);
-    return { delta: `${d >= 0 ? "+" : ""}${d}%`, up: d >= 0 };
-  };
+  const tabs = VIEWS.map((v) =>
+    h(
+      "button",
+      { class: "tab", onclick: () => showView(v) },
+      h("span", { class: "tab-long", text: v.label }),
+      h("span", { class: "tab-short", text: v.short })
+    )
+  );
 
-  return h(
+  const chips = CHIPS.map((c) =>
+    h("button", { class: "chip", onclick: () => filter(c), text: chipLabel(c) })
+  );
+
+  // Placeholders until the first showView() / filter() below fills them.
+  const meta = h("div", { class: "year-meta" });
+  let viewNode = h("div");
+  let gridNode = h("div");
+
+  // Leaving a view removes whatever is under the cursor, and a removed element
+  // never fires pointerleave - so its hover card would hang around.
+  function showView(next) {
+    view = next;
+    hideHoverCard();
+    tabs.forEach((tab, i) => markActive(tab, VIEWS[i] === view));
+    viewNode = swap(viewNode, view.render(year));
+  }
+
+  function filter(next) {
+    chip = next;
+    chips.forEach((button, i) => markActive(button, CHIPS[i] === chip));
+    const shown = year.games.filter((g) => chip === "all" || g.platform === chip);
+    meta.replaceChildren(
+      `${shown.length} of ${year.count} games - `,
+      h("span", { class: "hover-only", text: "click" }),
+      h("span", { class: "touch-only", text: "tap" }),
+      " a card for its sheet note"
+    );
+    gridNode = swap(gridNode, h("div", { class: "grid" }, shown.map((game) => card(game, { onOpenNote: () => openNote(game) }))));
+  }
+
+  const node = h(
     "div",
     { id: `y${year.year}`, class: "year" },
     h(
@@ -308,14 +368,7 @@ function yearSection(year, index) {
       { class: "year-head" },
       h("div", { class: "year-title", text: String(year.year) }),
       yearTag(year),
-      h(
-        "div",
-        { class: "year-meta" },
-        `${shown.length} of ${all.length} games - `,
-        h("span", { class: "hover-only", text: "click" }),
-        h("span", { class: "touch-only", text: "tap" }),
-        " a card for its sheet note"
-      )
+      meta
     ),
 
     stats(
@@ -328,65 +381,33 @@ function yearSection(year, index) {
       "year-stats"
     ),
 
-    h(
-      "div",
-      { class: "panel" },
-      h(
-        "div",
-        { class: "tabs" },
-        VIEWS.map((v) =>
-          h(
-            "button",
-            {
-              class: cx("tab", view === v.key && "is-active"),
-              onclick: () => set({ view: { ...state.view, [year.year]: v.key } }),
-            },
-            h("span", { class: "tab-long", text: v.label }),
-            h("span", { class: "tab-short", text: v.short })
-          )
-        )
-      ),
-      view === "podium" ? podium(year.top3) : null,
-      view === "scatter" ? scatter(all) : null,
-      view === "timeline" ? timeline(all) : null
-    ),
-
-    h(
-      "div",
-      { class: "chips" },
-      CHIPS.map((c) =>
-        h("button", {
-          class: cx("chip", chip === c && "is-active"),
-          onclick: () => set({ chip: { ...state.chip, [year.year]: c } }),
-          text: chipLabel(c),
-        })
-      )
-    ),
-
-    h(
-      "div",
-      { class: "grid" },
-      shown.map((game) =>
-        card(game, { onOpenNote: () => set({ open: `${game.year}:${game.title}` }) })
-      )
-    )
+    h("div", { class: "panel" }, h("div", { class: "tabs" }, tabs), viewNode),
+    h("div", { class: "chips" }, chips),
+    gridNode
   );
+
+  showView(view);
+  filter(chip);
+
+  return {
+    node,
+    // The scatter's geometry is computed in JS, so it is the one view that
+    // needs redrawing when the phone breakpoint is crossed.
+    redrawScatter: () => view.key === "scatter" && showView(view),
+  };
 }
 
-// ------------------------------------------------------------------ render
+function markActive(button, active) {
+  button.classList.toggle("is-active", active);
+  button.setAttribute("aria-pressed", String(active));
+}
 
-export function render() {
-  const root = document.getElementById("app");
-  const note = openGame();
+// ------------------------------------------------------------------- mount
 
-  // Switching view or filter removes whatever is under the cursor, and a
-  // removed element never fires mouseleave - so the card would hang around.
-  hideHoverCard();
+export function mount() {
+  const sections = YEARS.map((year, i) => yearSection(year, i));
 
-  document.body.classList.toggle("is-locked", Boolean(note));
-
-  clear(root);
-  root.append(
+  document.getElementById("app").replaceChildren(
     h(
       "div",
       { class: "page" },
@@ -396,15 +417,14 @@ export function render() {
         "div",
         { class: "layout" },
         rail(),
-        h("div", { class: "main" }, YEARS.map((year, i) => yearSection(year, i)))
+        h("div", { class: "main" }, sections.map((s) => s.node))
       )
-    )
+    ),
+    // After the page, so the note stacks above it without the sticky header
+    // or rail needing to know about it.
+    noteRoot
   );
 
-  // Appended after the page so it stacks above it without the sticky header
-  // or rail needing to know about it.
-  if (note) root.append(noteModal(note, { onClose: closeNote }));
-
-  // The rebuilt year buttons start unmarked.
+  onNarrowChange(() => sections.forEach((s) => s.redrawScatter()));
   markCurrentYear();
 }

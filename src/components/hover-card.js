@@ -1,13 +1,12 @@
-import { h, clear } from "../ui/dom.js";
+import { h } from "../ui/dom.js";
 import { platformOf } from "../ui/theme.js";
 import { cover } from "./cover.js";
 
 // A small card that follows the cursor over the scatter and hour bands, or
 // on a touch screen, appears where one was tapped.
 //
-// Deliberately outside the app's state: every interaction there triggers a
-// full re-render, which is fine for a click but not for mousemove. This owns
-// one element, mutates it directly, and never touches state.
+// It owns one element and mutates it directly, since it moves on every
+// pointermove and nothing else on the page needs to know.
 //
 // It lives on document.body rather than inside the plot so it can't be clipped
 // by the band track's overflow or the plot's bounds, and is positioned fixed
@@ -17,6 +16,11 @@ const OFFSET = 16;
 const EDGE = 10;
 
 let card = null;
+
+// The card's size for its current content, measured once when it is shown.
+// Reading offsetWidth on every pointermove, right after the previous move
+// wrote a position, would force a layout per event.
+let size = { width: 0, height: 0 };
 
 // What the card is showing for: the target, its onHover callback, and
 // whether it was pinned by a tap rather than following a mouse.
@@ -72,10 +76,10 @@ window.addEventListener(
   { passive: true }
 );
 
+// Moved with a transform rather than left/top, so following the pointer
+// never triggers layout.
 function place(x, y) {
-  const el = element();
-  const width = el.offsetWidth || 212;
-  const height = el.offsetHeight || 150;
+  const { width, height } = size;
 
   // Flip to the other side of the cursor rather than letting the card run off
   // screen - dots near the right edge of the plot would otherwise be unusable.
@@ -84,8 +88,7 @@ function place(x, y) {
   if (left + width > window.innerWidth - EDGE) left = x - OFFSET - width;
   if (top + height > window.innerHeight - EDGE) top = y - OFFSET - height;
 
-  el.style.left = `${Math.max(EDGE, left)}px`;
-  el.style.top = `${Math.max(EDGE, top)}px`;
+  element().style.transform = `translate3d(${Math.max(EDGE, left)}px, ${Math.max(EDGE, top)}px, 0)`;
 }
 
 // `rows` is [[label, value], ...] shown under the title. `pile`, when the
@@ -133,10 +136,10 @@ function show(target, event, pinned, stack) {
   const { game, rows, onHover } = registry.get(target);
   const pile = stack.length > 1 ? { index: stack.indexOf(target), count: stack.length, pinned } : null;
   const el = element();
-  clear(el);
   el.style.setProperty("--pc", platformOf(game.platform).color);
-  for (const node of content(game, rows, pile)) el.append(node);
+  el.replaceChildren(...content(game, rows, pile));
   el.classList.add("is-shown");
+  size = { width: el.offsetWidth, height: el.offsetHeight };
   place(event.clientX, event.clientY);
   active = { target, onHover, pinned };
   onHover?.(true);

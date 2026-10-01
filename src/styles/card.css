@@ -177,8 +177,8 @@
   color: var(--warn);
 }
 
-/* Rendered even when empty. 43 of 76 cards carry no badges, and letting the
-   row collapse was the largest source of misalignment across a grid. */
+/* Rendered even when empty. Over half the cards carry no badges, and letting
+   the row collapse was the largest source of misalignment across a grid. */
 .card-badges {
   display: flex;
   flex-wrap: wrap;

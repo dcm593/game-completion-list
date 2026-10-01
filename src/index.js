@@ -1,4 +1,4 @@
 import "./styles/index.css";
-import { render } from "./app.js";
+import { mount } from "./app.js";
 
-render();
+mount();

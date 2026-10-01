@@ -29,6 +29,8 @@ function medal(title, glyph) {
 
 // Cards with a note are clickable and open it in an overlay; the note is not
 // rendered here, so a card's height never depends on whether it is open.
+// They are reachable by keyboard too: focusable, and opened by Enter or Space
+// like the button they act as.
 export function card(game, { onOpenNote }) {
   const { percent, tone, text } = completionParts(game);
   const { detail } = game.completion;
@@ -90,13 +92,23 @@ export function card(game, { onOpenNote }) {
     )
   );
 
+  const opensNote = game.note
+    ? {
+        role: "button",
+        tabindex: "0",
+        "aria-haspopup": "dialog",
+        onclick: onOpenNote,
+        onkeydown: (event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          onOpenNote();
+        },
+      }
+    : {};
+
   return h(
     "div",
-    {
-      class: cx("card", game.note && "card--note"),
-      style: tint(game.platform),
-      onclick: game.note ? onOpenNote : null,
-    },
+    { class: cx("card", game.note && "card--note"), style: tint(game.platform), ...opensNote },
     cover(game, { lazy: true }),
     body
   );

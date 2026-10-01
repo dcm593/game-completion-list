@@ -45,7 +45,3 @@ function append(el, children) {
     el.append(child instanceof Node ? child : document.createTextNode(String(child)));
   }
 }
-
-export function clear(el) {
-  while (el.firstChild) el.firstChild.remove();
-}

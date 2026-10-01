@@ -15,7 +15,8 @@ export function cover(game, { lazy = false } = {}) {
       ? h("img", {
           src: game.art,
           alt: "",
-          // 76 images on one page: the grid defers everything below the fold.
+          // Every game's art is on one page: the grid defers everything below
+          // the fold.
           loading: lazy ? "lazy" : null,
           decoding: "async",
         })
