@@ -17,7 +17,7 @@ import { timeline } from "./views/timeline.js";
 // renders into a container of its own. No diffing layer is needed for that.
 
 const VIEWS = [
-  { key: "podium", label: "Podium", short: "Podium", render: (year) => podium(year.top3) },
+  { key: "podium", label: "Podium", short: "Podium", render: (year, index) => podium(year.top3, { lazy: index > 0 }) },
   { key: "scatter", label: "Value scatter", short: "Scatter", render: (year) => scatter(year.games) },
   { key: "timeline", label: "Platform hours", short: "Hours", render: (year) => timeline(year.games) },
 ];
@@ -344,7 +344,7 @@ function yearSection(year, index) {
     view = next;
     hideHoverCard();
     tabs.forEach((tab, i) => markActive(tab, VIEWS[i] === view));
-    viewNode = swap(viewNode, view.render(year));
+    viewNode = swap(viewNode, view.render(year, index));
   }
 
   function filter(next) {

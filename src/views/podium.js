@@ -1,16 +1,18 @@
 import { h, cx } from "../ui/dom.js";
 import { platformOf, tint } from "../ui/theme.js";
 import { formatHours, formatPrice, formatRate, costPerHour } from "../ui/format.js";
-import { cover } from "../components/cover.js";
+import { cover, COVER_SIZES } from "../components/cover.js";
 
 // Rendered 2nd - 1st - 3rd so the winner sits raised in the middle.
 const ARRANGEMENT = [1, 0, 2];
 
-export function podium(entries) {
+// `lazy` defers the art for podiums below the fold - every year but the
+// first.
+export function podium(entries, { lazy = false } = {}) {
   return h(
     "div",
     { class: "podium" },
-    ARRANGEMENT.map((rank) => entries[rank] && place(entries[rank], rank))
+    ARRANGEMENT.map((rank) => entries[rank] && place(entries[rank], rank, lazy))
   );
 }
 
@@ -23,7 +25,7 @@ function rateText(game) {
   return rate == null ? "—" : formatRate(rate);
 }
 
-function place(game, rank) {
+function place(game, rank, lazy) {
   return h(
     "div",
     {
@@ -38,7 +40,7 @@ function place(game, rank) {
       // Full-bleed 2:1 header, matching the grid cards. The wider first-place
       // column therefore gets taller art, which keeps the winner visually
       // raised.
-      cover(game),
+      cover(game, { lazy, sizes: rank === 0 ? COVER_SIZES.podiumFirst : COVER_SIZES.podiumRunner }),
       body(game)
     ),
     h("div", { class: "podium-rank", text: `#${rank + 1}` })

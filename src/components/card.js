@@ -1,7 +1,7 @@
 import { h, cx } from "../ui/dom.js";
 import { platformOf, tint } from "../ui/theme.js";
 import { platinumIcon, perfectIcon } from "../ui/icons.js";
-import { cover } from "./cover.js";
+import { cover, COVER_SIZES } from "./cover.js";
 import { gameStats } from "./game-stats.js";
 
 // Three ways a completion figure can be absent, and they are not the same:
@@ -109,7 +109,7 @@ export function card(game, { onOpenNote }) {
   return h(
     "div",
     { class: cx("card", game.note && "card--note"), style: tint(game.platform), ...opensNote },
-    cover(game, { lazy: true }),
+    cover(game, { lazy: true, sizes: COVER_SIZES.grid }),
     body
   );
 }

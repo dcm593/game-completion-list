@@ -1,6 +1,6 @@
 import { h } from "../ui/dom.js";
 import { platformOf } from "../ui/theme.js";
-import { cover } from "./cover.js";
+import { cover, COVER_SIZES } from "./cover.js";
 
 // A small card that follows the cursor over the scatter and hour bands, or
 // on a touch screen, appears where one was tapped.
@@ -96,7 +96,7 @@ function place(x, y) {
 // is and how to reach the next.
 function content(game, rows, pile) {
   return [
-    cover(game),
+    cover(game, { sizes: COVER_SIZES.hover }),
     h(
       "div",
       { class: "hovercard-body" },

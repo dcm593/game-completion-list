@@ -8,24 +8,23 @@
 // width * height * 4 bytes of RAM regardless of its display size, so the
 // oversized set decoded to ~154MB.
 //
-// Each file is capped at MAX_WIDTH (2x the largest place art is drawn, so
+// Each file is capped at COVER_WIDTH (2x the largest place art is drawn, so
 // retina displays still get full detail) and re-encoded as WebP, which runs
-// roughly 30% under JPEG at matched quality. Originals are replaced; they
-// remain in git history if one is ever needed back.
+// roughly 30% under JPEG at matched quality - the same step fetched art goes
+// through (scripts/lib/image.js). Originals are replaced; they remain in git
+// history if one is ever needed back. The small copies the grid uses are cut
+// by `npm run covers`, which picks up anything changed here.
 //
 // Idempotent: files already WebP and within the cap are left alone, so this
 // can be re-run after dropping new art into the folder.
 
 import { readFileSync, writeFileSync, readdirSync, unlinkSync, statSync } from "node:fs";
 import sharp from "sharp";
+import { toWebp, COVER_WIDTH } from "./lib/image.js";
 
 const ROOT = new URL("..", import.meta.url);
 const MANUAL_DIR = new URL("src/assets/covers/manual/", ROOT);
 const OVERRIDES = new URL("src/data/cover-overrides.js", ROOT);
-
-// The podium's first-place art is the largest draw at roughly 430px wide.
-const MAX_WIDTH = 1000;
-const QUALITY = 82;
 
 const files = readdirSync(MANUAL_DIR).filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
 
@@ -38,19 +37,15 @@ for (const file of files) {
   const original = readFileSync(path);
   before += original.length;
 
-  const image = sharp(original);
-  const meta = await image.metadata();
+  const meta = await sharp(original).metadata();
 
-  const alreadyOptimal = meta.format === "webp" && meta.width <= MAX_WIDTH;
+  const alreadyOptimal = meta.format === "webp" && meta.width <= COVER_WIDTH;
   if (alreadyOptimal) {
     after += original.length;
     continue;
   }
 
-  const output = await image
-    .resize({ width: MAX_WIDTH, withoutEnlargement: true })
-    .webp({ quality: QUALITY })
-    .toBuffer();
+  const output = await toWebp(original);
 
   const target = file.replace(/\.[^.]+$/, ".webp");
   writeFileSync(new URL(target, MANUAL_DIR), output);
@@ -61,7 +56,7 @@ for (const file of files) {
     renames.set(file, target);
   }
 
-  const scaled = meta.width > MAX_WIDTH ? `${meta.width}->${MAX_WIDTH}px` : `${meta.width}px`;
+  const scaled = meta.width > COVER_WIDTH ? `${meta.width}->${COVER_WIDTH}px` : `${meta.width}px`;
   console.log(
     `  ${file.padEnd(42)}${scaled.padEnd(14)}` +
       `${(original.length / 1024).toFixed(0)}KB -> ${(output.length / 1024).toFixed(0)}KB`

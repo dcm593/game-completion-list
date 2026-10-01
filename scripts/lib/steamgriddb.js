@@ -56,12 +56,10 @@ export async function heroes(gameId) {
 // redundant and clashes with the caption.
 export const PREFERRED_STYLE = "no_logo";
 
-// Community uploads vary wildly in quality. Rank by net votes first, then
-// prefer the lighter file: the smaller tier, and a compressed format over a
-// lossless one. A 920x430 PNG is typically 10x the bytes of the equivalent
-// JPEG for art that renders at 232px wide.
-// Text-free art first, since the card captions itself; then net votes; then
-// the lighter file.
+// Community uploads vary wildly in quality. Text-free art first, since the
+// card captions itself; then net votes; then the lighter file - the smaller
+// tier, and a compressed format over a lossless one. A 920x430 PNG is
+// typically 10x the bytes of the equivalent JPEG for art drawn 232px wide.
 const STYLE_RANK = { no_logo: 3, alternate: 2, material: 1, blurred: 0, white_logo: 0 };
 const MIME_RANK = { "image/webp": 2, "image/jpeg": 1, "image/png": 0 };
 

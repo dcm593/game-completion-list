@@ -1,6 +1,6 @@
 import { h } from "../ui/dom.js";
 import { platformOf, tint } from "../ui/theme.js";
-import { cover } from "./cover.js";
+import { cover, COVER_SIZES } from "./cover.js";
 import { gameStats } from "./game-stats.js";
 
 // The sheet note, shown over the page rather than inside the card.
@@ -33,7 +33,7 @@ export function noteModal(game, { onClose }) {
         class: "note",
         style: tint(game.platform),
       },
-      cover(game),
+      cover(game, { sizes: COVER_SIZES.note }),
       h("button", { onclick: onClose, "aria-label": "Close", class: "note-close", text: "×" }),
       h(
         "div",
