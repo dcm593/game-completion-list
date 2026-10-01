@@ -1,15 +1,19 @@
 import { h } from "../ui/dom.js";
-import { PLAT, ORDER, tint } from "../ui/theme.js";
+import { platformOf, ORDER, tint } from "../ui/theme.js";
+import { formatHours } from "../ui/format.js";
+import { shortTitle } from "../data/titles.js";
 import { attachHoverCard } from "../components/hover-card.js";
 
 // Hours per platform as a single proportional band each, subdivided into one
 // segment per game (longest first) so a year reads as both a total and a
 // distribution.
 export function timeline(games) {
-  const sums = ORDER.map((name) =>
-    games.filter((g) => g.pl === name && g.h).reduce((a, g) => a + g.h, 0)
-  );
-  const peak = Math.max(1, ...sums);
+  const bands = ORDER.map((platform) => {
+    const list = games.filter((g) => g.platform === platform && g.hours).sort((a, b) => b.hours - a.hours);
+    return { platform, list, sum: list.reduce((total, g) => total + g.hours, 0) };
+  });
+
+  const peak = Math.max(1, ...bands.map((b) => b.sum));
   const step = peak > 400 ? 100 : peak > 160 ? 50 : peak > 60 ? 20 : 10;
   const max = Math.ceil(peak / step) * step;
 
@@ -29,7 +33,7 @@ export function timeline(games) {
       })
     ),
 
-    h("div", { class: "bands" }, ORDER.map((name) => band(name, games, max))),
+    h("div", { class: "bands" }, bands.map((b) => band(b, max))),
 
     h(
       "div",
@@ -48,30 +52,29 @@ export function timeline(games) {
 function segment(game, index) {
   const bar = h("div", {
     class: "segment",
-    style: { flex: game.h },
-    text: game.h >= 20 ? String(index + 1) : "",
+    style: { flex: game.hours },
+    text: game.hours >= 20 ? String(index + 1) : "",
   });
 
-  attachHoverCard(bar, game, [["HOURS", `${game.h}h`]], (on) => {
+  attachHoverCard(bar, game, [["HOURS", formatHours(game.hours)]], (on) => {
     bar.classList.toggle("is-hot", on);
   });
 
   return bar;
 }
 
-function band(name, games, max) {
-  const list = games.filter((g) => g.pl === name && g.h).sort((a, b) => b.h - a.h);
-  const sum = list.reduce((a, g) => a + g.h, 0);
+function band({ platform, list, sum }, max) {
+  const { abbr, short } = platformOf(platform);
 
   return h(
     "div",
-    { class: "band", style: tint(name) },
+    { class: "band", style: tint(platform) },
     h(
       "div",
       { class: "band-head" },
       h("div", { class: "dot" }),
-      h("div", { class: "band-abbr", text: PLAT[name].abbr }),
-      h("div", { class: "band-name", text: PLAT[name].short }),
+      h("div", { class: "band-abbr", text: abbr }),
+      h("div", { class: "band-name", text: short }),
       h("div", { class: "band-sum", text: `${sum.toFixed(0)}h` })
     ),
 
@@ -94,8 +97,8 @@ function band(name, games, max) {
               "div",
               { class: "legend-item" },
               h("div", { class: "legend-num", text: String(i + 1) }),
-              h("div", { class: "legend-title", text: g.t.split(" (")[0] }),
-              h("div", { class: "legend-hours", text: `${g.h}h` })
+              h("div", { class: "legend-title", text: shortTitle(g.title) }),
+              h("div", { class: "legend-hours", text: formatHours(g.hours) })
             )
           )
         )

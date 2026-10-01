@@ -1,5 +1,5 @@
 import { h, clear } from "../ui/dom.js";
-import { PLAT } from "../ui/theme.js";
+import { platformOf } from "../ui/theme.js";
 import { cover } from "./cover.js";
 
 // A small card that follows the cursor over the scatter and hour bands, or
@@ -101,9 +101,9 @@ function content(game, rows, pile) {
         "div",
         { class: "hovercard-top" },
         h("div", { class: "dot" }),
-        h("div", { class: "hovercard-platform", text: PLAT[game.pl].short })
+        h("div", { class: "hovercard-platform", text: platformOf(game.platform).short })
       ),
-      h("div", { class: "hovercard-title", text: game.t }),
+      h("div", { class: "hovercard-title", text: game.title }),
       rows.length
         ? h(
             "div",
@@ -134,7 +134,7 @@ function show(target, event, pinned, stack) {
   const pile = stack.length > 1 ? { index: stack.indexOf(target), count: stack.length, pinned } : null;
   const el = element();
   clear(el);
-  el.style.setProperty("--pc", PLAT[game.pl].c);
+  el.style.setProperty("--pc", platformOf(game.platform).color);
   for (const node of content(game, rows, pile)) el.append(node);
   el.classList.add("is-shown");
   place(event.clientX, event.clientY);

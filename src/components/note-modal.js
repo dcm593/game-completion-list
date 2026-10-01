@@ -1,6 +1,7 @@
 import { h } from "../ui/dom.js";
-import { PLAT, tint } from "../ui/theme.js";
+import { platformOf, tint } from "../ui/theme.js";
 import { cover } from "./cover.js";
+import { gameStats } from "./game-stats.js";
 
 // The sheet note, shown over the page rather than inside the card.
 //
@@ -25,43 +26,28 @@ export function noteModal(game, { onClose }) {
       {
         role: "dialog",
         "aria-modal": "true",
-        "aria-label": `Note for ${game.t}`,
+        "aria-label": `Note for ${game.title}`,
         onclick: (event) => event.stopPropagation(),
         class: "note",
-        style: tint(game.pl),
+        style: tint(game.platform),
       },
       cover(game),
       h("button", { onclick: onClose, "aria-label": "Close", class: "note-close", text: "×" }),
-      body(game)
+      h(
+        "div",
+        { class: "note-body" },
+        h(
+          "div",
+          { class: "note-top" },
+          h("div", { class: "dot" }),
+          h("div", { class: "note-platform", text: platformOf(game.platform).short }),
+          h("div", { class: "note-year", text: String(game.year) })
+        ),
+        h("div", { class: "note-title", text: game.title }),
+        gameStats(game),
+        h("div", { class: "note-label", text: "SHEET NOTE" }),
+        h("div", { class: "note-text", text: game.note })
+      )
     )
-  );
-}
-
-function body(game) {
-  const rate = game.h && game.p > 0 ? `$${(game.p / game.h).toFixed(2)}/h` : null;
-
-  return h(
-    "div",
-    { class: "note-body" },
-    h(
-      "div",
-      { class: "note-top" },
-      h("div", { class: "dot" }),
-      h("div", { class: "note-platform", text: PLAT[game.pl].short }),
-      h("div", { class: "note-year", text: String(game.y) })
-    ),
-
-    h("div", { class: "note-title", text: game.t }),
-
-    h(
-      "div",
-      { class: "note-stats" },
-      h("div", { class: "note-hours", text: game.h ? `${game.h} h` : "n/a" }),
-      h("div", { class: "note-price", text: game.p === 0 ? "free" : `$${game.p.toFixed(2)}` }),
-      rate ? h("div", { class: "note-rate", text: rate }) : null
-    ),
-
-    h("div", { class: "note-label", text: "SHEET NOTE" }),
-    h("div", { class: "note-text", text: game.note })
   );
 }

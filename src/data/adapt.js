@@ -1,105 +1,117 @@
-// Maps the normalized records from parse.js onto the shape the view modules
-// expect. Keeping this separate means the views never learn how the
-// spreadsheet is organized, and re-syncing can't ripple into layout code.
+// Maps the normalized records from parse.js onto the shape the views use, and
+// works out everything about them that never changes after load - per-year
+// lists and totals, platform counts, the podiums. Keeping this separate means
+// the views never learn how the spreadsheet is organized, and re-syncing
+// can't ripple into layout code.
 
-import games from "./games.json";
+import data from "./games.json";
 import { coverFor } from "./covers.js";
-
-// The design keys its palette off display names; the parser emits slugs.
-const PLATFORM_NAME = {
-  playstation: "PlayStation",
-  steam: "Steam",
-  nintendo: "Nintendo",
-};
+import { shortTitle } from "./titles.js";
 
 // A finished game reads differently per platform: PlayStation earns a
 // platinum, Steam a 100% achievement sweep. Nintendo has neither, so those
 // titles always land on "not-applicable" and never reach this branch.
-function completionFlags(game) {
-  const done = game.completion.state === "achieved";
+function completionOf(game) {
+  const { state, earned, total, ratio } = game.completion;
+  const done = state === "achieved";
   return {
-    plat: done && game.platform === "playstation",
-    hundred: done && game.platform !== "playstation",
+    platinum: done && game.platform === "playstation",
+    fullClear: done && game.platform !== "playstation",
+    completion: {
+      // null means "no bar to draw", but for two opposite reasons - the game
+      // has no achievement system, or nobody has filled the number in yet.
+      // `state` keeps them distinguishable at render time.
+      percent: ratio == null ? null : Math.round(ratio * 100),
+      state,
+      // Shown alongside the percentage: "36/51" says more than 71%.
+      detail: earned != null && total != null ? `${earned}/${total}` : null,
+    },
   };
 }
 
 // games.json stores each game under its year rather than repeating the year
 // on every record, so the year is passed in.
-export function toDesignGame(game, year) {
-  const { state, earned, total, ratio } = game.completion;
+function toGame(game, year) {
   return {
-    y: year,
-    t: game.title,
-    p: game.price,
-    h: game.hours,
-    pl: PLATFORM_NAME[game.platform],
+    year,
+    title: game.title,
+    platform: game.platform,
+    price: game.price,
+    hours: game.hours,
     coop: game.coop,
     replay: game.replay,
     note: game.note,
     art: coverFor(game.title),
-    ...completionFlags(game),
-    // null means "no bar to draw", but for two opposite reasons — the game
-    // has no achievement system, or nobody has filled the number in yet.
-    // pctState keeps them distinguishable at render time.
-    pct: ratio == null ? null : Math.round(ratio * 100),
-    pctState: state,
-    // Shown alongside the percentage: "36/51" is more informative than 71%.
-    pctDetail: earned != null && total != null ? `${earned}/${total}` : null,
+    ...completionOf(game),
   };
 }
 
-export const GAMES = games.years.flatMap((y) => y.games.map((g) => toDesignGame(g, y.year)));
+// A podium entry with nothing behind it: a title the Top 3 names but no row
+// matches, or a slot in a year too early to have a Top 3.
+const stub = (title, extra = {}) => ({ title, platform: "steam", hours: null, price: null, ...extra });
 
-export const YEARS = games.years.map((y) => {
-  const hours = y.games.reduce((sum, g) => sum + (g.hours ?? 0), 0);
-  const spend = y.games.reduce((sum, g) => sum + (g.price ?? 0), 0);
-  return {
-    year: y.year,
-    // The final year has no totals row in the sheet because it isn't over.
-    tag: y.reported ? "complete" : "in progress",
-    games: y.games.length,
-    hours: Math.round(hours),
-    spend: Math.round(spend),
-    hoursLabel: Math.round(hours).toLocaleString(),
-    spendLabel: `$${Math.round(spend).toLocaleString()}`,
-  };
-});
-
-// The Top 3 lists are typed by hand and don't always match a row verbatim —
-// "Outer Wilds" vs "Outer Wilds (+Echos of the Eye DLC)". The podium looks the
-// game up to borrow its platform and stats, so an unresolved title would blow
-// up on a missing palette entry. Fall back through progressively looser
-// matches, then degrade to a title-only entry rather than throwing.
-function resolveTitle(title, yearGames) {
-  const bare = (t) => t.split(" (")[0].trim().toLowerCase();
+// The Top 3 lists are typed by hand and don't always match a row verbatim -
+// "Outer Wilds" vs "Outer Wilds (+Echos of the Eye DLC)". The podium borrows
+// the matched game's platform and stats, so fall back through progressively
+// looser matches, then degrade to a title-only entry rather than throwing.
+function resolveTitle(title, games) {
+  const bare = (t) => shortTitle(t).trim().toLowerCase();
   const wanted = title.trim().toLowerCase();
   return (
-    yearGames.find((g) => g.title.trim().toLowerCase() === wanted) ??
-    yearGames.find((g) => bare(g.title) === bare(title)) ??
-    yearGames.find((g) => bare(g.title).startsWith(bare(title))) ??
+    games.find((g) => g.title.trim().toLowerCase() === wanted) ??
+    games.find((g) => bare(g.title) === bare(title)) ??
+    games.find((g) => bare(g.title).startsWith(bare(title))) ??
     null
   );
 }
 
-export const TOP3 = Object.fromEntries(
-  games.years.map((y) => [
-    y.year,
-    y.topThree.length
-      ? y.topThree.map((title) => {
-          const match = resolveTitle(title, y.games);
-          // Stats come from the matched row, but the label stays exactly as
-          // written in the sheet's Top 3 block.
-          return match
-            ? { ...toDesignGame(match, y.year), t: title }
-            : { t: title, pl: "Steam", h: null, p: null, unresolved: true };
-        })
-      : // A year still in progress has no Top 3 yet.
-        [0, 1, 2].map(() => ({
-          t: "To be determined",
-          pl: "Steam",
-          h: null,
-          p: null,
-          placeholder: true,
-        })),
-  ])
-);
+function topThree(titles, games) {
+  // A year still in progress has no Top 3 yet.
+  if (!titles.length) return [0, 1, 2].map(() => stub("To be determined", { placeholder: true }));
+  return titles.map((title) => {
+    const match = resolveTitle(title, games);
+    // Stats come from the matched row, but the label stays exactly as written
+    // in the sheet's Top 3 block.
+    return match ? { ...match, title } : stub(title);
+  });
+}
+
+const sum = (list, key) => list.reduce((total, item) => total + (item[key] ?? 0), 0);
+
+export const YEARS = data.years.map((y) => {
+  const games = y.games.map((g) => toGame(g, y.year));
+  const hours = Math.round(sum(games, "hours"));
+  const spend = Math.round(sum(games, "price"));
+  return {
+    year: y.year,
+    // The final year has no totals row in the sheet because it isn't over.
+    tag: y.reported ? "complete" : "in progress",
+    games,
+    count: games.length,
+    hours,
+    spend,
+    hoursLabel: hours.toLocaleString(),
+    spendLabel: `$${spend.toLocaleString()}`,
+    top3: topThree(y.topThree, games),
+  };
+});
+
+export const GAMES = YEARS.flatMap((y) => y.games);
+
+// All-time figures for the header, summed from the per-year rounded values
+// so the header always agrees with the year headings.
+export const TOTALS = {
+  games: sum(YEARS, "count"),
+  hours: sum(YEARS, "hours"),
+  spend: sum(YEARS, "spend"),
+};
+
+const countBy = (key) =>
+  GAMES.reduce((counts, g) => ({ ...counts, [g[key]]: (counts[g[key]] ?? 0) + 1 }), {});
+
+// Games per platform slug (read with `?? 0`), and completion marks earned.
+export const COUNTS = {
+  platform: countBy("platform"),
+  platinum: GAMES.filter((g) => g.platinum).length,
+  fullClear: GAMES.filter((g) => g.fullClear).length,
+};

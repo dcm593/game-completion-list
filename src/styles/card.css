@@ -144,34 +144,36 @@
   box-shadow: 0 0 10px var(--cc);
 }
 
-.card-stats {
+/* Hours / price / cost-per-hour - see src/components/game-stats.js. Shared
+   with the note, which adjusts its spacing in overlays.css. */
+.game-stats {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.card-hours {
+.game-hours {
   font: 600 15px/1 var(--sans);
   letter-spacing: -0.02em;
 }
 
-.card-price {
+.game-price {
   font: 500 11px/1 var(--mono);
   color: rgba(233, 231, 228, 0.55);
 }
 
-.card-rate {
+.game-rate {
   margin-left: auto;
   font: 500 10.5px/1 var(--mono);
   color: rgba(233, 231, 228, 0.4);
 }
 
-.card-rate.is-good {
+.game-rate.is-good {
   color: var(--good);
 }
 
-.card-rate.is-warn {
+.game-rate.is-poor {
   color: var(--warn);
 }
 
@@ -228,19 +230,19 @@
     letter-spacing: 0.03em;
   }
 
-  .card-stats {
+  .card .game-stats {
     gap: 6px;
   }
 
-  .card-hours {
+  .card .game-hours {
     font-size: 13.5px;
   }
 
-  .card-price {
+  .card .game-price {
     font-size: 10px;
   }
 
-  .card-rate {
+  .card .game-rate {
     font-size: 9.5px;
   }
 

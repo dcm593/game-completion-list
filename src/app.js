@@ -1,6 +1,6 @@
 import { h, clear, cx } from "./ui/dom.js";
-import { PLAT, ORDER, CHIPS, tint } from "./ui/theme.js";
-import { GAMES, YEARS, TOP3 } from "./data/adapt.js";
+import { platformOf, ORDER, CHIPS, chipLabel, tint } from "./ui/theme.js";
+import { GAMES, YEARS, TOTALS, COUNTS } from "./data/adapt.js";
 import { card } from "./components/card.js";
 import { noteModal } from "./components/note-modal.js";
 import { hideHoverCard } from "./components/hover-card.js";
@@ -26,9 +26,9 @@ function set(patch) {
 }
 
 const viewOf = (year) => state.view[year] ?? "podium";
-const chipOf = (year) => state.chip[year] ?? "All";
+const chipOf = (year) => state.chip[year] ?? "all";
 
-const openGame = () => GAMES.find((g) => `${g.y}:${g.t}` === state.open) ?? null;
+const openGame = () => GAMES.find((g) => `${g.year}:${g.title}` === state.open) ?? null;
 const closeNote = () => set({ open: null });
 
 // Bound once, not per render: render() rebuilds the whole tree on every state
@@ -96,9 +96,7 @@ function queueMark() {
 window.addEventListener("scroll", queueMark, { passive: true });
 window.addEventListener("resize", queueMark);
 
-const platinumCount = () => GAMES.filter((g) => g.plat).length;
-const hundredCount = () => GAMES.filter((g) => g.hundred).length;
-const platformCount = (name) => GAMES.filter((g) => g.pl === name).length;
+const platformCount = (slug) => COUNTS.platform[slug] ?? 0;
 
 // ------------------------------------------------------------------- stats
 
@@ -134,9 +132,7 @@ function stats([games, hours, ...price], extraClass) {
 // ------------------------------------------------------------------ header
 
 function header() {
-  const totalGames = YEARS.reduce((a, y) => a + y.games, 0);
-  const totalHours = YEARS.reduce((a, y) => a + y.hours, 0);
-  const totalSpend = YEARS.reduce((a, y) => a + y.spend, 0);
+  const { games: totalGames, hours: totalHours, spend: totalSpend } = TOTALS;
 
   return h(
     "div",
@@ -186,15 +182,15 @@ function summary() {
       "div",
       { class: "summary-side" },
       ORDER.map((name) =>
-        summaryItem(PLAT[name].short, h("div", { class: "dot" }), platformCount(name), tint(name))
+        summaryItem(platformOf(name).short, h("div", { class: "dot" }), platformCount(name), tint(name))
       )
     ),
     h("div", { class: "summary-divider" }),
     h(
       "div",
       { class: "summary-side" },
-      summaryItem("PLATINUMS", mark(platinumIcon()), platinumCount()),
-      summaryItem("FULL CLEARS", mark(perfectIcon()), hundredCount())
+      summaryItem("PLATINUMS", mark(platinumIcon()), COUNTS.platinum),
+      summaryItem("FULL CLEARS", mark(perfectIcon()), COUNTS.fullClear)
     )
   );
 }
@@ -242,7 +238,7 @@ function rail() {
             h("div", { class: "rail-year-num", text: String(y.year) }),
             yearTag(y, true)
           ),
-          h("div", { class: "rail-year-sub", text: `${y.games} games - ${y.hoursLabel} h` })
+          h("div", { class: "rail-year-sub", text: `${y.count} games - ${y.hoursLabel} h` })
         )
       )
     ),
@@ -256,7 +252,7 @@ function rail() {
           "div",
           { class: "rail-row", style: tint(name) },
           h("div", { class: "dot" }),
-          h("div", { class: "rail-name", text: PLAT[name].short }),
+          h("div", { class: "rail-name", text: platformOf(name).short }),
           h("div", { class: "rail-count", text: String(platformCount(name)) })
         )
       )
@@ -266,8 +262,8 @@ function rail() {
       "div",
       { class: "rail-group rail-group--marks" },
       h("div", { class: "label", text: "COMPLETION" }),
-      counter(platinumIcon(), "PLATINUMS", platinumCount()),
-      counter(perfectIcon(), "FULL CLEARS", hundredCount())
+      counter(platinumIcon(), "PLATINUMS", COUNTS.platinum),
+      counter(perfectIcon(), "FULL CLEARS", COUNTS.fullClear)
     )
   );
 }
@@ -294,8 +290,8 @@ function yearTag(year, short = false) {
 function yearSection(year, index) {
   const view = viewOf(year.year);
   const chip = chipOf(year.year);
-  const all = GAMES.filter((g) => g.y === year.year);
-  const shown = all.filter((g) => chip === "All" || g.pl === chip);
+  const all = year.games;
+  const shown = all.filter((g) => chip === "all" || g.platform === chip);
   const prev = YEARS[index - 1];
 
   const delta = (current, before) => {
@@ -324,7 +320,7 @@ function yearSection(year, index) {
 
     stats(
       [
-        { label: "GAMES BEATEN", value: String(year.games), ...delta(year.games, prev?.games) },
+        { label: "GAMES BEATEN", value: String(year.count), ...delta(year.count, prev?.count) },
         { label: "HOURS PLAYED", value: year.hoursLabel, ...delta(year.hours, prev?.hours) },
         { label: "SPEND (CAD)", value: year.spendLabel, ...delta(year.spend, prev?.spend) },
         { label: "AVG COST / HOUR", value: `$${(year.spend / year.hours).toFixed(2)}` },
@@ -350,7 +346,7 @@ function yearSection(year, index) {
           )
         )
       ),
-      view === "podium" ? podium(TOP3[year.year] ?? []) : null,
+      view === "podium" ? podium(year.top3) : null,
       view === "scatter" ? scatter(all) : null,
       view === "timeline" ? timeline(all) : null
     ),
@@ -362,7 +358,7 @@ function yearSection(year, index) {
         h("button", {
           class: cx("chip", chip === c && "is-active"),
           onclick: () => set({ chip: { ...state.chip, [year.year]: c } }),
-          text: c,
+          text: chipLabel(c),
         })
       )
     ),
@@ -371,7 +367,7 @@ function yearSection(year, index) {
       "div",
       { class: "grid" },
       shown.map((game) =>
-        card(game, { onOpenNote: () => set({ open: `${game.y}:${game.t}` }) })
+        card(game, { onOpenNote: () => set({ open: `${game.year}:${game.title}` }) })
       )
     )
   );

@@ -1,5 +1,6 @@
 import { h, cx } from "../ui/dom.js";
-import { PLAT, tint } from "../ui/theme.js";
+import { platformOf, tint } from "../ui/theme.js";
+import { formatHours, formatPrice, formatRate, costPerHour } from "../ui/format.js";
 import { cover } from "../components/cover.js";
 
 // Rendered 2nd - 1st - 3rd so the winner sits raised in the middle.
@@ -13,16 +14,22 @@ export function podium(entries) {
   );
 }
 
-function place(game, rank) {
-  const known = game.h != null && game.p != null;
-  const rate = !known ? "—" : game.p > 0 ? `$${(game.p / game.h).toFixed(2)}/h` : "free";
+// Unlike the stat row, the podium always shows a rate: a dash when either
+// figure is missing, "free" for a game that cost nothing.
+function rateText(game) {
+  if (game.hours == null || game.price == null) return "—";
+  if (game.price === 0) return "free";
+  const rate = costPerHour(game);
+  return rate == null ? "—" : formatRate(rate);
+}
 
+function place(game, rank) {
   return h(
     "div",
     {
       class: cx("podium-place", rank === 0 ? "podium-place--first" : "podium-place--runner"),
       "data-rank": rank + 1,
-      style: tint(game.pl),
+      style: tint(game.platform),
     },
     h(
       "div",
@@ -32,24 +39,24 @@ function place(game, rank) {
       // column therefore gets taller art, which keeps the winner visually
       // raised.
       cover(game),
-      body(game, rate)
+      body(game)
     ),
     h("div", { class: "podium-rank", text: `#${rank + 1}` })
   );
 }
 
-function body(game, rate) {
+function body(game) {
   return h(
     "div",
     { class: "podium-body" },
     // Titles read exactly as written in the sheet's Top 3 block, rather than
     // borrowing the longer row title from the games table.
-    h("div", { class: cx("podium-title", game.placeholder && "is-placeholder"), text: game.t }),
+    h("div", { class: cx("podium-title", game.placeholder && "is-placeholder"), text: game.title }),
     // The platform is named here, so the badge that used to sit in the card's
     // top corner would only have repeated it.
     h("div", {
       class: "podium-platform",
-      text: game.placeholder ? "" : PLAT[game.pl].short,
+      text: game.placeholder ? "" : platformOf(game.platform).short,
     }),
 
     h("div", { class: "podium-spacer" }),
@@ -57,12 +64,12 @@ function body(game, rate) {
     h(
       "div",
       { class: "podium-stats" },
-      h("div", { class: "podium-stat", text: game.h == null ? "—" : `${game.h}h` }),
+      h("div", { class: "podium-stat", text: formatHours(game.hours) }),
       h("div", {
         class: "podium-stat podium-stat--price",
-        text: game.p == null ? "—" : game.p === 0 ? "free" : `$${game.p.toFixed(0)}`,
+        text: formatPrice(game.price, { whole: true }),
       }),
-      h("div", { class: "podium-rate", text: rate })
+      h("div", { class: "podium-rate", text: rateText(game) })
     )
   );
 }

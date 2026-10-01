@@ -1,5 +1,9 @@
 import { h, s } from "../ui/dom.js";
-import { PLAT, tint } from "../ui/theme.js";
+import { tint } from "../ui/theme.js";
+import {
+  formatHours, formatPrice, formatRate, costPerHour, RATE_BARGAIN, RATE_STEEP,
+} from "../ui/format.js";
+import { shortTitle } from "../data/titles.js";
 import { attachHoverCard } from "../components/hover-card.js";
 import { isNarrow } from "../ui/media.js";
 
@@ -40,20 +44,24 @@ const NARROW = {
 
 const geometry = () => (isNarrow() ? NARROW : WIDE);
 
-const H_MIN = Math.log10(3);
-const H_MAX = Math.log10(300);
-const P_MIN = Math.log10(2);
-const P_MAX = Math.log10(200);
+// The drawn domain of each log axis.
+const HOURS = { min: 3, max: 300 };
+const PRICE = { min: 2, max: 200 };
 
 // Both axes clamp to the drawn domain so a point outside it lands on the
 // boundary rather than escaping the plot. Bargain-bin buys are what hit this:
 // Half-Life at $1.13 and Half-Life 2 at $1.60 sit below the $2 floor, and a
 // couple of very short games sit under the 3h mark. The tooltip still reports
 // each point's true hours and price.
-const clampHours = (v) => Math.min(300, Math.max(3, v));
-const clampPrice = (v) => Math.min(200, Math.max(2, v));
-const fx = (hours) => (Math.log10(clampHours(hours)) - H_MIN) / (H_MAX - H_MIN);
-const fy = (price) => 1 - (Math.log10(clampPrice(price)) - P_MIN) / (P_MAX - P_MIN);
+const clamp = (v, range) => Math.min(range.max, Math.max(range.min, v));
+
+// Position along an axis, 0..1, on a log scale.
+const along = (v, range) =>
+  (Math.log10(clamp(v, range)) - Math.log10(range.min)) /
+  (Math.log10(range.max) - Math.log10(range.min));
+
+const fx = (hours) => along(hours, HOURS);
+const fy = (price) => 1 - along(price, PRICE);
 
 const pct = (n) => `${n * 100}%`;
 
@@ -91,9 +99,9 @@ function grid(g, freeCount) {
   ];
   for (const { r, l } of RATES) {
     const seg = [];
-    for (let hours = 3; hours <= 300; hours *= 1.6) {
+    for (let hours = HOURS.min; hours <= HOURS.max; hours *= 1.6) {
       const price = r * hours;
-      if (price >= 2 && price <= 200) seg.push([X(hours), Y(price)]);
+      if (price >= PRICE.min && price <= PRICE.max) seg.push([X(hours), Y(price)]);
     }
     if (seg.length < 2) continue;
     const [x1, y1] = seg[0];
@@ -130,19 +138,18 @@ function grid(g, freeCount) {
 }
 
 function dot(game, { size, key, atX, atY }) {
-  const price = game.p === 0 ? "free" : `$${game.p.toFixed(2)}`;
-  const rate = game.h && game.p > 0 ? `$${(game.p / game.h).toFixed(2)}/h` : null;
+  const rate = costPerHour(game);
 
   const mark = h("div", { class: "scatter-mark", style: { "--d": `${size}px` } }, key ?? "");
 
   const anchor = h(
     "div",
-    { class: "scatter-dot", style: { ...tint(game.pl), left: pct(atX), top: pct(atY) } },
+    { class: "scatter-dot", style: { ...tint(game.platform), left: pct(atX), top: pct(atY) } },
     mark
   );
 
-  const rows = [["HOURS", `${game.h}h`], ["PRICE", price]];
-  if (rate) rows.push(["PER HOUR", rate]);
+  const rows = [["HOURS", formatHours(game.hours)], ["PRICE", formatPrice(game.price)]];
+  if (rate != null) rows.push(["PER HOUR", formatRate(rate)]);
 
   attachHoverCard(mark, game, rows, (on) => anchor.classList.toggle("is-hot", on));
 
@@ -151,35 +158,35 @@ function dot(game, { size, key, atX, atY }) {
 
 export function scatter(games) {
   const g = geometry();
-  const priced = games.filter((game) => game.h && game.p > 0);
-  const free = games.filter((game) => game.h && game.p === 0);
+  const priced = games.filter((game) => game.hours && game.price > 0);
+  const free = games.filter((game) => game.hours && game.price === 0);
   const unplottable = games.length - priced.length - free.length;
-  const sizeFor = (game) => (7 + Math.min(13, game.h / 10)) * g.dotScale;
+  const sizeFor = (game) => (7 + Math.min(13, game.hours / 10)) * g.dotScale;
 
   const outliers = [];
   const pricedDots = priced.map((game) => {
-    const rate = game.p / game.h;
-    const notable = rate < 0.2 || rate > 4.5;
+    const rate = costPerHour(game);
+    const notable = rate < RATE_BARGAIN || rate > RATE_STEEP;
     let key = null;
     if (notable) {
+      key = String(outliers.length + 1);
       outliers.push({
-        num: String(outliers.length + 1),
-        title: game.t.split(" (")[0],
-        stat: `${game.h}h - $${game.p.toFixed(2)} - $${rate.toFixed(2)}/h`,
-        pl: game.pl,
+        key,
+        title: shortTitle(game.title),
+        stat: `${formatHours(game.hours)} - ${formatPrice(game.price)} - ${formatRate(rate)}`,
+        platform: game.platform,
       });
-      key = String(outliers.length);
     }
     return dot(game, {
       size: notable ? 20 * g.dotScale : sizeFor(game),
       key,
-      atX: fx(game.h),
-      atY: fy(game.p),
+      atX: fx(game.hours),
+      atY: fy(game.price),
     });
   });
 
   const freeDots = free.map((game) =>
-    dot(game, { size: sizeFor(game), key: null, atX: fx(game.h), atY: 0.5 })
+    dot(game, { size: sizeFor(game), key: null, atX: fx(game.hours), atY: 0.5 })
   );
 
   const missing = unplottable
@@ -231,8 +238,8 @@ export function scatter(games) {
           outliers.map((o) =>
             h(
               "div",
-              { class: "outlier", style: tint(o.pl) },
-              h("div", { class: "outlier-num", text: o.num }),
+              { class: "outlier", style: tint(o.platform) },
+              h("div", { class: "outlier-num", text: o.key }),
               h(
                 "div",
                 { class: "outlier-text" },

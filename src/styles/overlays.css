@@ -188,29 +188,15 @@
   color: var(--ink);
 }
 
-.note-stats {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
+/* The stat row is the card's (card.css), a touch roomier here. */
+.note .game-stats {
   gap: 14px;
   padding-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.note-hours {
-  font: 600 16px/1 var(--sans);
-  letter-spacing: -0.02em;
-}
-
-.note-price {
-  font: 500 11px/1 var(--mono);
-  color: rgba(233, 231, 228, 0.55);
-}
-
-.note-rate {
-  margin-left: auto;
-  font: 500 10.5px/1 var(--mono);
-  color: rgba(233, 231, 228, 0.4);
+.note .game-hours {
+  font-size: 16px;
 }
 
 .note-label {
