@@ -18,8 +18,9 @@
   --live: oklch(0.78 0.13 85);
   --accent: oklch(0.7 0.13 254);
 
-  --mono: "JetBrains Mono", monospace;
-  --sans: "Space Grotesk", system-ui, sans-serif;
+  /* Self-hosted variable fonts - see src/index.js. */
+  --mono: "JetBrains Mono Variable", monospace;
+  --sans: "Space Grotesk Variable", system-ui, sans-serif;
 
   /* Side padding of the page. */
   --gutter: 40px;
