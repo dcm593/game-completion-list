@@ -117,42 +117,44 @@ import c56 from "../assets/covers/manual/spider-man-2000.webp";
 import c56s from "../assets/covers/small/manual/spider-man-2000.webp";
 import c57 from "../assets/covers/manual/split-fiction.webp";
 import c57s from "../assets/covers/small/manual/split-fiction.webp";
-import c58 from "../assets/covers/manual/stardew-valley.webp";
-import c58s from "../assets/covers/small/manual/stardew-valley.webp";
-import c59 from "../assets/covers/manual/subnautica-below-zero.webp";
-import c59s from "../assets/covers/small/manual/subnautica-below-zero.webp";
-import c60 from "../assets/covers/super-mario-64.webp";
-import c60s from "../assets/covers/small/super-mario-64.webp";
-import c61 from "../assets/covers/super-mario-galaxy.webp";
-import c61s from "../assets/covers/small/super-mario-galaxy.webp";
-import c62 from "../assets/covers/manual/superhot.webp";
-import c62s from "../assets/covers/small/manual/superhot.webp";
-import c63 from "../assets/covers/manual/terraria-calamity.webp";
-import c63s from "../assets/covers/small/manual/terraria-calamity.webp";
-import c64 from "../assets/covers/manual/the-binding-of-isaac.webp";
-import c64s from "../assets/covers/small/manual/the-binding-of-isaac.webp";
-import c65 from "../assets/covers/manual/dark-pictures-house-of-ashes.webp";
-import c65s from "../assets/covers/small/manual/dark-pictures-house-of-ashes.webp";
-import c66 from "../assets/covers/manual/dark-pictures-little-hope.webp";
-import c66s from "../assets/covers/small/manual/dark-pictures-little-hope.webp";
-import c67 from "../assets/covers/manual/dark-pictures-man-of-medan.webp";
-import c67s from "../assets/covers/small/manual/dark-pictures-man-of-medan.webp";
-import c68 from "../assets/covers/manual/ocarina-of-time.webp";
-import c68s from "../assets/covers/small/manual/ocarina-of-time.webp";
-import c69 from "../assets/covers/manual/tears-of-the-kingdom.webp";
-import c69s from "../assets/covers/small/manual/tears-of-the-kingdom.webp";
-import c70 from "../assets/covers/manual/timesplitters-future-perfect.webp";
-import c70s from "../assets/covers/small/manual/timesplitters-future-perfect.webp";
-import c71 from "../assets/covers/manual/wonderlands.webp";
-import c71s from "../assets/covers/small/manual/wonderlands.webp";
-import c72 from "../assets/covers/manual/tunic.webp";
-import c72s from "../assets/covers/small/manual/tunic.webp";
-import c73 from "../assets/covers/manual/unravel-two.webp";
-import c73s from "../assets/covers/small/manual/unravel-two.webp";
-import c74 from "../assets/covers/manual/voices-of-the-void.webp";
-import c74s from "../assets/covers/small/manual/voices-of-the-void.webp";
-import c75 from "../assets/covers/what-remains-of-edith-finch.webp";
-import c75s from "../assets/covers/small/what-remains-of-edith-finch.webp";
+import c58 from "../assets/covers/star-wars-jedi-fallen-order.webp";
+import c58s from "../assets/covers/small/star-wars-jedi-fallen-order.webp";
+import c59 from "../assets/covers/manual/stardew-valley.webp";
+import c59s from "../assets/covers/small/manual/stardew-valley.webp";
+import c60 from "../assets/covers/manual/subnautica-below-zero.webp";
+import c60s from "../assets/covers/small/manual/subnautica-below-zero.webp";
+import c61 from "../assets/covers/super-mario-64.webp";
+import c61s from "../assets/covers/small/super-mario-64.webp";
+import c62 from "../assets/covers/super-mario-galaxy.webp";
+import c62s from "../assets/covers/small/super-mario-galaxy.webp";
+import c63 from "../assets/covers/manual/superhot.webp";
+import c63s from "../assets/covers/small/manual/superhot.webp";
+import c64 from "../assets/covers/manual/terraria-calamity.webp";
+import c64s from "../assets/covers/small/manual/terraria-calamity.webp";
+import c65 from "../assets/covers/manual/the-binding-of-isaac.webp";
+import c65s from "../assets/covers/small/manual/the-binding-of-isaac.webp";
+import c66 from "../assets/covers/manual/dark-pictures-house-of-ashes.webp";
+import c66s from "../assets/covers/small/manual/dark-pictures-house-of-ashes.webp";
+import c67 from "../assets/covers/manual/dark-pictures-little-hope.webp";
+import c67s from "../assets/covers/small/manual/dark-pictures-little-hope.webp";
+import c68 from "../assets/covers/manual/dark-pictures-man-of-medan.webp";
+import c68s from "../assets/covers/small/manual/dark-pictures-man-of-medan.webp";
+import c69 from "../assets/covers/manual/ocarina-of-time.webp";
+import c69s from "../assets/covers/small/manual/ocarina-of-time.webp";
+import c70 from "../assets/covers/manual/tears-of-the-kingdom.webp";
+import c70s from "../assets/covers/small/manual/tears-of-the-kingdom.webp";
+import c71 from "../assets/covers/manual/timesplitters-future-perfect.webp";
+import c71s from "../assets/covers/small/manual/timesplitters-future-perfect.webp";
+import c72 from "../assets/covers/manual/wonderlands.webp";
+import c72s from "../assets/covers/small/manual/wonderlands.webp";
+import c73 from "../assets/covers/manual/tunic.webp";
+import c73s from "../assets/covers/small/manual/tunic.webp";
+import c74 from "../assets/covers/manual/unravel-two.webp";
+import c74s from "../assets/covers/small/manual/unravel-two.webp";
+import c75 from "../assets/covers/manual/voices-of-the-void.webp";
+import c75s from "../assets/covers/small/manual/voices-of-the-void.webp";
+import c76 from "../assets/covers/what-remains-of-edith-finch.webp";
+import c76s from "../assets/covers/small/what-remains-of-edith-finch.webp";
 
 export const SMALL_WIDTH = 600;
 
@@ -216,22 +218,23 @@ export const COVERS = {
   "spelunky-hd": { large: c55, small: c55s, width: 850 },
   "spider-man-2000": { large: c56, small: c56s, width: 1000 },
   "split-fiction": { large: c57, small: c57s, width: 1000 },
-  "stardew-valley": { large: c58, small: c58s, width: 1000 },
-  "subnautica-below-zero": { large: c59, small: c59s, width: 1000 },
-  "super-mario-64": { large: c60, small: c60s, width: 849 },
-  "super-mario-galaxy": { large: c61, small: c61s, width: 850 },
-  "superhot-vr": { large: c62, small: c62s, width: 1000 },
-  "terraria-calamity-mod": { large: c63, small: c63s, width: 1000 },
-  "the-binding-of-isaac": { large: c64, small: c64s, width: 1000 },
-  "the-dark-pictures-anthology-house-of-ashes": { large: c65, small: c65s, width: 1000 },
-  "the-dark-pictures-anthology-little-hope": { large: c66, small: c66s, width: 1000 },
-  "the-dark-pictures-anthology-man-of-medan": { large: c67, small: c67s, width: 1000 },
-  "the-legend-of-zelda-ocarina-of-time": { large: c68, small: c68s, width: 1000 },
-  "the-legend-of-zelda-tears-of-the-kingdom": { large: c69, small: c69s, width: 1000 },
-  "timesplitters-future-perfect": { large: c70, small: c70s, width: 1000 },
-  "tiny-tina-s-wonderlands": { large: c71, small: c71s, width: 1000 },
-  "tunic": { large: c72, small: c72s, width: 1000 },
-  "unravel-two": { large: c73, small: c73s, width: 1000 },
-  "voices-of-the-void": { large: c74, small: c74s, width: 1000 },
-  "what-remains-of-edith-finch": { large: c75, small: c75s, width: 849 },
+  "star-wars-jedi-fallen-order": { large: c58, small: c58s, width: 850 },
+  "stardew-valley": { large: c59, small: c59s, width: 1000 },
+  "subnautica-below-zero": { large: c60, small: c60s, width: 1000 },
+  "super-mario-64": { large: c61, small: c61s, width: 849 },
+  "super-mario-galaxy": { large: c62, small: c62s, width: 850 },
+  "superhot-vr": { large: c63, small: c63s, width: 1000 },
+  "terraria-calamity-mod": { large: c64, small: c64s, width: 1000 },
+  "the-binding-of-isaac": { large: c65, small: c65s, width: 1000 },
+  "the-dark-pictures-anthology-house-of-ashes": { large: c66, small: c66s, width: 1000 },
+  "the-dark-pictures-anthology-little-hope": { large: c67, small: c67s, width: 1000 },
+  "the-dark-pictures-anthology-man-of-medan": { large: c68, small: c68s, width: 1000 },
+  "the-legend-of-zelda-ocarina-of-time": { large: c69, small: c69s, width: 1000 },
+  "the-legend-of-zelda-tears-of-the-kingdom": { large: c70, small: c70s, width: 1000 },
+  "timesplitters-future-perfect": { large: c71, small: c71s, width: 1000 },
+  "tiny-tina-s-wonderlands": { large: c72, small: c72s, width: 1000 },
+  "tunic": { large: c73, small: c73s, width: 1000 },
+  "unravel-two": { large: c74, small: c74s, width: 1000 },
+  "voices-of-the-void": { large: c75, small: c75s, width: 1000 },
+  "what-remains-of-edith-finch": { large: c76, small: c76s, width: 849 },
 };

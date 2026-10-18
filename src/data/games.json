@@ -1172,6 +1172,21 @@
           "coop": true,
           "replay": false,
           "note": null
+        },
+        {
+          "title": "STAR WARS Jedi: Fallen Order™",
+          "platform": "playstation",
+          "price": 21.35,
+          "hours": 18,
+          "completion": {
+            "state": "achieved",
+            "earned": null,
+            "total": null,
+            "ratio": 1
+          },
+          "coop": false,
+          "replay": false,
+          "note": null
         }
       ],
       "reported": null,
