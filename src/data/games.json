@@ -1187,6 +1187,21 @@
           "coop": false,
           "replay": false,
           "note": null
+        },
+        {
+          "title": "Idols Of Ash",
+          "platform": "steam",
+          "price": 0,
+          "hours": 1.5,
+          "completion": {
+            "state": "not-applicable",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
+          "coop": false,
+          "replay": false,
+          "note": "Also did Nightmare & First Kiln modes"
         }
       ],
       "reported": null,
