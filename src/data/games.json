@@ -1202,6 +1202,21 @@
           "coop": false,
           "replay": false,
           "note": "Also did Nightmare & First Kiln modes"
+        },
+        {
+          "title": "Fears to Fathom - Ironbark Lookout",
+          "platform": "steam",
+          "price": 6.49,
+          "hours": 1.8,
+          "completion": {
+            "state": "pending",
+            "earned": null,
+            "total": null,
+            "ratio": null
+          },
+          "coop": false,
+          "replay": false,
+          "note": null
         }
       ],
       "reported": null,

@@ -43,120 +43,122 @@ import c19 from "../assets/covers/manual/fear-and-hunger.webp";
 import c19s from "../assets/covers/small/manual/fear-and-hunger.webp";
 import c20 from "../assets/covers/fear-hunger-2-termina.webp";
 import c20s from "../assets/covers/small/fear-hunger-2-termina.webp";
-import c21 from "../assets/covers/ghost-of-tsushima-iki-island-dlc.webp";
-import c21s from "../assets/covers/small/ghost-of-tsushima-iki-island-dlc.webp";
-import c22 from "../assets/covers/manual/god-of-war-ragnarok.webp";
-import c22s from "../assets/covers/small/manual/god-of-war-ragnarok.webp";
-import c23 from "../assets/covers/manual/hades.webp";
-import c23s from "../assets/covers/small/manual/hades.webp";
-import c24 from "../assets/covers/manual/half-life-2.webp";
-import c24s from "../assets/covers/small/manual/half-life-2.webp";
-import c25 from "../assets/covers/half-life-alyx.webp";
-import c25s from "../assets/covers/small/half-life-alyx.webp";
-import c26 from "../assets/covers/manual/half-life.webp";
-import c26s from "../assets/covers/small/manual/half-life.webp";
-import c27 from "../assets/covers/manual/halo-3.webp";
-import c27s from "../assets/covers/small/manual/halo-3.webp";
-import c28 from "../assets/covers/halo-3-odst.webp";
-import c28s from "../assets/covers/small/halo-3-odst.webp";
-import c29 from "../assets/covers/manual/hollow-knight.webp";
-import c29s from "../assets/covers/small/manual/hollow-knight.webp";
-import c30 from "../assets/covers/hollow-knight-silksong.webp";
-import c30s from "../assets/covers/small/hollow-knight-silksong.webp";
-import c31 from "../assets/covers/manual/horizon-forbidden-west.webp";
-import c31s from "../assets/covers/small/manual/horizon-forbidden-west.webp";
-import c32 from "../assets/covers/idols-of-ash.webp";
-import c32s from "../assets/covers/small/idols-of-ash.webp";
-import c33 from "../assets/covers/manual/iron-lung.webp";
-import c33s from "../assets/covers/small/manual/iron-lung.webp";
-import c34 from "../assets/covers/lies-of-p.webp";
-import c34s from "../assets/covers/small/lies-of-p.webp";
-import c35 from "../assets/covers/manual/lies-of-p-overture.webp";
-import c35s from "../assets/covers/small/manual/lies-of-p-overture.webp";
-import c36 from "../assets/covers/manual/little-nightmares-2.webp";
-import c36s from "../assets/covers/small/manual/little-nightmares-2.webp";
-import c37 from "../assets/covers/little-nightmares-secrets-of-the-maw-dlc.webp";
-import c37s from "../assets/covers/small/little-nightmares-secrets-of-the-maw-dlc.webp";
-import c38 from "../assets/covers/manual/luigis-mansion-3.webp";
-import c38s from "../assets/covers/small/manual/luigis-mansion-3.webp";
-import c39 from "../assets/covers/manual/marvels-spider-man-2.webp";
-import c39s from "../assets/covers/small/manual/marvels-spider-man-2.webp";
-import c40 from "../assets/covers/manual/marvels-spider-man-miles-morales.webp";
-import c40s from "../assets/covers/small/manual/marvels-spider-man-miles-morales.webp";
-import c41 from "../assets/covers/manual/marvels-spider-man.webp";
-import c41s from "../assets/covers/small/manual/marvels-spider-man.webp";
-import c42 from "../assets/covers/metroid-prime-remastered.webp";
-import c42s from "../assets/covers/small/metroid-prime-remastered.webp";
-import c43 from "../assets/covers/my-time-at-portia.webp";
-import c43s from "../assets/covers/small/my-time-at-portia.webp";
-import c44 from "../assets/covers/ori-and-the-blind-forest-definitive-edition.webp";
-import c44s from "../assets/covers/small/ori-and-the-blind-forest-definitive-edition.webp";
-import c45 from "../assets/covers/manual/ori-and-the-will-of-the-wisps.webp";
-import c45s from "../assets/covers/small/manual/ori-and-the-will-of-the-wisps.webp";
-import c46 from "../assets/covers/manual/outer-wilds.webp";
-import c46s from "../assets/covers/small/manual/outer-wilds.webp";
-import c47 from "../assets/covers/paper-mario-the-origami-king.webp";
-import c47s from "../assets/covers/small/paper-mario-the-origami-king.webp";
-import c48 from "../assets/covers/manual/remnant-from-the-ashes.webp";
-import c48s from "../assets/covers/small/manual/remnant-from-the-ashes.webp";
-import c49 from "../assets/covers/manual/resident-evil-2.webp";
-import c49s from "../assets/covers/small/manual/resident-evil-2.webp";
-import c50 from "../assets/covers/manual/resident-evil-3.webp";
-import c50s from "../assets/covers/small/manual/resident-evil-3.webp";
-import c51 from "../assets/covers/manual/risk-of-rain-2-alloyed-collective.webp";
-import c51s from "../assets/covers/small/manual/risk-of-rain-2-alloyed-collective.webp";
-import c52 from "../assets/covers/manual/risk-of-rain-2-sots.webp";
-import c52s from "../assets/covers/small/manual/risk-of-rain-2-sots.webp";
-import c53 from "../assets/covers/slay-the-spire.webp";
-import c53s from "../assets/covers/small/slay-the-spire.webp";
-import c54 from "../assets/covers/manual/slay-the-spire-2.webp";
-import c54s from "../assets/covers/small/manual/slay-the-spire-2.webp";
-import c55 from "../assets/covers/manual/spelunky-2.webp";
-import c55s from "../assets/covers/small/manual/spelunky-2.webp";
-import c56 from "../assets/covers/spelunky-hd.webp";
-import c56s from "../assets/covers/small/spelunky-hd.webp";
-import c57 from "../assets/covers/manual/spider-man-2000.webp";
-import c57s from "../assets/covers/small/manual/spider-man-2000.webp";
-import c58 from "../assets/covers/manual/split-fiction.webp";
-import c58s from "../assets/covers/small/manual/split-fiction.webp";
-import c59 from "../assets/covers/star-wars-jedi-fallen-order.webp";
-import c59s from "../assets/covers/small/star-wars-jedi-fallen-order.webp";
-import c60 from "../assets/covers/manual/stardew-valley.webp";
-import c60s from "../assets/covers/small/manual/stardew-valley.webp";
-import c61 from "../assets/covers/manual/subnautica-below-zero.webp";
-import c61s from "../assets/covers/small/manual/subnautica-below-zero.webp";
-import c62 from "../assets/covers/super-mario-64.webp";
-import c62s from "../assets/covers/small/super-mario-64.webp";
-import c63 from "../assets/covers/super-mario-galaxy.webp";
-import c63s from "../assets/covers/small/super-mario-galaxy.webp";
-import c64 from "../assets/covers/manual/superhot.webp";
-import c64s from "../assets/covers/small/manual/superhot.webp";
-import c65 from "../assets/covers/manual/terraria-calamity.webp";
-import c65s from "../assets/covers/small/manual/terraria-calamity.webp";
-import c66 from "../assets/covers/manual/the-binding-of-isaac.webp";
-import c66s from "../assets/covers/small/manual/the-binding-of-isaac.webp";
-import c67 from "../assets/covers/manual/dark-pictures-house-of-ashes.webp";
-import c67s from "../assets/covers/small/manual/dark-pictures-house-of-ashes.webp";
-import c68 from "../assets/covers/manual/dark-pictures-little-hope.webp";
-import c68s from "../assets/covers/small/manual/dark-pictures-little-hope.webp";
-import c69 from "../assets/covers/manual/dark-pictures-man-of-medan.webp";
-import c69s from "../assets/covers/small/manual/dark-pictures-man-of-medan.webp";
-import c70 from "../assets/covers/manual/ocarina-of-time.webp";
-import c70s from "../assets/covers/small/manual/ocarina-of-time.webp";
-import c71 from "../assets/covers/manual/tears-of-the-kingdom.webp";
-import c71s from "../assets/covers/small/manual/tears-of-the-kingdom.webp";
-import c72 from "../assets/covers/manual/timesplitters-future-perfect.webp";
-import c72s from "../assets/covers/small/manual/timesplitters-future-perfect.webp";
-import c73 from "../assets/covers/manual/wonderlands.webp";
-import c73s from "../assets/covers/small/manual/wonderlands.webp";
-import c74 from "../assets/covers/manual/tunic.webp";
-import c74s from "../assets/covers/small/manual/tunic.webp";
-import c75 from "../assets/covers/manual/unravel-two.webp";
-import c75s from "../assets/covers/small/manual/unravel-two.webp";
-import c76 from "../assets/covers/manual/voices-of-the-void.webp";
-import c76s from "../assets/covers/small/manual/voices-of-the-void.webp";
-import c77 from "../assets/covers/what-remains-of-edith-finch.webp";
-import c77s from "../assets/covers/small/what-remains-of-edith-finch.webp";
+import c21 from "../assets/covers/manual/fears-to-fathom-ironbark-lookout.webp";
+import c21s from "../assets/covers/small/manual/fears-to-fathom-ironbark-lookout.webp";
+import c22 from "../assets/covers/ghost-of-tsushima-iki-island-dlc.webp";
+import c22s from "../assets/covers/small/ghost-of-tsushima-iki-island-dlc.webp";
+import c23 from "../assets/covers/manual/god-of-war-ragnarok.webp";
+import c23s from "../assets/covers/small/manual/god-of-war-ragnarok.webp";
+import c24 from "../assets/covers/manual/hades.webp";
+import c24s from "../assets/covers/small/manual/hades.webp";
+import c25 from "../assets/covers/manual/half-life-2.webp";
+import c25s from "../assets/covers/small/manual/half-life-2.webp";
+import c26 from "../assets/covers/half-life-alyx.webp";
+import c26s from "../assets/covers/small/half-life-alyx.webp";
+import c27 from "../assets/covers/manual/half-life.webp";
+import c27s from "../assets/covers/small/manual/half-life.webp";
+import c28 from "../assets/covers/manual/halo-3.webp";
+import c28s from "../assets/covers/small/manual/halo-3.webp";
+import c29 from "../assets/covers/halo-3-odst.webp";
+import c29s from "../assets/covers/small/halo-3-odst.webp";
+import c30 from "../assets/covers/manual/hollow-knight.webp";
+import c30s from "../assets/covers/small/manual/hollow-knight.webp";
+import c31 from "../assets/covers/hollow-knight-silksong.webp";
+import c31s from "../assets/covers/small/hollow-knight-silksong.webp";
+import c32 from "../assets/covers/manual/horizon-forbidden-west.webp";
+import c32s from "../assets/covers/small/manual/horizon-forbidden-west.webp";
+import c33 from "../assets/covers/idols-of-ash.webp";
+import c33s from "../assets/covers/small/idols-of-ash.webp";
+import c34 from "../assets/covers/manual/iron-lung.webp";
+import c34s from "../assets/covers/small/manual/iron-lung.webp";
+import c35 from "../assets/covers/lies-of-p.webp";
+import c35s from "../assets/covers/small/lies-of-p.webp";
+import c36 from "../assets/covers/manual/lies-of-p-overture.webp";
+import c36s from "../assets/covers/small/manual/lies-of-p-overture.webp";
+import c37 from "../assets/covers/manual/little-nightmares-2.webp";
+import c37s from "../assets/covers/small/manual/little-nightmares-2.webp";
+import c38 from "../assets/covers/little-nightmares-secrets-of-the-maw-dlc.webp";
+import c38s from "../assets/covers/small/little-nightmares-secrets-of-the-maw-dlc.webp";
+import c39 from "../assets/covers/manual/luigis-mansion-3.webp";
+import c39s from "../assets/covers/small/manual/luigis-mansion-3.webp";
+import c40 from "../assets/covers/manual/marvels-spider-man-2.webp";
+import c40s from "../assets/covers/small/manual/marvels-spider-man-2.webp";
+import c41 from "../assets/covers/manual/marvels-spider-man-miles-morales.webp";
+import c41s from "../assets/covers/small/manual/marvels-spider-man-miles-morales.webp";
+import c42 from "../assets/covers/manual/marvels-spider-man.webp";
+import c42s from "../assets/covers/small/manual/marvels-spider-man.webp";
+import c43 from "../assets/covers/metroid-prime-remastered.webp";
+import c43s from "../assets/covers/small/metroid-prime-remastered.webp";
+import c44 from "../assets/covers/my-time-at-portia.webp";
+import c44s from "../assets/covers/small/my-time-at-portia.webp";
+import c45 from "../assets/covers/ori-and-the-blind-forest-definitive-edition.webp";
+import c45s from "../assets/covers/small/ori-and-the-blind-forest-definitive-edition.webp";
+import c46 from "../assets/covers/manual/ori-and-the-will-of-the-wisps.webp";
+import c46s from "../assets/covers/small/manual/ori-and-the-will-of-the-wisps.webp";
+import c47 from "../assets/covers/manual/outer-wilds.webp";
+import c47s from "../assets/covers/small/manual/outer-wilds.webp";
+import c48 from "../assets/covers/paper-mario-the-origami-king.webp";
+import c48s from "../assets/covers/small/paper-mario-the-origami-king.webp";
+import c49 from "../assets/covers/manual/remnant-from-the-ashes.webp";
+import c49s from "../assets/covers/small/manual/remnant-from-the-ashes.webp";
+import c50 from "../assets/covers/manual/resident-evil-2.webp";
+import c50s from "../assets/covers/small/manual/resident-evil-2.webp";
+import c51 from "../assets/covers/manual/resident-evil-3.webp";
+import c51s from "../assets/covers/small/manual/resident-evil-3.webp";
+import c52 from "../assets/covers/manual/risk-of-rain-2-alloyed-collective.webp";
+import c52s from "../assets/covers/small/manual/risk-of-rain-2-alloyed-collective.webp";
+import c53 from "../assets/covers/manual/risk-of-rain-2-sots.webp";
+import c53s from "../assets/covers/small/manual/risk-of-rain-2-sots.webp";
+import c54 from "../assets/covers/slay-the-spire.webp";
+import c54s from "../assets/covers/small/slay-the-spire.webp";
+import c55 from "../assets/covers/manual/slay-the-spire-2.webp";
+import c55s from "../assets/covers/small/manual/slay-the-spire-2.webp";
+import c56 from "../assets/covers/manual/spelunky-2.webp";
+import c56s from "../assets/covers/small/manual/spelunky-2.webp";
+import c57 from "../assets/covers/spelunky-hd.webp";
+import c57s from "../assets/covers/small/spelunky-hd.webp";
+import c58 from "../assets/covers/manual/spider-man-2000.webp";
+import c58s from "../assets/covers/small/manual/spider-man-2000.webp";
+import c59 from "../assets/covers/manual/split-fiction.webp";
+import c59s from "../assets/covers/small/manual/split-fiction.webp";
+import c60 from "../assets/covers/star-wars-jedi-fallen-order.webp";
+import c60s from "../assets/covers/small/star-wars-jedi-fallen-order.webp";
+import c61 from "../assets/covers/manual/stardew-valley.webp";
+import c61s from "../assets/covers/small/manual/stardew-valley.webp";
+import c62 from "../assets/covers/manual/subnautica-below-zero.webp";
+import c62s from "../assets/covers/small/manual/subnautica-below-zero.webp";
+import c63 from "../assets/covers/super-mario-64.webp";
+import c63s from "../assets/covers/small/super-mario-64.webp";
+import c64 from "../assets/covers/super-mario-galaxy.webp";
+import c64s from "../assets/covers/small/super-mario-galaxy.webp";
+import c65 from "../assets/covers/manual/superhot.webp";
+import c65s from "../assets/covers/small/manual/superhot.webp";
+import c66 from "../assets/covers/manual/terraria-calamity.webp";
+import c66s from "../assets/covers/small/manual/terraria-calamity.webp";
+import c67 from "../assets/covers/manual/the-binding-of-isaac.webp";
+import c67s from "../assets/covers/small/manual/the-binding-of-isaac.webp";
+import c68 from "../assets/covers/manual/dark-pictures-house-of-ashes.webp";
+import c68s from "../assets/covers/small/manual/dark-pictures-house-of-ashes.webp";
+import c69 from "../assets/covers/manual/dark-pictures-little-hope.webp";
+import c69s from "../assets/covers/small/manual/dark-pictures-little-hope.webp";
+import c70 from "../assets/covers/manual/dark-pictures-man-of-medan.webp";
+import c70s from "../assets/covers/small/manual/dark-pictures-man-of-medan.webp";
+import c71 from "../assets/covers/manual/ocarina-of-time.webp";
+import c71s from "../assets/covers/small/manual/ocarina-of-time.webp";
+import c72 from "../assets/covers/manual/tears-of-the-kingdom.webp";
+import c72s from "../assets/covers/small/manual/tears-of-the-kingdom.webp";
+import c73 from "../assets/covers/manual/timesplitters-future-perfect.webp";
+import c73s from "../assets/covers/small/manual/timesplitters-future-perfect.webp";
+import c74 from "../assets/covers/manual/wonderlands.webp";
+import c74s from "../assets/covers/small/manual/wonderlands.webp";
+import c75 from "../assets/covers/manual/tunic.webp";
+import c75s from "../assets/covers/small/manual/tunic.webp";
+import c76 from "../assets/covers/manual/unravel-two.webp";
+import c76s from "../assets/covers/small/manual/unravel-two.webp";
+import c77 from "../assets/covers/manual/voices-of-the-void.webp";
+import c77s from "../assets/covers/small/manual/voices-of-the-void.webp";
+import c78 from "../assets/covers/what-remains-of-edith-finch.webp";
+import c78s from "../assets/covers/small/what-remains-of-edith-finch.webp";
 
 export const SMALL_WIDTH = 600;
 
@@ -183,61 +185,62 @@ export const COVERS = {
   "fallout-new-vegas": { large: c18, small: c18s, width: 1000 },
   "fear-hunger": { large: c19, small: c19s, width: 1000 },
   "fear-hunger-2-termina": { large: c20, small: c20s, width: 850 },
-  "ghost-of-tsushima-iki-island-dlc": { large: c21, small: c21s, width: 850 },
-  "god-of-war-ragnarok-valhalla-dlc": { large: c22, small: c22s, width: 1000 },
-  "hades": { large: c23, small: c23s, width: 1000 },
-  "half-life-2-ep1-ep2": { large: c24, small: c24s, width: 1000 },
-  "half-life-alyx": { large: c25, small: c25s, width: 850 },
-  "half-life-dlcs": { large: c26, small: c26s, width: 1000 },
-  "halo-3": { large: c27, small: c27s, width: 1000 },
-  "halo-3-odst": { large: c28, small: c28s, width: 850 },
-  "hollow-knight": { large: c29, small: c29s, width: 1000 },
-  "hollow-knight-silksong": { large: c30, small: c30s, width: 850 },
-  "horizon-forbidden-west": { large: c31, small: c31s, width: 1000 },
-  "idols-of-ash": { large: c32, small: c32s, width: 850 },
-  "iron-lung": { large: c33, small: c33s, width: 1000 },
-  "lies-of-p": { large: c34, small: c34s, width: 850 },
-  "lies-of-p-overture-dlc": { large: c35, small: c35s, width: 1000 },
-  "little-nightmares-ii": { large: c36, small: c36s, width: 1000 },
-  "little-nightmares-secrets-of-the-maw-dlc": { large: c37, small: c37s, width: 850 },
-  "luigi-s-mansion-3": { large: c38, small: c38s, width: 1000 },
-  "marvel-s-spider-man-2": { large: c39, small: c39s, width: 1000 },
-  "marvel-s-spider-man-miles-morales": { large: c40, small: c40s, width: 1000 },
-  "marvel-s-spider-man-remastered": { large: c41, small: c41s, width: 1000 },
-  "metroid-prime-remastered": { large: c42, small: c42s, width: 850 },
-  "my-time-at-portia": { large: c43, small: c43s, width: 849 },
-  "ori-and-the-blind-forest-definitive-edition": { large: c44, small: c44s, width: 849 },
-  "ori-and-the-will-of-the-wisps": { large: c45, small: c45s, width: 1000 },
-  "outer-wilds-echos-of-the-eye-dlc": { large: c46, small: c46s, width: 1000 },
-  "paper-mario-the-origami-king": { large: c47, small: c47s, width: 850 },
-  "remnant-from-the-ashes": { large: c48, small: c48s, width: 1000 },
-  "resident-evil-2-extra-modes": { large: c49, small: c49s, width: 1000 },
-  "resident-evil-3": { large: c50, small: c50s, width: 1000 },
-  "risk-of-rain-2-alloyed-collective-dlc": { large: c51, small: c51s, width: 1000 },
-  "risk-of-rain-2-seekers-of-the-storm-dlc": { large: c52, small: c52s, width: 1000 },
-  "slay-the-spire": { large: c53, small: c53s, width: 850 },
-  "slay-the-spire-2": { large: c54, small: c54s, width: 1000 },
-  "spelunky-2": { large: c55, small: c55s, width: 1000 },
-  "spelunky-hd": { large: c56, small: c56s, width: 850 },
-  "spider-man-2000": { large: c57, small: c57s, width: 1000 },
-  "split-fiction": { large: c58, small: c58s, width: 1000 },
-  "star-wars-jedi-fallen-order": { large: c59, small: c59s, width: 850 },
-  "stardew-valley": { large: c60, small: c60s, width: 1000 },
-  "subnautica-below-zero": { large: c61, small: c61s, width: 1000 },
-  "super-mario-64": { large: c62, small: c62s, width: 849 },
-  "super-mario-galaxy": { large: c63, small: c63s, width: 850 },
-  "superhot-vr": { large: c64, small: c64s, width: 1000 },
-  "terraria-calamity-mod": { large: c65, small: c65s, width: 1000 },
-  "the-binding-of-isaac": { large: c66, small: c66s, width: 1000 },
-  "the-dark-pictures-anthology-house-of-ashes": { large: c67, small: c67s, width: 1000 },
-  "the-dark-pictures-anthology-little-hope": { large: c68, small: c68s, width: 1000 },
-  "the-dark-pictures-anthology-man-of-medan": { large: c69, small: c69s, width: 1000 },
-  "the-legend-of-zelda-ocarina-of-time": { large: c70, small: c70s, width: 1000 },
-  "the-legend-of-zelda-tears-of-the-kingdom": { large: c71, small: c71s, width: 1000 },
-  "timesplitters-future-perfect": { large: c72, small: c72s, width: 1000 },
-  "tiny-tina-s-wonderlands": { large: c73, small: c73s, width: 1000 },
-  "tunic": { large: c74, small: c74s, width: 1000 },
-  "unravel-two": { large: c75, small: c75s, width: 1000 },
-  "voices-of-the-void": { large: c76, small: c76s, width: 1000 },
-  "what-remains-of-edith-finch": { large: c77, small: c77s, width: 849 },
+  "fears-to-fathom-ironbark-lookout": { large: c21, small: c21s, width: 1000 },
+  "ghost-of-tsushima-iki-island-dlc": { large: c22, small: c22s, width: 850 },
+  "god-of-war-ragnarok-valhalla-dlc": { large: c23, small: c23s, width: 1000 },
+  "hades": { large: c24, small: c24s, width: 1000 },
+  "half-life-2-ep1-ep2": { large: c25, small: c25s, width: 1000 },
+  "half-life-alyx": { large: c26, small: c26s, width: 850 },
+  "half-life-dlcs": { large: c27, small: c27s, width: 1000 },
+  "halo-3": { large: c28, small: c28s, width: 1000 },
+  "halo-3-odst": { large: c29, small: c29s, width: 850 },
+  "hollow-knight": { large: c30, small: c30s, width: 1000 },
+  "hollow-knight-silksong": { large: c31, small: c31s, width: 850 },
+  "horizon-forbidden-west": { large: c32, small: c32s, width: 1000 },
+  "idols-of-ash": { large: c33, small: c33s, width: 850 },
+  "iron-lung": { large: c34, small: c34s, width: 1000 },
+  "lies-of-p": { large: c35, small: c35s, width: 850 },
+  "lies-of-p-overture-dlc": { large: c36, small: c36s, width: 1000 },
+  "little-nightmares-ii": { large: c37, small: c37s, width: 1000 },
+  "little-nightmares-secrets-of-the-maw-dlc": { large: c38, small: c38s, width: 850 },
+  "luigi-s-mansion-3": { large: c39, small: c39s, width: 1000 },
+  "marvel-s-spider-man-2": { large: c40, small: c40s, width: 1000 },
+  "marvel-s-spider-man-miles-morales": { large: c41, small: c41s, width: 1000 },
+  "marvel-s-spider-man-remastered": { large: c42, small: c42s, width: 1000 },
+  "metroid-prime-remastered": { large: c43, small: c43s, width: 850 },
+  "my-time-at-portia": { large: c44, small: c44s, width: 849 },
+  "ori-and-the-blind-forest-definitive-edition": { large: c45, small: c45s, width: 849 },
+  "ori-and-the-will-of-the-wisps": { large: c46, small: c46s, width: 1000 },
+  "outer-wilds-echos-of-the-eye-dlc": { large: c47, small: c47s, width: 1000 },
+  "paper-mario-the-origami-king": { large: c48, small: c48s, width: 850 },
+  "remnant-from-the-ashes": { large: c49, small: c49s, width: 1000 },
+  "resident-evil-2-extra-modes": { large: c50, small: c50s, width: 1000 },
+  "resident-evil-3": { large: c51, small: c51s, width: 1000 },
+  "risk-of-rain-2-alloyed-collective-dlc": { large: c52, small: c52s, width: 1000 },
+  "risk-of-rain-2-seekers-of-the-storm-dlc": { large: c53, small: c53s, width: 1000 },
+  "slay-the-spire": { large: c54, small: c54s, width: 850 },
+  "slay-the-spire-2": { large: c55, small: c55s, width: 1000 },
+  "spelunky-2": { large: c56, small: c56s, width: 1000 },
+  "spelunky-hd": { large: c57, small: c57s, width: 850 },
+  "spider-man-2000": { large: c58, small: c58s, width: 1000 },
+  "split-fiction": { large: c59, small: c59s, width: 1000 },
+  "star-wars-jedi-fallen-order": { large: c60, small: c60s, width: 850 },
+  "stardew-valley": { large: c61, small: c61s, width: 1000 },
+  "subnautica-below-zero": { large: c62, small: c62s, width: 1000 },
+  "super-mario-64": { large: c63, small: c63s, width: 849 },
+  "super-mario-galaxy": { large: c64, small: c64s, width: 850 },
+  "superhot-vr": { large: c65, small: c65s, width: 1000 },
+  "terraria-calamity-mod": { large: c66, small: c66s, width: 1000 },
+  "the-binding-of-isaac": { large: c67, small: c67s, width: 1000 },
+  "the-dark-pictures-anthology-house-of-ashes": { large: c68, small: c68s, width: 1000 },
+  "the-dark-pictures-anthology-little-hope": { large: c69, small: c69s, width: 1000 },
+  "the-dark-pictures-anthology-man-of-medan": { large: c70, small: c70s, width: 1000 },
+  "the-legend-of-zelda-ocarina-of-time": { large: c71, small: c71s, width: 1000 },
+  "the-legend-of-zelda-tears-of-the-kingdom": { large: c72, small: c72s, width: 1000 },
+  "timesplitters-future-perfect": { large: c73, small: c73s, width: 1000 },
+  "tiny-tina-s-wonderlands": { large: c74, small: c74s, width: 1000 },
+  "tunic": { large: c75, small: c75s, width: 1000 },
+  "unravel-two": { large: c76, small: c76s, width: 1000 },
+  "voices-of-the-void": { large: c77, small: c77s, width: 1000 },
+  "what-remains-of-edith-finch": { large: c78, small: c78s, width: 849 },
 };
