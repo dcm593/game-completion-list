@@ -26,8 +26,3 @@ export const formatRate = (rate) => `$${rate.toFixed(2)}/h`;
 // poor value, and anything between is left neutral.
 export const RATE_GOOD = 1;
 export const RATE_POOR = 5;
-
-// Scatter callouts: points this far out either way get a numbered key. They
-// are fixed thresholds, so a year can have none or several.
-export const RATE_BARGAIN = 0.2;
-export const RATE_STEEP = 4.5;
