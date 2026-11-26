@@ -155,10 +155,12 @@ import c75 from "../assets/covers/manual/tunic.webp";
 import c75s from "../assets/covers/small/manual/tunic.webp";
 import c76 from "../assets/covers/manual/unravel-two.webp";
 import c76s from "../assets/covers/small/manual/unravel-two.webp";
-import c77 from "../assets/covers/manual/voices-of-the-void.webp";
-import c77s from "../assets/covers/small/manual/voices-of-the-void.webp";
-import c78 from "../assets/covers/what-remains-of-edith-finch.webp";
-import c78s from "../assets/covers/small/what-remains-of-edith-finch.webp";
+import c77 from "../assets/covers/manual/valheim.webp";
+import c77s from "../assets/covers/small/manual/valheim.webp";
+import c78 from "../assets/covers/manual/voices-of-the-void.webp";
+import c78s from "../assets/covers/small/manual/voices-of-the-void.webp";
+import c79 from "../assets/covers/what-remains-of-edith-finch.webp";
+import c79s from "../assets/covers/small/what-remains-of-edith-finch.webp";
 
 export const SMALL_WIDTH = 600;
 
@@ -241,6 +243,7 @@ export const COVERS = {
   "tiny-tina-s-wonderlands": { large: c74, small: c74s, width: 1000 },
   "tunic": { large: c75, small: c75s, width: 1000 },
   "unravel-two": { large: c76, small: c76s, width: 1000 },
-  "voices-of-the-void": { large: c77, small: c77s, width: 1000 },
-  "what-remains-of-edith-finch": { large: c78, small: c78s, width: 849 },
+  "valheim": { large: c77, small: c77s, width: 1000 },
+  "voices-of-the-void": { large: c78, small: c78s, width: 1000 },
+  "what-remains-of-edith-finch": { large: c79, small: c79s, width: 849 },
 };

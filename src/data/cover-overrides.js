@@ -78,6 +78,7 @@ export const COVER_OVERRIDES = {
   Hades: { file: "hades.webp" },
   "The Dark Pictures Anthology: House of Ashes": { file: "dark-pictures-house-of-ashes.webp" },
   "Fears to Fathom - Ironbark Lookout": { file: "fears-to-fathom-ironbark-lookout.webp" },
+  "Valheim": { file: "valheim.webp"},
 
   // ------------------------------------------------- resolved via the API
   // A challenge mode inside Celeste, not a separate release.
