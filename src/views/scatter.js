@@ -1,7 +1,7 @@
 import { h, s } from "../ui/dom.js";
 import { tint } from "../ui/theme.js";
 import {
-  formatHours, formatPrice, formatRate, costPerHour, RATE_BARGAIN, RATE_STEEP,
+  formatHours, formatPrice, formatRate, costPerHour,
 } from "../ui/format.js";
 import { shortTitle } from "../data/titles.js";
 import { attachHoverCard } from "../components/hover-card.js";
@@ -47,6 +47,9 @@ const geometry = () => (isNarrow() ? NARROW : WIDE);
 // The drawn domain of each log axis.
 const HOURS = { min: 3, max: 300 };
 const PRICE = { min: 2, max: 200 };
+
+// How many of a year's points get a numbered callout.
+const CALLOUT_LIMIT = 5;
 
 // Both axes clamp to the drawn domain so a point outside it lands on the
 // boundary rather than escaping the plot. Bargain-bin buys are what hit this:
@@ -161,22 +164,26 @@ export function scatter(games) {
   const unplottable = games.length - priced.length - free.length;
   const sizeFor = (game) => (7 + Math.min(13, game.hours / 10)) * g.dotScale;
 
-  const outliers = [];
+  // The year's cheapest games per hour get numbered callouts, cheapest first,
+  // so the key reads as a ranking. Free games are left out: they sit in their
+  // own lane at no cost, and would take every slot in a year with several.
+  const callouts = priced
+    .map((game) => ({ game, rate: costPerHour(game) }))
+    .sort((a, b) => a.rate - b.rate)
+    .slice(0, CALLOUT_LIMIT)
+    .map(({ game, rate }, i) => ({
+      game,
+      key: String(i + 1),
+      title: shortTitle(game.title),
+      stat: `${formatHours(game.hours)} - ${formatPrice(game.price)} - ${formatRate(rate)}`,
+      platform: game.platform,
+    }));
+  const keyOf = new Map(callouts.map((c) => [c.game, c.key]));
+
   const pricedDots = priced.map((game) => {
-    const rate = costPerHour(game);
-    const notable = rate < RATE_BARGAIN || rate > RATE_STEEP;
-    let key = null;
-    if (notable) {
-      key = String(outliers.length + 1);
-      outliers.push({
-        key,
-        title: shortTitle(game.title),
-        stat: `${formatHours(game.hours)} - ${formatPrice(game.price)} - ${formatRate(rate)}`,
-        platform: game.platform,
-      });
-    }
+    const key = keyOf.get(game) ?? null;
     return dot(game, {
-      size: notable ? 20 * g.dotScale : sizeFor(game),
+      size: key ? 20 * g.dotScale : sizeFor(game),
       key,
       atX: fx(game.hours),
       atY: fy(game.price),
@@ -201,8 +208,8 @@ export function scatter(games) {
       h("div", {
         class: "chart-desc",
         text:
-          "Log-log. Dashed diagonals are constant cost-per-hour; numbered points cost under " +
-          `${formatRate(RATE_BARGAIN)} or over ${formatRate(RATE_STEEP)}. ` +
+          "Log-log. Dashed diagonals are constant cost-per-hour; numbered points are the year's " +
+          `${CALLOUT_LIMIT} cheapest paid games per hour, cheapest first. ` +
           "Free games sit in their own lane, since a log axis has no zero." +
           missing,
       })
@@ -230,11 +237,11 @@ export function scatter(games) {
       }, freeDots)
     ),
 
-    outliers.length
+    callouts.length
       ? h(
           "div",
           { class: "outliers" },
-          outliers.map((o) =>
+          callouts.map((o) =>
             h(
               "div",
               { class: "outlier", style: tint(o.platform) },
