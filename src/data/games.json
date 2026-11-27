@@ -1232,6 +1232,21 @@
           "coop": true,
           "replay": false,
           "note": "Began as a 4-player co-op server, our group made it to Ashlands before everyone else trickled out of playing - I finished the rest solo. Not 100% sure about playtime, used the in game stats menu which lists time in/out of base as seconds (I think), total of those values in seconds converted to hours gets 108.68 - my total steam playtime is 288.5 hours"
+        },
+        {
+          "title": "How to Fish",
+          "platform": "steam",
+          "price": 10.48,
+          "hours": 7.5,
+          "completion": {
+            "state": "partial",
+            "earned": 22,
+            "total": 31,
+            "ratio": 0.7096774193548387
+          },
+          "coop": true,
+          "replay": false,
+          "note": null
         }
       ],
       "reported": null,
